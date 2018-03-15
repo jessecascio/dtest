@@ -1,0 +1,23 @@
+
+const joi = require('joi');
+
+module.exports = {
+  schema: joi.object().keys({
+    add: joi.func().required(),
+    addFirst: joi.func().required(),
+    addLast: joi.func().required(),
+    get: joi.func().required(),
+    getFirst: joi.func().required(),
+    getLast: joi.func().required(),
+    peek: joi.func().required(),
+    peekFirst: joi.func().required(),
+    peekLast: joi.func().required(),
+    indexOf: joi.func().required(),
+    lastIndexOf: joi.func().required(),
+    contains: joi.func().required(),
+    count: joi.func().required(),
+    size: joi.func().required(),
+    clear: joi.func().required(),
+    toArray: joi.func().required()
+  }).unknown()
+};
