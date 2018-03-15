@@ -1,7 +1,7 @@
 {
-  "name": "dstest",
+  "name": "dtest",
   "version": "0.1.0",
-  "description": "Data Structure and Algorithm Testing",
+  "description": "NodeJS Data Structure and Algorithm Testing Framework",
   "main": "index.js",
   "engines" : { 
     "node" : ">=6.12"

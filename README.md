@@ -1,6 +1,6 @@
-# dstest
+# dtest
 
-NodeJS data structure and algorithm testing framework.
+NodeJS Data Structure and Algorithm Testing Framework
 
 ### Running
 
