@@ -1,7 +1,6 @@
 .DS_store
 
 lib/**
-!lib/.gitkeep
 !lib/out
 
 lib/out/**
