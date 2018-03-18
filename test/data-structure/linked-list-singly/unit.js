@@ -1,18 +1,32 @@
 /**
  * unit test
  */
-
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
 const ds = require(util.input.s || './../../../src/data-structure/linked-list-singly/source.js');
+const prereqs = ['toArray', 'reset', 'size'];
 
 describe("Singly Linked List - Unit Tests", async () => {
-  beforeEach(() => {
-    ds.clear();
+  before(function() {
+    prereqs.map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
   });
 
-  describe("#add", () => {
+  beforeEach(function() {
+    ds.reset();
+  });
+
+  describe("#add - Add to a specific index", () => {
+    before(function() {
+      if (!ds.add) {
+        this.skip();
+      }
+    });
+
     it ("should return false for too large of index", () => {
       assert.isFalse(ds.add(100, 1));
     });
@@ -59,7 +73,13 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#addFirst", () => {
+  describe("#addFirst - Add to the front of list", () => {
+    before(function() {
+      if (!ds.addFirst) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([]));
     });
@@ -80,7 +100,13 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#addLast", () => {
+  describe("#addLast - Add to the end of list", () => {
+    before(function() {
+      if (!ds.addLast) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([]));
     });
@@ -102,6 +128,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#get", () => {
+    before(function() {
+      if (!ds.get) {
+        this.skip();
+      }
+    });
+
     it ("should return undefined for too large of index", () => {
       assert.equal(ds.get(100), undefined);
     });
@@ -158,7 +190,14 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getFirst", () => {    it ("should handle no inputs", () => {
+  describe("#getFirst", () => {    
+    before(function() {
+      if (!ds.getFirst) {
+        this.skip();
+      }
+    });
+
+    it ("should handle no inputs", () => {
       assert.equal(ds.getFirst(), undefined);
     });
     
@@ -192,7 +231,14 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getLast", () => {    it ("should handle no inputs", () => {
+  describe("#getLast", () => {
+    before(function() {
+      if (!ds.getLast) {
+        this.skip();
+      }
+    });
+    
+    it ("should handle no inputs", () => {
       assert.equal(ds.getLast(), undefined);
     });
     
@@ -227,6 +273,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#peek", () => {
+    before(function() {
+      if (!ds.peek) {
+        this.skip();
+      }
+    });
+
     it ("should return undefined for too large of index", () => {
       assert.equal(ds.peek(100), undefined);
     });
@@ -278,6 +330,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#peekFirst", () => {
+    before(function() {
+      if (!ds.peekFirst) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.peekFirst(), undefined);
     });
@@ -321,6 +379,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#peekLast", () => {
+    before(function() {
+      if (!ds.peekLast) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.peekLast(), undefined);
     });
@@ -364,6 +428,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#indexOf", () => {
+    before(function() {
+      if (!ds.indexOf) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.indexOf(4), undefined);
     });
@@ -389,6 +459,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#lastIndexOf", () => {
+    before(function() {
+      if (!ds.lastIndexOf) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.lastIndexOf(4), undefined);
     });
@@ -416,6 +492,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#contains", () => {
+    before(function() {
+      if (!ds.contains) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.isFalse(ds.contains(1));
     });
@@ -441,6 +523,12 @@ describe("Singly Linked List - Unit Tests", async () => {
   });
 
   describe("#count", () => {
+    before(function() {
+      if (!ds.count) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.count(1), 0);
     });
@@ -464,7 +552,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#size", () => {
+  describe.skip("#size", () => {
     it ("should handle no inputs", () => {
       assert.equal(ds.size(), 0);
     });
@@ -480,14 +568,14 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#clear", () => {
+  describe.skip("#reset", () => {
     it ("should reset data structure", () => {
       ds.addFirst(1);
       ds.addFirst(1);
       ds.addFirst(1);
       assert.equal(ds.size(), 3);
 
-      ds.clear();
+      ds.reset();
       assert.equal(ds.size(), 0);
     });
   });

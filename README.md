@@ -10,4 +10,4 @@ Copy the template file of data structure to `lib/` and add functionality:
 
 Pass in user defined data structure (-s) and test template path (-t):
 
-`npm run dstest -- -s lib/linked-list.js -t test/data-structure/linked-list-singly`
+`npm run dtest -- -s lib/linked-list.js -t test/data-structure/linked-list-singly`

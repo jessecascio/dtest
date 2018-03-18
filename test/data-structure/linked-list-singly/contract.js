@@ -17,7 +17,7 @@ module.exports = {
     contains: joi.func().required(),
     count: joi.func().required(),
     size: joi.func().required(),
-    clear: joi.func().required(),
+    reset: joi.func().required(),
     toArray: joi.func().required()
   }).unknown()
 };

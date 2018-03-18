@@ -2,12 +2,6 @@
  * Doubly Linked List
  */
 
-// sample data node
-const node = {
-  data: undefined,
-  next: undefined
-};
-
 module.exports = {
   /**
    * add a value to a specific index, bool on success, false out of range

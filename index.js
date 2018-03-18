@@ -32,16 +32,6 @@ if (!fs.existsSync(`${dir}/unit.js`)) {
   process.exit();
 }
 
-// 1) ensure contract is met
-const contract = require(`${dir}/contract.js`);
-const source = require(util.input.s);
-
-const r = joi.validate(source, contract.schema);
-if (r.error) {
-  console.log("CONTRACT ERROR: function", r.error.details[0].message);
-  process.exit();
-}
-
 // 2) ensure unit tests pass
 function runUnitTests() {
   const mocha = new Mocha();
@@ -122,6 +112,17 @@ function runOtherTests() {
 (async () => {
   try {
     await runUnitTests();
+    
+    // 1) ensure contract is met
+    const contract = require(`${dir}/contract.js`);
+    const source = require(util.input.s);
+
+    const r = joi.validate(source, contract.schema);
+    if (r.error) {
+      console.log("CONTRACT ERROR: function", r.error.details[0].message);
+      process.exit();
+    }
+
     await runDataTests();
     await runOtherTests();
   } catch (e) {

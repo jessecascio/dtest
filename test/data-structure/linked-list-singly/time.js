@@ -14,8 +14,8 @@ describe("Singly Linked List - Time Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {
-    ds.clear();
-    bn.clear();
+    ds.reset();
+    bn.reset();
   });
 
   it ("addLast should be no more than 2x slower", function() {
