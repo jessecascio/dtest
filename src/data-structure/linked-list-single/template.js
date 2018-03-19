@@ -2,6 +2,9 @@
  * Linked List Single
  */
 
+let head;
+let tail;
+
 module.exports = {
   /**
    * add a value to a specific index, bool on success, false out of range
@@ -93,16 +96,38 @@ module.exports = {
    * get size of list
    * @return int
    */
-  size: null,
+  size: () => {
+    let s = 0;
+    let n = head;
+
+    while (n) {
+      s++;
+      n = n.next;
+    }
+
+    return s;
+  },
 
   /**
    * reset the list
    */
-  reset: null,
+  reset: () => {
+    head = tail = null;
+  },
 
   /**
    * get an array representation of list
    * @return Array<T>
    */
-  toArray: null
+  toArray: () => {
+    let a = [];
+    let n = head;
+
+    while (n) {
+      a.push(n.data);
+      n = n.next;
+    }
+    
+    return a;
+  }
 };

@@ -5,11 +5,11 @@ const assert = require("chai").assert;
 const util = require('./../../util.js');
 
 const ds = require(util.input.s || './../../../src/data-structure/linked-list-single/source.js');
-const prereqs = ['toArray', 'reset', 'size'];
+const reqd = ['toArray', 'reset', 'size'];
 
 describe("Single Linked List - Unit Tests", async () => {
   before(function() {
-    prereqs.map((f) => {
+    reqd.map((f) => {
       if (!ds[f]) {
         assert.fail(null, true, `Function Required: ${f}()`)
       }
