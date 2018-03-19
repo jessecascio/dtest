@@ -8,7 +8,7 @@ const chalk = require("chalk");
 const util = require('./../../util.js');
 
 const ds = require(util.input.s); // user data structure
-const bn = require('./../../../src/data-structure/linked-list-single/source.js'); // benchmark
+const bn = require('./../../../data-structure/linked-list-single/source.js'); // benchmark
 
 describe("Single Linked List - Time Tests", function() {
   this.timeout(60000);

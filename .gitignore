@@ -1,14 +1,12 @@
 .DS_store
 
 lib/**
-!lib/out
-
-lib/out/**
-!lib/out/.gitkeep
+!lib/.gitkeep
 
 node_modules
 
 **/*.log
+**/*.out
 
 mock.js
 

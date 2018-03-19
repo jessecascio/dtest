@@ -4,7 +4,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/linked-list-single/source.js');
+const ds = require(util.input.s || './../../../data-structure/linked-list-single/source.js');
 
 describe("Single Linked List - Unit Tests", async () => {
   before(function() {

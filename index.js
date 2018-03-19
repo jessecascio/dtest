@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const joi = require('joi');
 
-const util = require('./test/util.js');
+const util = require('./src/test/util.js');
 
 // validate inputs
 if (!util.input.s || !util.input.t) {
