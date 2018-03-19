@@ -224,7 +224,7 @@ module.exports = {
   },
 
   // o(1)
-  clear: function() {
+  reset: function() {
     head = undefined;
     tail = undefined;
     node_count = 0;

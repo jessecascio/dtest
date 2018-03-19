@@ -12,8 +12,8 @@ describe("Double Linked List - Data Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {
-    ds.clear();
-    bn.clear();
+    ds.reset();
+    bn.reset();
   });
 
   it ("list should handle random inputs", function() {
