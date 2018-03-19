@@ -1,6 +1,9 @@
 /**
- * Doubly Linked List
+ * Linked List Double
  */
+
+let head;
+let tail;
 
 module.exports = {
   /**
@@ -9,107 +12,103 @@ module.exports = {
    * @param T
    * @return bool
    */
-  add: function(i, v) {
-    
-  },
+  add: null,
 
   /**
    * add a value to the front of the list
    * @param T
    */
-  addFirst: function (v) {
-
-  },
+  addFirst: null,
 
   /**
    * add a value to the end of the list
    * @param T
    */
-  addLast: function(v) {
-    
-  },
+  addLast: null,
 
   /**
    * remove a value from a specific index
    * @param int
    * @return T | undefined
    */
-  get: function(i) {
-   
-  },
+  get: null,
 
   /**
    * remove a value from beginning of list
    * @return T | undefined
    */
-  getFirst: function() {
-    
-  },
+  getFirst: null,
 
   /**
    * remove a value from end of list
    * @return T | undefined
    */
-  getLast: function() {
-    
-  },
+  getLast: null,
   
   /**
    * return index of a value
    * @param T
    * @return int | undefined
    */
-  indexOf: function(v) {
-
-  },
+  indexOf: null,
 
   /**
    * return last index of a value
    * @param T
    * @return int | undefined
    */
-  lastIndexOf: function(v) {
-    
-  },
+  lastIndexOf: null,
 
   /**
    * get count for a value
    * @param T
    * @return int
    */
-  count: function(v) {
-    
-  },
+  count: null,
 
   /**
    * determine if list contains a value
    * @param T
    * @return bool
    */
-  contains: function(v) {
-    
-  },
+  contains: null,
 
   /**
    * get size of list
    * @return int
    */
-  size: function() {
+  size: () => {
+    let s = 0;
+    let n = head;
 
+    while (n) {
+      s++;
+      n = n.next;
+    }
+
+    return s;
   },
 
   /**
    * reset the list
    */
-  clear: function() {
-
+  reset: () => {
+    head = tail = null;
   },
 
   /**
    * get an array representation of list
    * @return Array<T>
    */
-  toArray: function() {
+  toArray: () => {
+    let a = [];
+    let n = head;
+
+    while (n) {
+      a.push(n.data);
+      n = n.next;
+    }
     
+    return a;
   }
 };

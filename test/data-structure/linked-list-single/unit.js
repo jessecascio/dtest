@@ -5,11 +5,10 @@ const assert = require("chai").assert;
 const util = require('./../../util.js');
 
 const ds = require(util.input.s || './../../../src/data-structure/linked-list-single/source.js');
-const reqd = ['toArray', 'reset', 'size'];
 
 describe("Single Linked List - Unit Tests", async () => {
   before(function() {
-    reqd.map((f) => {
+    ['toArray', 'reset', 'size'].map((f) => {
       if (!ds[f]) {
         assert.fail(null, true, `Function Required: ${f}()`)
       }
@@ -394,34 +393,6 @@ describe("Single Linked List - Unit Tests", async () => {
       assert.equal(ds.count(2), 1);
       assert.equal(ds.count(3), 0);
       assert.equal(ds.count(4), 2);
-    });
-  });
-
-  describe.skip("#size - List size", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should track size", () => {
-      ds.addFirst(1);
-      ds.addFirst(2);
-      ds.addFirst(3);
-      ds.addFirst(4);
-      ds.addFirst(5);
-
-      assert.equal(ds.size(), 5);
-    });
-  });
-
-  describe.skip("#reset - List reset", () => {
-    it ("should reset data structure", () => {
-      ds.addFirst(1);
-      ds.addFirst(1);
-      ds.addFirst(1);
-      assert.equal(ds.size(), 3);
-
-      ds.reset();
-      assert.equal(ds.size(), 0);
     });
   });
 });

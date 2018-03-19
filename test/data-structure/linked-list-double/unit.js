@@ -5,14 +5,28 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/linked-list-doubly/source.js');
+const ds = require(util.input.s || './../../../src/data-structure/linked-list-double/source.js');
 
-describe("Doubly Linked List - Unit Tests", async () => {
+describe("Double Linked List - Unit Tests", async () => {
+  before(function() {
+    ['toArray', 'reset', 'size'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
-    ds.clear();
+    ds.reset();
   });
 
   describe("#add", () => {
+    before(function() {
+      if (!ds.add) {
+        this.skip();
+      }
+    });
+
     it ("should return false for too large of index", () => {
       assert.isFalse(ds.add(100, 1));
     });
@@ -60,6 +74,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#addFirst", () => {
+    before(function() {
+      if (!ds.addFirst) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([]));
     });
@@ -81,6 +101,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#addLast", () => {
+    before(function() {
+      if (!ds.addLast) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([]));
     });
@@ -102,6 +128,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#get", () => {
+    before(function() {
+      if (!ds.get) {
+        this.skip();
+      }
+    });
+
     it ("should return undefined for too large of index", () => {
       assert.equal(ds.get(100), undefined);
     });
@@ -158,7 +190,14 @@ describe("Doubly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getFirst", () => {    it ("should handle no inputs", () => {
+  describe("#getFirst", () => {
+    before(function() {
+      if (!ds.getFirst) {
+        this.skip();
+      }
+    });
+
+    it ("should handle no inputs", () => {
       assert.equal(ds.getFirst(), undefined);
     });
     
@@ -192,7 +231,14 @@ describe("Doubly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getLast", () => {    it ("should handle no inputs", () => {
+  describe("#getLast", () => {
+    before(function() {
+      if (!ds.getLast) {
+        this.skip();
+      }
+    });
+
+    it ("should handle no inputs", () => {
       assert.equal(ds.getLast(), undefined);
     });
     
@@ -226,144 +272,13 @@ describe("Doubly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#peek", () => {
-    it ("should return undefined for too large of index", () => {
-      assert.equal(ds.peek(100), undefined);
-    });
-
-    it ("should return undefined for negative index", () => {
-      assert.equal(ds.peek(-9), undefined);
-    });
-
-    it ("should get from middle of list", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-      ds.addLast(5);
-
-      assert.equal(ds.peek(2), 3);
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
-    });
-
-    it ("should get from begining of list", () => {
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peek(0), 2);
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([2,3,4]));
-    });
-
-    it ("should get from end of list", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      
-      assert.equal(ds.peek(3), undefined);
-      assert.equal(ds.peek(2), 3);
-
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3]));
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peek(1);
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#peekFirst", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.peekFirst(), undefined);
-    });
-    
-    it ("should handle single input", () => {
-      ds.addLast(2);
-      assert.equal(ds.peekFirst(), 2);
-      assert.equal(ds.peekFirst(), 2);
-    });
-
-    it ("should retain values in correct order", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peekFirst(), 1);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 2);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 3);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 4);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), undefined);
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peekFirst();
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#peekLast", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.peekLast(), undefined);
-    });
-    
-    it ("should handle single input", () => {
-      ds.addLast(2);
-      assert.equal(ds.peekLast(), 2);
-      assert.equal(ds.peekLast(), 2);
-    });
-
-    it ("should retain values in correct order", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peekLast(), 4);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 3);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 2);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 1);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), undefined);
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peekLast();
-      assert.equal(ds.size(), 3);
-    });
-  });
-
   describe("#indexOf", () => {
+    before(function() {
+      if (!ds.indexOf) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.indexOf(4), undefined);
     });
@@ -389,6 +304,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#lastIndexOf", () => {
+    before(function() {
+      if (!ds.lastIndexOf) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.lastIndexOf(4), undefined);
     });
@@ -416,6 +337,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#contains", () => {
+    before(function() {
+      if (!ds.contains) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.isFalse(ds.contains(1));
     });
@@ -441,6 +368,12 @@ describe("Doubly Linked List - Unit Tests", async () => {
   });
 
   describe("#count", () => {
+    before(function() {
+      if (!ds.count) {
+        this.skip();
+      }
+    });
+
     it ("should handle no inputs", () => {
       assert.equal(ds.count(1), 0);
     });
@@ -461,34 +394,6 @@ describe("Doubly Linked List - Unit Tests", async () => {
       assert.equal(ds.count(2), 1);
       assert.equal(ds.count(3), 0);
       assert.equal(ds.count(4), 2);
-    });
-  });
-
-  describe("#size", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should track size", () => {
-      ds.addFirst(1);
-      ds.addFirst(2);
-      ds.addFirst(3);
-      ds.addFirst(4);
-      ds.addFirst(5);
-
-      assert.equal(ds.size(), 5);
-    });
-  });
-
-  describe("#clear", () => {
-    it ("should reset data structure", () => {
-      ds.addFirst(1);
-      ds.addFirst(1);
-      ds.addFirst(1);
-      assert.equal(ds.size(), 3);
-
-      ds.clear();
-      assert.equal(ds.size(), 0);
     });
   });
 });
