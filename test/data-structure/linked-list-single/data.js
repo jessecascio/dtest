@@ -6,9 +6,9 @@ const { assert, expect } = require("chai");
 const util = require('./../../util.js');
 
 const ds = require(util.input.s); // user data structure
-const bn = require('./../../../src/data-structure/linked-list-singly/source.js'); // benchmark
+const bn = require('./../../../src/data-structure/linked-list-single/source.js'); // benchmark
 
-describe("Singly Linked List - Data Tests", function() {
+describe("Single Linked List - Data Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {

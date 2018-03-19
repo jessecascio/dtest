@@ -4,10 +4,10 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/linked-list-singly/source.js');
+const ds = require(util.input.s || './../../../src/data-structure/linked-list-single/source.js');
 const prereqs = ['toArray', 'reset', 'size'];
 
-describe("Singly Linked List - Unit Tests", async () => {
+describe("Single Linked List - Unit Tests", async () => {
   before(function() {
     prereqs.map((f) => {
       if (!ds[f]) {
@@ -127,7 +127,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#get", () => {
+  describe("#get - Get from a specific index", () => {
     before(function() {
       if (!ds.get) {
         this.skip();
@@ -190,7 +190,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getFirst", () => {    
+  describe("#getFirst - Get from the front of list", () => {    
     before(function() {
       if (!ds.getFirst) {
         this.skip();
@@ -231,7 +231,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#getLast", () => {
+  describe("#getLast - Get from the end of list", () => {
     before(function() {
       if (!ds.getLast) {
         this.skip();
@@ -272,162 +272,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#peek", () => {
-    before(function() {
-      if (!ds.peek) {
-        this.skip();
-      }
-    });
-
-    it ("should return undefined for too large of index", () => {
-      assert.equal(ds.peek(100), undefined);
-    });
-
-    it ("should return undefined for negative index", () => {
-      assert.equal(ds.peek(-9), undefined);
-    });
-
-    it ("should get from middle of list", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-      ds.addLast(5);
-
-      assert.equal(ds.peek(2), 3);
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
-    });
-
-    it ("should get from begining of list", () => {
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peek(0), 2);
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([2,3,4]));
-    });
-
-    it ("should get from end of list", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      
-      assert.equal(ds.peek(3), undefined);
-      assert.equal(ds.peek(2), 3);
-
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3]));
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peek(1);
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#peekFirst", () => {
-    before(function() {
-      if (!ds.peekFirst) {
-        this.skip();
-      }
-    });
-
-    it ("should handle no inputs", () => {
-      assert.equal(ds.peekFirst(), undefined);
-    });
-    
-    it ("should handle single input", () => {
-      ds.addLast(2);
-      assert.equal(ds.peekFirst(), 2);
-      assert.equal(ds.peekFirst(), 2);
-    });
-
-    it ("should retain values in correct order", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peekFirst(), 1);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 2);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 3);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), 4);
-      ds.getFirst();
-
-      assert.equal(ds.peekFirst(), undefined);
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peekFirst();
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#peekLast", () => {
-    before(function() {
-      if (!ds.peekLast) {
-        this.skip();
-      }
-    });
-
-    it ("should handle no inputs", () => {
-      assert.equal(ds.peekLast(), undefined);
-    });
-    
-    it ("should handle single input", () => {
-      ds.addLast(2);
-      assert.equal(ds.peekLast(), 2);
-      assert.equal(ds.peekLast(), 2);
-    });
-
-    it ("should retain values in correct order", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      ds.addLast(4);
-
-      assert.equal(ds.peekLast(), 4);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 3);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 2);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), 1);
-      ds.getLast();
-
-      assert.equal(ds.peekLast(), undefined);
-    });
-
-    it ("should not update size", () => {
-      ds.addLast(1);
-      ds.addLast(2);
-      ds.addLast(3);
-      assert.equal(ds.size(), 3);
-
-      ds.peekLast();
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#indexOf", () => {
+  describe("#indexOf - Get first index of a valu", () => {
     before(function() {
       if (!ds.indexOf) {
         this.skip();
@@ -458,7 +303,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#lastIndexOf", () => {
+  describe("#lastIndexOf - Get last index of a value", () => {
     before(function() {
       if (!ds.lastIndexOf) {
         this.skip();
@@ -491,7 +336,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#contains", () => {
+  describe("#contains - Determine if list contains value", () => {
     before(function() {
       if (!ds.contains) {
         this.skip();
@@ -522,7 +367,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#count", () => {
+  describe("#count - Count occurences of a value", () => {
     before(function() {
       if (!ds.count) {
         this.skip();
@@ -552,7 +397,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe.skip("#size", () => {
+  describe.skip("#size - List size", () => {
     it ("should handle no inputs", () => {
       assert.equal(ds.size(), 0);
     });
@@ -568,7 +413,7 @@ describe("Singly Linked List - Unit Tests", async () => {
     });
   });
 
-  describe.skip("#reset", () => {
+  describe.skip("#reset - List reset", () => {
     it ("should reset data structure", () => {
       ds.addFirst(1);
       ds.addFirst(1);

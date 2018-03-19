@@ -8,9 +8,9 @@ const chalk = require("chalk");
 const util = require('./../../util.js');
 
 const ds = require(util.input.s); // user data structure
-const bn = require('./../../../src/data-structure/linked-list-singly/source.js'); // benchmark
+const bn = require('./../../../src/data-structure/linked-list-single/source.js'); // benchmark
 
-describe("Singly Linked List - Time Tests", function() {
+describe("Single Linked List - Time Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {

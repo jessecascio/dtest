@@ -163,45 +163,6 @@ module.exports = {
   },
 
   // o(n)
-  peek: function(i) {
-    if (i >= this.size() || i < 0 || this.size() === 0) {
-      return;
-    }
-    if (i === 0) {
-      return this.peekFirst();
-    }
-    if (i === this.size() - 1) {
-      return this.peekLast();
-    }
-
-    let n = head.next;
-
-    for (let j=2; j<=i; j++) {
-      n = n.next;
-    }
-
-    return n.data;
-  },
-
-  // o(1)
-  peekFirst: function() {
-    if (!head) {
-      return;
-    }
-
-    return head.data;
-  },
-
-  // o(1)
-  peekLast: function() {
-    if (!tail) {
-      return;
-    }
-
-    return tail.data;
-  },
-
-  // o(n)
   indexOf: function(v) {
     let i = 0;
     let n = head;

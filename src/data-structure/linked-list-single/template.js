@@ -1,5 +1,5 @@
 /**
- * Singly Linked List
+ * Linked List Single
  */
 
 module.exports = {
@@ -93,9 +93,7 @@ module.exports = {
    * get size of list
    * @return int
    */
-  size: function() {
-
-  },
+  size: null,
 
   /**
    * reset the list

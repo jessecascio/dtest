@@ -53,32 +53,7 @@ module.exports = {
   getLast: function() {
     
   },
-
-  /**
-   * read a value from a specific index
-   * @param int
-   * @return T | undefined
-   */
-  peek: function(i) {
-    
-   },
- 
-   /**
-    * read a value from beginning of list
-    * @return T | undefined
-    */
-   peekFirst: function() {
-     
-   },
- 
-   /**
-    * read a value from end of list
-    * @return T | undefined
-    */
-   peekLast: function() {
-     
-   },
-
+  
   /**
    * return index of a value
    * @param T
