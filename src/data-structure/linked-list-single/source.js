@@ -140,54 +140,6 @@ module.exports = {
   },
 
   // o(n)
-  peek: function(i) {
-    if (i >= this.size() || i < 0 || !head) {
-      return;
-    }
-    if (i === 0) {
-      return this.peekFirst();
-    }
-    if (i === this.size() - 1) {
-      return this.peekLast();
-    }
-
-    let n = head.next;
-
-    for (let j=2; j<=i; j++) {
-      n = n.next;
-    }
-
-    return n.data;
-  },
-
-  // o(1)
-  peekFirst: function() {
-    if (!head) {
-      return;
-    }
-
-    return head.data;
-  },
-
-  // o(n)
-  peekLast: function() {
-    if (!head) {
-      return;
-    }
-    if (!head.next) {
-      return this.peekFirst();
-    }
-
-    let n = head.next;
-
-    while (n.next) {
-      n = n.next;
-    }
-
-    return n.data;
-  },
-
-  // o(n)
   indexOf: function(v) {
     let i = 0;
     let n = head;

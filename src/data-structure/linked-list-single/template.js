@@ -46,25 +46,6 @@ module.exports = {
   getLast: null,
 
   /**
-   * read a value from a specific index
-   * @param int
-   * @return T | undefined
-   */
-  peek: null,
- 
-   /**
-    * read a value from beginning of list
-    * @return T | undefined
-    */
-   peekFirst: null,
- 
-   /**
-    * read a value from end of list
-    * @return T | undefined
-    */
-   peekLast: null,
-
-  /**
    * return index of a value
    * @param T
    * @return int | undefined
