@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/stack/source.js');
+const ds = require(util.input.s || './../../../data-structure/stack/source.js');
 
 describe("Stack - Unit Tests", async () => {
   beforeEach(() => {

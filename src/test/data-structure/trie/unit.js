@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/trie/source.js');
+const ds = require(util.input.s || './../../../data-structure/trie/source.js');
 
 describe("Trie - Unit Tests", async () => {
   beforeEach(() => {

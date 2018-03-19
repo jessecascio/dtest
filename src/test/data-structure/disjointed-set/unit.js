@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/disjointed-set/source.js');
+const ds = require(util.input.s || './../../../data-structure/disjointed-set/source.js');
 
 describe("Disjointed Set - Unit Tests", async () => {
   beforeEach(() => {

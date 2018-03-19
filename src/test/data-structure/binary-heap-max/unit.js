@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/binary-heap-max/source.js');
+const ds = require(util.input.s || './../../../data-structure/binary-heap-max/source.js');
 
 describe("Binary Heap Max - Unit Tests", async () => {
   beforeEach(() => {

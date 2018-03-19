@@ -6,7 +6,7 @@ const { assert, expect } = require("chai");
 const util = require('./../../util.js');
 
 const ds = require(util.input.s); // user data structure
-const bn = require('./../../../src/data-structure/binary-heap-max/source.js'); // benchmark
+const bn = require('./../../../data-structure/binary-heap-max/source.js'); // benchmark
 
 describe("Binary Max Heap - Data Tests", function() {
   this.timeout(60000);

@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/linked-list-double/source.js');
+const ds = require(util.input.s || './../../../data-structure/linked-list-double/source.js');
 
 describe("Double Linked List - Unit Tests", async () => {
   before(function() {

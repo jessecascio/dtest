@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/queue/source.js');
+const ds = require(util.input.s || './../../../data-structure/queue/source.js');
 
 describe("Queue - Unit Tests", async () => {
   beforeEach(() => {

@@ -5,7 +5,7 @@
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../src/data-structure/graph-undirected/source.js');
+const ds = require(util.input.s || './../../../data-structure/graph-undirected/source.js');
 
 describe("Undirected Graph - Unit Tests", async () => {
   beforeEach(() => {
