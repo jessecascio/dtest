@@ -8,11 +8,25 @@ const util = require('./../../util.js');
 const ds = require(util.input.s || './../../../data-structure/trie/source.js');
 
 describe("Trie - Unit Tests", async () => {
+  before(function() {
+    ['reset', 'size'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
-    ds.clear();
+    ds.reset();
   });
 
   describe("#put", () => {
+    before(function() {
+      if (!ds.put) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.put("hello", 5);
       assert.equal(ds.size(), 1);
@@ -29,6 +43,12 @@ describe("Trie - Unit Tests", async () => {
   });
 
   describe("#get", () => {
+    before(function() {
+      if (!ds.get) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.put("hello", 5);
       assert.equal(ds.get("hello"), 5);
@@ -48,6 +68,12 @@ describe("Trie - Unit Tests", async () => {
   });
 
   describe("#remove", () => {
+    before(function() {
+      if (!ds.remove) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.put("hello", 5);
       ds.remove("hello");
@@ -95,9 +121,27 @@ describe("Trie - Unit Tests", async () => {
       ds.remove("joy");
       assert.equal(ds.get("joy"), undefined);
     });
+
+    it ("should update size while removing values", () => {
+      ds.put("hello", 5);
+      ds.put("hyper", 6);
+      assert.equal(ds.size(), 2);
+
+      ds.remove("hello");
+      assert.equal(ds.size(), 1);
+
+      ds.remove("hyper");
+      assert.equal(ds.size(), 0);
+    });
   });
 
   describe("#keys", () => {
+    before(function() {
+      if (!ds.keys) {
+        this.skip();
+      }
+    });
+
     it ("should handle no value", () => {
       assert.equal(JSON.stringify(ds.keys()), JSON.stringify([]));
     });
@@ -131,6 +175,12 @@ describe("Trie - Unit Tests", async () => {
   });
 
   describe("#keysWithPrefix", () => {
+    before(function() {
+      if (!ds.keysWithPrefix) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.put("hello", 5);
       assert.equal(JSON.stringify(ds.keysWithPrefix("hel")), JSON.stringify(["hello"]));
@@ -167,6 +217,12 @@ describe("Trie - Unit Tests", async () => {
   });
 
   describe("#contains", () => {
+    before(function() {
+      if (!ds.contains) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.put("hello", 5);
       assert.isTrue(ds.contains("hello"));
@@ -181,64 +237,6 @@ describe("Trie - Unit Tests", async () => {
       assert.isTrue(ds.contains("hyper"));
       assert.isFalse(ds.contains("hell"));
       assert.isFalse(ds.contains("hype"));
-    });
-  });
-
-  describe("#isEmpty", () => {
-    it ("should handle no values", () => {
-      assert.isTrue(ds.isEmpty());
-    });
-
-    it ("should handle single value", () => {
-      ds.put("hap", 5)
-      assert.isFalse(ds.isEmpty());
-    });
-
-    it ("should handle many values", () => {
-      ds.put("hello", 5);
-      ds.put("hyper", 6);
-      assert.isFalse(ds.isEmpty());
-    });
-
-    it ("should handle removing values", () => {
-      ds.put("hello", 5);
-      ds.put("hyper", 6);
-      assert.isFalse(ds.isEmpty());
-
-      ds.remove("hello");
-      assert.isFalse(ds.isEmpty());
-
-      ds.remove("hyper");
-      assert.isTrue(ds.isEmpty());
-    });
-  });
-
-  describe("#size", () => {
-    it ("should handle no values", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should handle single value", () => {
-      ds.put("hap", 5)
-      assert.equal(ds.size(), 1);
-    });
-
-    it ("should handle many values", () => {
-      ds.put("hello", 5);
-      ds.put("hyper", 6);
-      assert.equal(ds.size(), 2);
-    });
-
-    it ("should handle removing values", () => {
-      ds.put("hello", 5);
-      ds.put("hyper", 6);
-      assert.equal(ds.size(), 2);
-
-      ds.remove("hello");
-      assert.equal(ds.size(), 1);
-
-      ds.remove("hyper");
-      assert.equal(ds.size(), 0);
     });
   });
 });

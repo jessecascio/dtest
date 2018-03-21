@@ -11,6 +11,6 @@ module.exports = {
     keys: joi.func().required(),
     size: joi.func().required(),
     isEmpty: joi.func().required(),
-    clear: joi.func().required()
+    reset: joi.func().required()
   }).unknown()
 };

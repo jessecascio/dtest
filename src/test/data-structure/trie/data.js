@@ -16,8 +16,8 @@ describe("Trie - Data Tests", function() {
 
     for (let i=0; i<50; i++) {
       let strs = [];
-      ds.clear();
-      bn.clear();
+      ds.reset();
+      bn.reset();
       
       for (let j=0; j<N; j++) {
         const c = Math.floor(Math.random() * 15);

@@ -138,7 +138,7 @@ module.exports = {
   },
 
   // o(1)
-  clear: function() {
+  reset: function() {
     trie = {};
     size = 0;
   },

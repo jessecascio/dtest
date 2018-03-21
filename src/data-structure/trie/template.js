@@ -8,73 +8,49 @@ module.exports = {
    * @param string
    * @param T
    */
-  put: function(k, v) {
-
-  },
+  put: null,
 
   /**
    * return value
    * @param string
    * @return T
    */
-  get: function(k) {
-
-  },
+  get: null,
 
   /** 
    * remove value
    * @param string
    */
-  remove: function(k) {
-
-  },
+  remove: null,
 
   /** 
    * check for key
    * @param string
    * @return bool
    */
-  contains: function(k) {
-    
-  },
+  contains: null,
 
   /**
-   * get keys
+   * get all keys
    * @return array<String>
    */
-  keys: function() {
-
-  },
+  keys: null,
 
   /**
    * get keys that start with a value
    * @param string
    * @return array<String>
    */
-  keysWithPrefix: function(s) {
-
-  },
+  keysWithPrefix: null,
 
   /**
    * get the size
    * @return int
    */
-  size: function() {
-
-  },
-
-  /**
-   * are there values
-   * @return boolean
-   */
-  isEmpty: function() {
-    
-  },
+  size: null,
 
   /**
    * reset
    */
-  clear: function() {
-
-  }
+  reset: null
 };
