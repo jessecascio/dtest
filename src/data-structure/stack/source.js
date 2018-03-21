@@ -1,6 +1,6 @@
 'use strict';
 
-const list = require(`${process.cwd()}/src/data-structure/linked-list-singly/source`);
+const list = require(`${process.cwd()}/src/data-structure/linked-list-single/source`);
 
 module.exports = {
   // o(1)
@@ -25,12 +25,12 @@ module.exports = {
 
   // o(n)
   toArray: function() {
-    // keeps stack in reverse order for constant operations
+    // stack in reverse order for constant operations
     return Array.reverse(list.toArray());
   },
 
   // o(1)
-  clear: function() {
-    list.clear();
+  reset: function() {
+    list.reset();
   }
 };

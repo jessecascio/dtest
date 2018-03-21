@@ -8,11 +8,25 @@ const util = require('./../../util.js');
 const ds = require(util.input.s || './../../../data-structure/stack/source.js');
 
 describe("Stack - Unit Tests", async () => {
+  before(function() {
+    ['toArray', 'reset', 'size'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
-    ds.clear();
+    ds.reset();
   });
 
   describe("#push", () => {
+    before(function() {
+      if (!ds.push) {
+        this.skip();
+      }
+    });
+
     it ("should push to stack", () => {
       ds.push(1);
     });
@@ -39,6 +53,12 @@ describe("Stack - Unit Tests", async () => {
   });
 
   describe("#pop", () => {
+    before(function() {
+      if (!ds.pop) {
+        this.skip();
+      }
+    });
+
     it ("should pop from empty stack", () => {
       assert.equal(ds.pop(), undefined);
     });
@@ -86,64 +106,6 @@ describe("Stack - Unit Tests", async () => {
 
       ds.pop();
       assert.isTrue(ds.isEmpty());
-    });
-  });
-
-  describe("#isEmpty", () => {
-    it ("should handle no inputs", () => {
-      assert.isTrue(ds.isEmpty());
-    });
-
-    it ("should track empty", () => {
-      assert.isTrue(ds.isEmpty());
-
-      ds.push(1);
-      assert.isFalse(ds.isEmpty());
-
-      ds.push(1);
-      assert.isFalse(ds.isEmpty());
-
-      ds.pop();
-      assert.isFalse(ds.isEmpty());
-
-      ds.pop();
-      assert.isTrue(ds.isEmpty());
-    });
-  });
-
-  describe("#size", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should track size", () => {
-      ds.push(1);
-      ds.push(2);
-      ds.push(3);
-
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#clear", () => {
-    it ("should reset data structure", () => {
-      ds.push(1);
-      ds.push(1);
-      ds.push(1);
-      assert.equal(ds.size(), 3);
-
-      ds.clear();
-      assert.equal(ds.size(), 0);
-    });
-  });
-
-  describe("#toArray", () => {
-    it ("should represent data structure", () => {
-      ds.push(1);
-      ds.push(2);
-      ds.push(3);
-
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3]));
     });
   });
 });

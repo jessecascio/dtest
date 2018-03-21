@@ -12,8 +12,8 @@ describe("Stack - Data Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {
-    ds.clear();
-    bn.clear();
+    ds.reset();
+    bn.reset();
   });
 
   it ("stack should handle random inputs", function() {

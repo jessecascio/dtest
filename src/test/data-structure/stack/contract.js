@@ -7,7 +7,7 @@ module.exports = {
     pop: joi.func().required(),
     isEmpty: joi.func().required(),
     size: joi.func().required(),
-    clear: joi.func().required(),
+    reset: joi.func().required(),
     toArray: joi.func().required()
   }).unknown()
 };
