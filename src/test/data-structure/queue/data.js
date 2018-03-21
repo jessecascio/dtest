@@ -12,8 +12,8 @@ describe("Queue - Data Tests", function() {
   this.timeout(60000);
 
   beforeEach(() => {
-    ds.clear();
-    bn.clear();
+    ds.reset();
+    bn.reset();
   });
 
   it ("queue should handle random inputs", function() {

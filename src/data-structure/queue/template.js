@@ -7,46 +7,28 @@ module.exports = {
    * add a value
    * @param T
    */
-  enqueue: function(v) {
-    
-  },
+  enqueue: null,
 
   /**
    * get a value
    * @return T
    */
-  dequeue: function () {
-
-  },
-
-  /**
-   * check if values present
-   * @return bool
-   */
-  isEmpty: function() {
-    
-  },
+  dequeue: null,
 
   /**
    * get number of values
    * @return int
    */
-  size: function() {
-   
-  },
+  size: null,
 
   /**
    * reset
    */
-  clear: function() {
-    
-  },
+  reset: null,
 
   /**
    * get an array representation
    * @return Array<T>
    */
-  toArray: function() {
-    
-  }
+  toArray: null
 };

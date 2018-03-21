@@ -8,6 +8,7 @@ for (let i=2; i<process.argv.length; i += 2) {
 
   if (a === 's' && b) {
     o[a] = `${__dirname}/../../${b}`;
+    o.f = b;
   }
   if (a === 't' && b) {
     o[a] = `${b}`;

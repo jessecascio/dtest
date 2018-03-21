@@ -1,6 +1,6 @@
 'use strict';
 
-const list = require(`${process.cwd()}/src/data-structure/linked-list-doubly/source`);
+const list = require(`${process.cwd()}/src/data-structure/linked-list-double/source`);
 
 module.exports = {
   // o(1)
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   // o(1)
-  clear: function() {
-    list.clear();
+  reset: function() {
+    list.reset();
   }
 };

@@ -11,7 +11,7 @@ if (!util.input.s || !util.input.t) {
   process.exit();
 }
 if (!fs.existsSync(util.input.s)) {
-  console.log(`FAILED to load source: ${util.input.s}`);
+  console.log(`FAILED to load source: ${util.input.f}`);
   process.exit();
 }
 if (!fs.existsSync(util.input.t)) {

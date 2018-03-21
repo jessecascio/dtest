@@ -1,18 +1,31 @@
 /**
  * unit test
  */
-
 const assert = require("chai").assert;
 const util = require('./../../util.js');
 
 const ds = require(util.input.s || './../../../data-structure/queue/source.js');
 
 describe("Queue - Unit Tests", async () => {
+  before(function() {
+    ['toArray', 'reset', 'size'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
-    ds.clear();
+    ds.reset();
   });
 
   describe("#enqueue", () => {
+    before(function() {
+      if (!ds.enqueue) {
+        this.skip();
+      }
+    });
+
     it ("should push to queue", () => {
       ds.enqueue(1);
     });
@@ -39,6 +52,12 @@ describe("Queue - Unit Tests", async () => {
   });
 
   describe("#dequeue", () => {
+    before(function() {
+      if (!ds.dequeue) {
+        this.skip();
+      }
+    });
+
     it ("should dequeue from empty queue", () => {
       assert.equal(ds.dequeue(), undefined);
     });
@@ -86,64 +105,6 @@ describe("Queue - Unit Tests", async () => {
 
       ds.dequeue();
       assert.isTrue(ds.isEmpty());
-    });
-  });
-
-  describe("#isEmpty", () => {
-    it ("should handle no inputs", () => {
-      assert.isTrue(ds.isEmpty());
-    });
-
-    it ("should track empty", () => {
-      assert.isTrue(ds.isEmpty());
-
-      ds.enqueue(1);
-      assert.isFalse(ds.isEmpty());
-
-      ds.enqueue(1);
-      assert.isFalse(ds.isEmpty());
-
-      ds.dequeue();
-      assert.isFalse(ds.isEmpty());
-
-      ds.dequeue();
-      assert.isTrue(ds.isEmpty());
-    });
-  });
-
-  describe("#size", () => {
-    it ("should handle no inputs", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should track size", () => {
-      ds.enqueue(1);
-      ds.enqueue(2);
-      ds.enqueue(3);
-
-      assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#clear", () => {
-    it ("should reset data structure", () => {
-      ds.enqueue(1);
-      ds.enqueue(1);
-      ds.enqueue(1);
-      assert.equal(ds.size(), 3);
-
-      ds.clear();
-      assert.equal(ds.size(), 0);
-    });
-  });
-
-  describe("#toArray", () => {
-    it ("should represent data structure", () => {
-      ds.enqueue(1);
-      ds.enqueue(2);
-      ds.enqueue(3);
-
-      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([3,2,1]));
     });
   });
 });
