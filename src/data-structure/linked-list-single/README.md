@@ -14,3 +14,9 @@ The singly linked list only links to next node opposed to both the next and prev
 * Random access is not allowed. We have to access elements sequentially starting from the first node. So we cannot do binary search with linked lists i.e. slower search.
 * Extra memory space for a pointer is required with each element of the list.
 * Arrays have better cache locality that can make a pretty big difference in performance.
+
+## Interview Prep
+
+* https://leetcode.com/tag/linked-list/
+* https://www.hackerrank.com/domains/data-structures/linked-lists
+* https://www.interviewbit.com/courses/programming/topics/linked-lists
