@@ -8,11 +8,25 @@ const util = require('./../../util.js');
 const ds = require(util.input.s || './../../../data-structure/disjointed-set/source.js');
 
 describe("Disjointed Set - Unit Tests", async () => {
+  before(function() {
+    ['size', 'init'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
     ds.init(10);
   });
 
   describe("#union", () => {
+    before(function() {
+      if (!ds.union) {
+        this.skip();
+      }
+    });
+
     it ("should handle single connection", () => {
       ds.union(4, 3);
       assert.equal(ds.size(), 9);
@@ -56,6 +70,12 @@ describe("Disjointed Set - Unit Tests", async () => {
   });
 
   describe("#connected", () => {
+    before(function() {
+      if (!ds.connected) {
+        this.skip();
+      }
+    });
+
     it ("should determine default connectivity", () => {
       assert.isFalse(ds.connected(4, 3));
     });
@@ -84,12 +104,6 @@ describe("Disjointed Set - Unit Tests", async () => {
       assert.isFalse(ds.connected(6, 8));
       assert.isFalse(ds.connected(1, 0));
       assert.isFalse(ds.connected(2, 5));
-    });
-  });
-  
-  describe("#size", () => {
-    it ("should set a default size", () => {
-      assert.equal(ds.size(), 10);
     });
   });
 });

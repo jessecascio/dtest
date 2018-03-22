@@ -7,18 +7,14 @@ module.exports = {
    * initialize set with 0 to i numbers
    * @param int
    */
-  init: function(i) {
-    
-  },
+  init: null,
 
   /**
    * add link between two points
    * @param T
    * @param T
    */
-  union: function(x, y) {
-    
-  },
+  union: null,
 
   /**
    * determine if two points are connected
@@ -26,15 +22,11 @@ module.exports = {
    * @param T
    * @return bool
    */
-  connected: function (x, y) {
-
-  },
+  connected: null,
 
   /**
    * determine number of sets
    * @return int
    */
-  size: function() {
-    
-  }
+  size: null
 };
