@@ -48,7 +48,6 @@ describe("Binary Max Heap - Data Tests", function() {
         }
 
         assert.equal(ds.size(), bn.size());
-        assert.equal(ds.isEmpty(), bn.isEmpty());
         assert.equal(JSON.stringify(ds.toArray()), JSON.stringify(bn.toArray()));
       }
     }

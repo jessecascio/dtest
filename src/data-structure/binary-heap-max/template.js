@@ -7,53 +7,33 @@ module.exports = {
    * insert value into heap
    * @param T
    */
-  insert: function(i) {
-
-  },
+  insert: null,
 
   /**
    * return and remove max value
    * @return T
    */
-  remove: function() {
-
-  },
+  remove: null,
 
   /**
    * return but retain max value
    * @return T
    */
-  peek: function() {
-
-  },
+  peek: null,
 
   /**
    * get the size of heap
    * @return int
    */
-  size: function() {
-
-  },
-
-  /**
-   * check if heap has values
-   * @return boolean
-   */
-  isEmpty: function() {
-
-  },
+  size: null,
 
   /**
    * reset the heap
    */
-  clear: function() {
-
-  },
+  reset: null,
 
   /**
    * array representation of heap
    */
-  toArray: function() {
-    
-  }
+  toArray: null
 };

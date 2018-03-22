@@ -73,7 +73,7 @@ module.exports = {
   },
 
   // o(1)
-  clear: function() {
+  reset: function() {
     heap = [null];
     size = 0;
   },

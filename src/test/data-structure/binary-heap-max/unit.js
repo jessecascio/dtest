@@ -8,11 +8,25 @@ const util = require('./../../util.js');
 const ds = require(util.input.s || './../../../data-structure/binary-heap-max/source.js');
 
 describe("Binary Heap Max - Unit Tests", async () => {
+  before(function() {
+    ['reset', 'toArray', 'size'].map((f) => {
+      if (!ds[f]) {
+        assert.fail(null, true, `Function Required: ${f}()`)
+      }
+    });
+  });
+
   beforeEach(() => {
-    ds.clear();
+    ds.reset();
   });
 
   describe("#insert", () => {
+    before(function() {
+      if (!ds.insert) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.insert(5);
       assert.equal(ds.size(), 1);
@@ -77,6 +91,12 @@ describe("Binary Heap Max - Unit Tests", async () => {
   });
 
   describe("#remove", () => {
+    before(function() {
+      if (!ds.remove) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.insert(5);
       
@@ -151,6 +171,12 @@ describe("Binary Heap Max - Unit Tests", async () => {
   });
 
   describe("#peek", () => {
+    before(function() {
+      if (!ds.peek) {
+        this.skip();
+      }
+    });
+
     it ("should handle single value", () => {
       ds.insert(5);
       
@@ -183,52 +209,6 @@ describe("Binary Heap Max - Unit Tests", async () => {
 
       assert.equal(1, ds.peek());
       assert.equal(ds.size(), 3);
-    });
-  });
-
-  describe("#size", () => {
-    it ("should default to zero", () => {
-      assert.equal(ds.size(), 0);
-    });
-
-    it ("should handle single value", () => {
-      ds.insert(5);
-      assert.equal(ds.size(), 1);
-    });
-
-    it ("should handle values", () => {
-      ds.insert(5);
-      ds.insert(10);
-      ds.insert(1);
-      ds.insert(13);
-      ds.insert(9);
-      assert.equal(ds.size(), 5);
-    });
-
-    it ("should handle remove", () => {
-      ds.insert(1);
-      ds.insert(1);
-      ds.remove();
-      ds.remove();
-      ds.remove();
-      assert.equal(ds.size(), 0);
-    });
-  });
-
-  describe("#isEmpty", () => {
-    it ("should handle single value", () => {
-      ds.insert(5);
-      assert.isFalse(ds.isEmpty());
-    });
-
-    it ("should handle remove", () => {
-      ds.insert(1);
-      ds.insert(1);
-      ds.remove();
-      assert.isFalse(ds.isEmpty());
-
-      ds.remove();
-      assert.isTrue(ds.isEmpty());
     });
   });
 });
