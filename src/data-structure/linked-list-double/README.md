@@ -12,3 +12,9 @@ The doubly linked list nodes link to both the next node and the previous node op
 
 ***CONs***
 * Extra is space needed for the additional pointer.
+
+## Interview Prep
+
+* https://leetcode.com/tag/linked-list/
+* https://www.hackerrank.com/domains/data-structures/linked-lists
+* https://www.interviewbit.com/courses/programming/topics/linked-lists
