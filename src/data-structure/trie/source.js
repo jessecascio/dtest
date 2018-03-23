@@ -144,11 +144,6 @@ module.exports = {
   },
 
   // o(1)
-  isEmpty: function() {
-    return size === 0;
-  },
-
-  // o(1)
   reset: function() {
     trie = {};
     size = 0;
