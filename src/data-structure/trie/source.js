@@ -6,7 +6,7 @@ let size = 0;
 module.exports = {
   // o(m)
   put: function(k, v) {
-    size++;
+    let u = true;
 
     let t = trie;
     let i = 0;
@@ -16,12 +16,17 @@ module.exports = {
 
       if (!t[c]) {
         t[c] = {};
+        u = false;
       }
       if (i === k.length) {
         t[c].val = v;
       } else {
         t = t[c];
       }
+    }
+
+    if (!u) {
+      size++;
     }
   },
 
@@ -55,24 +60,30 @@ module.exports = {
 
   // o(m)
   _remove: function(t, k, i) {
-    if (!t) {
-      return false;
-    }
-    
     let c = k[i];
-    i++;
 
     if (!t[c]) {
       return false;
     }
-
-    if (i === k.length) {
-      delete t[c].val;
-      return Object.keys(t[c]).length === 0;
-    } else {
-      if (this._remove(t[c], k, i) === true) {
-        delete t[c][k[i]];
+    
+    if (i === k.length - 1) {
+      if (t[c].val) {
         size--;
+        t[c].val = undefined;
+
+        if (Object.keys(t[c]).length <= 1) {
+          return true;
+        }
+
+        return false;
+      }
+    } else {
+      if (this._remove(t[c], k, ++i) === true) {
+        delete t[c][k[i]];
+        
+        if (Object.keys(t[c]).length === 0) {
+          return true;
+        }
       }
     }
   },

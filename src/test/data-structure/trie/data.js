@@ -12,9 +12,9 @@ describe("Trie - Data Tests", function() {
   this.timeout(60000);
 
   it ("trie should handle random inputs", function() {
-    const N = 1000;
+    const N = 100;
 
-    for (let i=0; i<50; i++) {
+    for (let i=0; i<100; i++) {
       let strs = [];
       ds.reset();
       bn.reset();
@@ -34,7 +34,6 @@ describe("Trie - Data Tests", function() {
       }
 
       assert.equal(ds.size(), bn.size());
-      assert.equal(ds.isEmpty(), bn.isEmpty());
 
       for (let j=0; j<strs.length; j++) {
         const c = Math.floor(Math.random() * 6);
@@ -71,9 +70,7 @@ describe("Trie - Data Tests", function() {
         }
 
         assert.equal(ds.size(), bn.size());
-        assert.equal(ds.isEmpty(), bn.isEmpty());
       }
-      
     }
   });
 });

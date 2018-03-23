@@ -146,10 +146,13 @@ describe("Trie - Unit Tests", async () => {
 
       const t = ds.toJson();
       assert.equal(Object.keys(t).length, 2);
-      
+
       assert.isTrue(typeof t.h !== "undefined");
       assert.isTrue(typeof t.h.e !== "undefined");
       assert.isTrue(typeof t.h.e.c !== "undefined");
+
+      // console.log(JSON.stringify(t.h.e));process.exit();
+
       assert.isTrue(typeof t.h.e.l === "undefined");
     });
 
@@ -191,22 +194,35 @@ describe("Trie - Unit Tests", async () => {
 
       assert.equal(ds.get("help"), 1);
     });
+
+    it ("should ignore sub keys", () => {
+      ds.put("help", 1);
+
+      ds.remove("hel");
+      assert.equal(ds.get("help"), 1);
+
+      ds.remove("helpp");
+      assert.equal(ds.get("help"), 1);
+    });
   });
 
   describe("#keys", () => {
     before(function() {
-      if (!ds.keys) {
+      if (!ds.keys || !ds.put || !ds.remove) {
         this.skip();
       }
     });
 
     it ("should handle no value", () => {
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify([]));
+      assert.equal(ds.keys().length, 0);
     });
 
     it ("should handle single value", () => {
       ds.put("hello", 5);
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify(["hello"]));
+
+      const ks = ds.keys();
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf("hello") !== -1);
     });
 
     it ("should handle many values", () => {
@@ -214,7 +230,11 @@ describe("Trie - Unit Tests", async () => {
       ds.put("hyper", 6);
       ds.put("joy", 2);
       
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify(["hello","hyper","joy"]));
+      const ks = ds.keys();
+      assert.equal(ks.length, 3);
+      assert.isTrue(ks.indexOf("hello") !== -1);
+      assert.isTrue(ks.indexOf("hyper") !== -1);
+      assert.isTrue(ks.indexOf("joy") !== -1);
     });
 
     it ("should acount for put and remove", () => {
@@ -222,28 +242,62 @@ describe("Trie - Unit Tests", async () => {
       ds.put("hyper", 6);
       ds.put("joy", 2);
       
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify(["hello","hyper","joy"]));
-      
       ds.remove("hyper");
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify(["hello","joy"]));
+
+      let ks = ds.keys();
+      assert.equal(ks.length, 2);
+      assert.isTrue(ks.indexOf("hello") !== -1);
+      assert.isTrue(ks.indexOf("hyper") === -1);
+      assert.isTrue(ks.indexOf("joy") !== -1);
+      
+      ds.remove("joy");
+      ks = ds.keys();
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf("hello") !== -1);
+      assert.isTrue(ks.indexOf("joy") === -1);
 
       ds.put("hecter", 8);
-      assert.equal(JSON.stringify(ds.keys()), JSON.stringify(["hello","hecter","joy"]));
+      ks = ds.keys();
+      assert.equal(ks.length, 2);
+      assert.isTrue(ks.indexOf("hello") !== -1);
+      assert.isTrue(ks.indexOf("hecter") !== -1);
+    });
+
+    it ("should handle sub keys", () => {
+      ds.put("hello", 5);
+      ds.put("hel", 6);
+      ds.put("helloo", 2);
+      ds.put("help", 6);
+      
+      let ks = ds.keys();
+      assert.equal(ks.length, 4);
+      assert.isTrue(ks.indexOf("hello") !== -1);
+      assert.isTrue(ks.indexOf("hel") !== -1);
+      assert.isTrue(ks.indexOf("helloo") !== -1);
+      assert.isTrue(ks.indexOf("help") !== -1);
     });
   });
 
   describe("#keysWithPrefix", () => {
     before(function() {
-      if (!ds.keysWithPrefix) {
+      if (!ds.keysWithPrefix || !ds.put || !ds.remove) {
         this.skip();
       }
     });
 
     it ("should handle single value", () => {
-      ds.put("hello", 5);
-      assert.equal(JSON.stringify(ds.keysWithPrefix("hel")), JSON.stringify(["hello"]));
-      assert.equal(JSON.stringify(ds.keysWithPrefix("hello")), JSON.stringify(["hello"]));
-      assert.equal(JSON.stringify(ds.keysWithPrefix("helloh")), JSON.stringify([]));
+      ds.put('hello', 5);
+
+      let ks = ds.keysWithPrefix('hel');
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf('hello') !== -1);
+
+      ks = ds.keysWithPrefix('hello');
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf('hello') !== -1);
+
+      ks = ds.keysWithPrefix('helloh');
+      assert.equal(ks.length, 0);
     });
 
     it ("should handle many values", () => {
@@ -252,10 +306,26 @@ describe("Trie - Unit Tests", async () => {
       ds.put("heckle", 1);
       ds.put("joy", 2);
       
-      assert.equal(JSON.stringify(ds.keysWithPrefix("h")), JSON.stringify(["hello","heckle","hyper"]));
-      assert.equal(JSON.stringify(ds.keysWithPrefix("he")), JSON.stringify(["hello","heckle"]));
-      assert.equal(JSON.stringify(ds.keysWithPrefix("hyp")), JSON.stringify(["hyper"]));
-      assert.equal(JSON.stringify(ds.keysWithPrefix("j")), JSON.stringify(["joy"]));
+      let ks;
+      
+      ks = ds.keysWithPrefix('h');
+      assert.equal(ks.length, 3);
+      assert.isTrue(ks.indexOf('hello') !== -1);
+      assert.isTrue(ks.indexOf('heckle') !== -1);
+      assert.isTrue(ks.indexOf('hyper') !== -1);
+
+      ks = ds.keysWithPrefix('he');
+      assert.equal(ks.length, 2);
+      assert.isTrue(ks.indexOf('hello') !== -1);
+      assert.isTrue(ks.indexOf('heckle') !== -1);
+
+      ks = ds.keysWithPrefix('hy');
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf('hyper') !== -1);
+
+      ks = ds.keysWithPrefix('j');
+      assert.equal(ks.length, 1);
+      assert.isTrue(ks.indexOf('joy') !== -1);
     });
 
     it ("should acount for put and remove", () => {
@@ -264,27 +334,38 @@ describe("Trie - Unit Tests", async () => {
       ds.put("heckle", 1);
       ds.put("joy", 2);
       
-      assert.equal(JSON.stringify(ds.keysWithPrefix("h")), JSON.stringify(["hello","heckle","hyper"]));
-      
+      let ks;
+
+      ks = ds.keysWithPrefix("h");
+      assert.equal(ks.length, 3);
+
       ds.remove("heckle");
-      assert.equal(JSON.stringify(ds.keysWithPrefix("h")), JSON.stringify(["hello","hyper"]));
+      ks = ds.keysWithPrefix("h");
+      assert.equal(ks.length, 2);
 
       ds.put("hecter", 8);
-      assert.equal(JSON.stringify(ds.keysWithPrefix("h")), JSON.stringify(["hello","hecter","hyper"]));
+      ks = ds.keysWithPrefix("h");
+      assert.equal(ks.length, 3);
+
+      assert.isTrue(ks.indexOf('hello') !== -1);
+      assert.isTrue(ks.indexOf('hecter') !== -1);
+      assert.isTrue(ks.indexOf('hyper') !== -1);
     });
   });
 
   describe("#contains", () => {
     before(function() {
-      if (!ds.contains) {
+      if (!ds.contains || !ds.put || !ds.remove) {
         this.skip();
       }
     });
 
     it ("should handle single value", () => {
       ds.put("hello", 5);
+
       assert.isTrue(ds.contains("hello"));
       assert.isFalse(ds.contains("hell"));
+      assert.isFalse(ds.contains("helloo"));
     });
 
     it ("should handle many values", () => {
@@ -295,6 +376,37 @@ describe("Trie - Unit Tests", async () => {
       assert.isTrue(ds.contains("hyper"));
       assert.isFalse(ds.contains("hell"));
       assert.isFalse(ds.contains("hype"));
+    });
+
+    it ("should handle single char values", () => {
+      ds.put("h", 5);
+      ds.put("e", 5);
+
+      assert.isTrue(ds.contains("h"));
+      assert.isTrue(ds.contains("e"));
+      assert.isFalse(ds.contains("he"));
+      assert.isFalse(ds.contains("eh"));
+    });
+
+    it ("should handle removes", () => {
+      ds.put("hy", 5);
+      ds.put("hyper", 6);
+      ds.put("hyperz", 6);
+
+      ds.remove("heelp");
+      assert.isTrue(ds.contains("hy"));
+      assert.isTrue(ds.contains("hyper"));
+      assert.isTrue(ds.contains("hyperz"));
+
+      ds.remove("hyperz");
+      assert.isTrue(ds.contains("hy"));
+      assert.isTrue(ds.contains("hyper"));
+      assert.isFalse(ds.contains("hyperz"));
+
+      ds.remove("hy");
+      assert.isFalse(ds.contains("hy"));
+      assert.isTrue(ds.contains("hyper"));
+      assert.isFalse(ds.contains("hyperz"));
     });
   });
 
@@ -346,8 +458,14 @@ describe("Trie - Unit Tests", async () => {
       assert.equal(ds.size(), 0);
     });
 
+    it ("should handle sub keys", () => {
+      ds.put("hello", 5);
+
+      ds.remove("hell");
+      assert.equal(ds.size(), 1); 
+
+      ds.remove("helloo");
+      assert.equal(ds.size(), 1);
+    });
   });
 });
-
-// edge cases
-//  non string chars
