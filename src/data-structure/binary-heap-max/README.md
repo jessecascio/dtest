@@ -17,3 +17,9 @@ One implementation uses an array or a linked list, kept either ordered or unorde
 The heap operations first make a simple modification to the heap that could violate the heap condition.  Then traveling through the heap, the operation modifies the heap as required to ensure that the heap condition is satisfied everywhere. This process is called re-heapifying, or restoring heap order.
 
 There are two cases. When the priority of some node is increased (or a new node is added at the bottom of a heap), we have to travel up the heap to restore the heap order. When the priority of some node is decreased (for example, if we replace the node at the root with a new node that has a smaller key), we have to travel down the heap to restore the heap order.
+
+## Interview Prep
+
+* https://leetcode.com/tag/heap/
+* https://www.hackerrank.com/domains/data-structures/heap
+* https://www.interviewbit.com/courses/programming/topics/heaps-and-maps/

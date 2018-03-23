@@ -22,3 +22,8 @@ There are a couple different data structure options for implementing the graph. 
 * While a disjointed set will tell if two nodes are connected in an undirected graph, it will not be able to determine what that actual path is.
 * To determine the number of components (unique sets) either a depth first search on an undirected graph or a disjointed set can be used.  Since the graph requires preprocessing (mapping edges up front) it is typically preferred to use a disjointed set if no other graph algorithms are required.  With a graph one can simply do depth first searches and map which values have been seen while iterating the available vertices.
 * Acyclic graphs contain self loops.  This can be determined with depth first searches on the same key values.
+
+## Interview Prep
+
+* https://leetcode.com/tag/graph/
+* https://www.interviewbit.com/courses/programming/topics/graphs/

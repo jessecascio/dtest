@@ -24,3 +24,8 @@ When deleting keys it’s important to delete orphaned nodes i.e. nodes that do 
 
 1. Ternary Search Trie
 * Considering long keys can have long tails and many one-way links i.e. just a single link, which leads to a large amount of space consumption.  The ternary search trie (TST) instead enforces just three links per node, with characters less than on the left, characters equal to in the middle, and characters greater than on the right.  While not as efficient as the typical trie, in situations where space is limited it is a viable alternative.
+
+## Interview Prep
+
+* https://leetcode.com/tag/trie/
+* https://www.hackerrank.com/domains/data-structures/trie
