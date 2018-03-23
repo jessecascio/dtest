@@ -144,7 +144,7 @@ module.exports = {
   },
 
   // o(1)
-  toJSON: function() {
+  toJson: function() {
     return trie;
   }
 };

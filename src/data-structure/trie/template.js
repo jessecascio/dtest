@@ -5,27 +5,27 @@
 module.exports = {
   /**
    * insert value
-   * @param string
-   * @param T
+   * @param string (key)
+   * @param T (value)
    */
   put: null,
 
   /**
    * return value
-   * @param string
-   * @return T
+   * @param string (key)
+   * @return T (value)
    */
   get: null,
 
   /** 
-   * remove value
-   * @param string
+   * remove value and any unused keys
+   * @param string (key)
    */
   remove: null,
 
   /** 
    * check for key
-   * @param string
+   * @param string (key)
    * @return bool
    */
   contains: null,
@@ -48,6 +48,12 @@ module.exports = {
    * @return int
    */
   size: null,
+
+  /**
+   * JSON representation
+   * @return object
+   */
+  toJson: null,
 
   /**
    * reset
