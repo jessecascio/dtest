@@ -23,7 +23,19 @@ When deleting keys it’s important to delete orphaned nodes i.e. nodes that do 
 1. Ternary Search Trie
 * Long keys can have long tails and many one-way links i.e. just a single link, which leads to a large amount of space consumption.  The ternary search trie (TST) instead enforces just three links per node, with characters less than on the left, characters equal to in the middle, and characters greater than on the right.  While not as efficient as the typical trie, in situations where space is limited it is a viable alternative.
 
-## Interview Prep
+## Coding Challenges
+
+Tries are data structures for searching for values based on string keys, similar to a hashmap with the exception of the ability to do partial and wildcard key lookups efficiently.  Coding challenges which tries can be used for include:
+
+* Tries are common data structure for problems that have to do with partial string key matching i.e. find all partial keys, find all keys with a wildcard character
+
+* Due to tree shape of a trie, problems that require treating keys like a dictionary or using substrings of the keys can easily be done by going down the tree to find both partial and full string keys
+
+1. https://leetcode.com/problems/map-sum-pairs/description/
+2. https://leetcode.com/problems/implement-magic-dictionary/description/
+3. https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
+
+#### Additional Resources
 
 * https://leetcode.com/tag/trie/
 * https://www.hackerrank.com/domains/data-structures/trie
