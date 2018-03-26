@@ -2,7 +2,7 @@
 
 Tries (prefix trees) are data structures that use string keys to store values.  The characters of the string are used to guide the path of the search.  Tries provide theoretical optimal search hits as key lookups are based on key length not number of keys.  Another benefit of the trie is that search misses are not dependent on key length.  While the performance of the trie data structure is efficient, they do require a lot of space, especially as they key sizes grow.
 
-## Considerations
+### Considerations
 
 ***PROs***
 * Looking up data in a trie is faster in the worst case, O(m) time (where m is the length of a search string), compared to an imperfect hash table. An imperfect hash table can have key collisions.  The worst-case lookup speed in an imperfect hash table is O(N) time, but typically is O(1), with O(m) time spent evaluating the hash.
