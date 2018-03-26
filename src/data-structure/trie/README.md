@@ -31,9 +31,9 @@ Tries are data structures for searching for values based on string keys, similar
 
 * Due to tree shape of a trie, problems that require treating keys like a dictionary or using substrings of the keys can easily be done by going down the tree to find both partial and full string keys
 
-1. https://leetcode.com/problems/map-sum-pairs/description/
-2. https://leetcode.com/problems/implement-magic-dictionary/description/
-3. https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
+1. https://leetcode.com/problems/map-sum-pairs/description
+2. https://leetcode.com/problems/implement-magic-dictionary/description
+3. https://www.hackerrank.com/challenges/contacts/problem
 
 #### Additional Resources
 
