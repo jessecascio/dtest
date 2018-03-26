@@ -1,4 +1,4 @@
-const path = `${__dirname}/../lib`;
+const path = `${__dirname}/../../lib`;
 const fs = require('fs');
 const o = {};
 
