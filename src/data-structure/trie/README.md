@@ -37,5 +37,8 @@ Tries are data structures for searching for values based on string keys, similar
 
 #### Additional Resources
 
+* https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
+* https://brilliant.org/wiki/tries/
+* https://www.geeksforgeeks.org/trie-insert-and-search/
 * https://leetcode.com/tag/trie/
 * https://www.hackerrank.com/domains/data-structures/trie
