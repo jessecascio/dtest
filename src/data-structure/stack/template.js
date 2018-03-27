@@ -22,11 +22,6 @@ module.exports = {
   size: null,
 
   /**
-   * reset
-   */
-  reset: null,
-
-  /**
    * get an array representation of stack
    * @return Array<T>
    */

@@ -3,26 +3,21 @@
  */
 
 const assert = require("chai").assert;
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../data-structure/stack/source.js');
+const dsPath = util.input.s || './../../../data-structure/stack/source.js';
+let ds = require(dsPath);
 
 describe("Stack - Unit Tests", async () => {
-  before(function() {
-    ['toArray', 'reset', 'size'].map((f) => {
-      if (!ds[f]) {
-        assert.fail(null, true, `Function Required: ${f}()`)
-      }
-    });
-  });
-
   beforeEach(() => {
-    ds.reset();
+    decache(dsPath);
+    ds = require(dsPath);;
   });
 
-  describe("#push", () => {
+  describe("#1) push() -> [ toArray() ]", () => {
     before(function() {
-      if (!ds.push) {
+      if (!ds.push || !ds.toArray) {
         this.skip();
       }
     });
@@ -38,23 +33,11 @@ describe("Stack - Unit Tests", async () => {
 
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3]));
     });
-
-    it ("should update size", () => {;
-      assert.equal(ds.size(), 0);
-      ds.push(1);
-      assert.equal(ds.size(), 1);
-    });
-
-    it ("should update empty check", () => {
-      assert.isTrue(ds.isEmpty());
-      ds.push(1);
-      assert.isFalse(ds.isEmpty());
-    });
   });
 
-  describe("#pop", () => {
+  describe("#2) pop() -> [ push(), toArray() ]", () => {
     before(function() {
-      if (!ds.pop) {
+      if (!ds.pop || !ds.push || !ds.toArray) {
         this.skip();
       }
     });
@@ -85,27 +68,49 @@ describe("Stack - Unit Tests", async () => {
 
       assert.equal(ds.pop(), undefined);
     });
+  });
 
-    it ("should update size", () => {
+  describe("#3) size() -> [ pop(), push(), toArray() ]", () => {
+    before(function() {
+      if (!ds.size || !ds.pop || !ds.push || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should set default size", () => {;
+      assert.equal(ds.size(), 0);
+    });
+
+    it ("should update size on push", () => {;
       ds.push(1);
-      ds.push(2);
-      ds.push(3);
+      assert.equal(ds.size(), 1);
+
+      ds.push(1);
+      ds.push(1);
+      ds.push(1);
+      assert.equal(ds.size(), 4);
+    });
+
+    it ("should update size on push", () => {;
+      ds.push(1);
+      ds.push(1);
+      ds.push(1);
+      ds.push(1);
+
+      ds.pop();
       assert.equal(ds.size(), 3);
 
       ds.pop();
-      assert.equal(ds.size(), 2);
+      ds.pop();
+      assert.equal(ds.size(), 1);
     });
 
-    it ("should update empty check", () => {
+    it ("should not have a negative size", () => {;
       ds.push(1);
-      ds.push(2);
-      assert.isFalse(ds.isEmpty());
-
+      
       ds.pop();
-      assert.isFalse(ds.isEmpty());
-
       ds.pop();
-      assert.isTrue(ds.isEmpty());
+      assert.equal(ds.size(), 0);
     });
   });
 });

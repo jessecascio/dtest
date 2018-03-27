@@ -77,8 +77,11 @@ describe("Queue - Unit Tests", async () => {
       }
     });
 
-    it ("should update size on enqueue", () => {;
+    it ("should set default size", () => {;
       assert.equal(ds.size(), 0);
+    });
+
+    it ("should update size on enqueue", () => {;
       ds.enqueue(1);
       assert.equal(ds.size(), 1);
     });

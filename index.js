@@ -2,6 +2,7 @@ const Mocha = require('mocha');
 const fs = require('fs');
 const path = require('path');
 const joi = require('joi');
+const chalk = require('chalk');
 
 const util = require('./src/test/util.js');
 
@@ -119,7 +120,7 @@ function runOtherTests() {
 
     const r = joi.validate(source, contract.schema);
     if (r.error) {
-      console.log("CONTRACT ERROR: function", r.error.details[0].message);
+      console.log(chalk.red("HOLDING FOR IMPLEMENTATION: ", r.error.details[0].message, "\n"));
       process.exit();
     }
 

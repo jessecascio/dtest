@@ -21,9 +21,9 @@ describe("Queue - Data Tests", function() {
   });
 
   it ("should handle random inputs", function() {
-    for (let i=0; i<500; i++) {
+    for (let i=0; i<200; i++) {
       for (let j=0; j<25; j++) {
-        const n = Math.floor(Math.random() * j);
+        const n = Math.floor(Math.random() * 100);
         const o = Math.floor(Math.random() * 5);
 
         switch (o) {
@@ -35,10 +35,12 @@ describe("Queue - Data Tests", function() {
             bn.enqueue(n);
             break;
           default:
-            ds.dequeue();
-            bn.dequeue();
+            testDequeue(bn, ds);
+            break;
         }
       }
+
+      testSize(bn, ds);
 
       if (JSON.stringify(ds.toArray()) !== JSON.stringify(bn.toArray())) {
         const o = {
@@ -63,4 +65,49 @@ function reset() {
 
   decache(bnPath);
   bn = require(bnPath);
+}
+
+function testSize(bn, ds) {
+  if (ds.size() !== bn.size()) {
+    const o = {
+      error: 'Data structure and benchmark sizes do not match',
+      assert: {
+        fn: 'size',
+        bn: bn.size(),
+        ds: ds.size()
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testDequeue(bn, ds) {
+  const o = {
+    error: 'Data structure and benchmark don\'t remove the same value',
+    pre: {
+      bn: clone(bn.toArray()),
+      ds: clone(ds.toArray())
+    }
+  };
+
+  o.assert = {
+    fn: 'dequeue',
+    bn: bn.dequeue(),
+    ds: ds.dequeue()
+  };
+
+  o.post = {
+    bn: clone(bn.toArray()),
+    ds: clone(ds.toArray())
+  };
+
+  if (o.assert.bn !== o.assert.ds) {
+    fail(o);
+  }
+}
+
+function fail(o) {
+  const p = util.output.write(o);
+  expect('Data Structure', `DEBUG written to: ${p}`).to.equal('Benchmark');
 }
