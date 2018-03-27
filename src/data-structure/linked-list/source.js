@@ -201,12 +201,6 @@ module.exports = {
     return node_count;
   },
 
-  // o(1)
-  reset: function() {
-    head = undefined;
-    node_count = 0;
-  },
-
   // o(n)
   toArray: function() {
     let n = head;

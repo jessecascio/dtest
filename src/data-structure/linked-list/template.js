@@ -1,9 +1,6 @@
 /**
- * Linked List Double
+ * Linked List
  */
-
-let head;
-let tail;
 
 module.exports = {
   /**
@@ -44,7 +41,7 @@ module.exports = {
    * @return T | undefined
    */
   getLast: null,
-  
+
   /**
    * return index of a value
    * @param T
@@ -77,38 +74,11 @@ module.exports = {
    * get size of list
    * @return int
    */
-  size: () => {
-    let s = 0;
-    let n = head;
-
-    while (n) {
-      s++;
-      n = n.next;
-    }
-
-    return s;
-  },
-
-  /**
-   * reset the list
-   */
-  reset: () => {
-    head = tail = null;
-  },
+  size: null,
 
   /**
    * get an array representation of list
    * @return Array<T>
    */
-  toArray: () => {
-    let a = [];
-    let n = head;
-
-    while (n) {
-      a.push(n.data);
-      n = n.next;
-    }
-    
-    return a;
-  }
+  toArray: null
 };
