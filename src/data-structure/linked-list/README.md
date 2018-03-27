@@ -14,7 +14,7 @@ In a doubly linked list nodes link to both the next node and the previous node, 
 * Deleting from an array is expensive since elements need to be shifted down after a deletion.
 
 ***CONs***
-* Random access is not allowed. We have to access elements sequentially starting from the first node.  So we cannot do binary search with linked lists i.e. slower search.
+* Random access is not allowed. We have to access elements sequentially starting from the first node. So we cannot do binary search with linked lists i.e. slower search.
 * Extra memory space for a pointer is required with each element of the list.
 * Arrays have better cache locality that can make a pretty big difference in performance.
 * Extra is space needed for the additional pointer in a double linked list.
