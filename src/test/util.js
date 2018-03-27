@@ -15,6 +15,9 @@ for (let i=2; i<process.argv.length; i += 2) {
   }
 }
 
+let f = o.s.split('/').pop();
+f = !f ? 'output.debug' : f.split('.').shift();
+
 module.exports = {
   input: o,
   time: 0,
@@ -27,9 +30,10 @@ module.exports = {
     }
   },
   output: {
-    write: function(name, data) {
-      fs.writeFileSync(`${path}/${name}.out`, JSON.stringify(data), 'utf-8');
-      return `./lib/${name}.out`;
+    file: f,
+    write: function(data) {
+      fs.writeFileSync(`${path}/${this.file}.debug`, JSON.stringify(data), 'utf-8');
+      return `./lib/${this.file}.debug`;
     }
   }
 };

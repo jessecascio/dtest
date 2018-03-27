@@ -56,7 +56,7 @@ describe("Binary Max Heap - Data Tests", function() {
 });
 
 function fail(o) {
-  const p = util.output.write('binary-heap-max', o);
+  const p = util.output.write(o);
   expect('Data Structure', `DEBUG written to: ${p}`).to.equal('Benchmark');
 }
 

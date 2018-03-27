@@ -1,7 +1,7 @@
 .DS_store
 
 lib/**
-!lib/template.out
+!lib/.debug
 
 node_modules
 
