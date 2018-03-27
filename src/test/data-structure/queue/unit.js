@@ -3,26 +3,21 @@
  */
 
 const assert = require("chai").assert;
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../data-structure/queue/source.js');
+const dsPath = util.input.s || './../../../data-structure/queue/source.js';
+let ds = require(dsPath);
 
 describe("Queue - Unit Tests", async () => {
-  before(function() {
-    ['toArray', 'reset', 'size'].map((f) => {
-      if (!ds[f]) {
-        assert.fail(null, true, `Function Required: ${f}()`)
-      }
-    });
-  });
-
   beforeEach(() => {
-    ds.reset();
+    decache(dsPath);
+    ds = require(dsPath);
   });
 
-  describe("#enqueue", () => {
+  describe("#1) enqueue() -> [ toArray() ]", () => {
     before(function() {
-      if (!ds.enqueue) {
+      if (!ds.enqueue || !ds.toArray) {
         this.skip();
       }
     });
@@ -38,23 +33,11 @@ describe("Queue - Unit Tests", async () => {
 
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([3,2,1]));
     });
-
-    it ("should update size", () => {;
-      assert.equal(ds.size(), 0);
-      ds.enqueue(1);
-      assert.equal(ds.size(), 1);
-    });
-
-    it ("should update empty check", () => {
-      assert.isTrue(ds.isEmpty());
-      ds.enqueue(1);
-      assert.isFalse(ds.isEmpty());
-    });
   });
 
-  describe("#dequeue", () => {
+  describe("#2) dequeue() -> [ enqueue(), toArray() ]", () => {
     before(function() {
-      if (!ds.dequeue) {
+      if (!ds.enqueue || !ds.dequeue || !ds.toArray) {
         this.skip();
       }
     });
@@ -85,8 +68,17 @@ describe("Queue - Unit Tests", async () => {
 
       assert.equal(ds.dequeue(), undefined);
     });
+  });
+});
 
-    it ("should update size", () => {
+/*
+it ("should update size", () => {;
+      assert.equal(ds.size(), 0);
+      ds.enqueue(1);
+      assert.equal(ds.size(), 1);
+    });
+
+it ("should update size", () => {
       ds.enqueue(1);
       ds.enqueue(2);
       ds.enqueue(3);
@@ -96,16 +88,4 @@ describe("Queue - Unit Tests", async () => {
       assert.equal(ds.size(), 2);
     });
 
-    it ("should update empty check", () => {
-      ds.enqueue(1);
-      ds.enqueue(2);
-      assert.isFalse(ds.isEmpty());
-
-      ds.dequeue();
-      assert.isFalse(ds.isEmpty());
-
-      ds.dequeue();
-      assert.isTrue(ds.isEmpty());
-    });
-  });
-});
+    */
