@@ -69,23 +69,37 @@ describe("Queue - Unit Tests", async () => {
       assert.equal(ds.dequeue(), undefined);
     });
   });
-});
 
-/*
-it ("should update size", () => {;
+  describe("#3) size() -> [ enqueue(), dequeue(), toArray() ]", () => {
+    before(function() {
+      if (!ds.size || !ds.enqueue || !ds.dequeue || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should update size on enqueue", () => {;
       assert.equal(ds.size(), 0);
       ds.enqueue(1);
       assert.equal(ds.size(), 1);
     });
 
-it ("should update size", () => {
+    it ("should update size on dequeue", () => {;
       ds.enqueue(1);
       ds.enqueue(2);
-      ds.enqueue(3);
-      assert.equal(ds.size(), 3);
-
       ds.dequeue();
-      assert.equal(ds.size(), 2);
+
+      assert.equal(ds.size(), 1);
     });
 
-    */
+    it ("should not be negative", () => {;
+      ds.enqueue(1);
+      ds.enqueue(2);
+
+      ds.dequeue();
+      ds.dequeue();
+      ds.dequeue();
+
+      assert.equal(ds.size(), 0);
+    });
+  });
+});

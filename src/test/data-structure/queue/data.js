@@ -20,7 +20,7 @@ describe("Queue - Data Tests", function() {
     reset();
   });
 
-  it ("queue should handle random inputs", function() {
+  it ("should handle random inputs", function() {
     for (let i=0; i<500; i++) {
       for (let j=0; j<25; j++) {
         const n = Math.floor(Math.random() * j);
@@ -40,7 +40,7 @@ describe("Queue - Data Tests", function() {
         }
       }
 
-      if (JSON.stringify(ds.toArray()) === JSON.stringify(bn.toArray())) {
+      if (JSON.stringify(ds.toArray()) !== JSON.stringify(bn.toArray())) {
         const o = {
           error: 'Data structure and benchmark data is not the same',
           assert: {
