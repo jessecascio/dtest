@@ -3,26 +3,21 @@
  */
 
 const assert = require("chai").assert;
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../data-structure/trie/source.js');
+const dsPath = util.input.s || './../../../data-structure/trie/source.js';
+let ds = require(dsPath);
 
 describe("Trie - Unit Tests", async () => {
-  before(function() {
-    ['reset', 'toJson'].map((f) => {
-      if (!ds[f]) {
-        assert.fail(null, true, `Function Required: ${f}()`)
-      }
-    });
-  });
-
   beforeEach(() => {
-    ds.reset();
+    decache(dsPath);
+    ds = require(dsPath);
   });
 
-  describe("#put", () => {
+  describe("#1) put() -> [ toJson() ]", () => {
     before(function() {
-      if (!ds.put) {
+      if (!ds.put || !ds.toJson) {
         this.skip();
       }
     });
@@ -54,9 +49,9 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#get", () => {
+  describe("#2) get() -> [ put(), toJson() ]", () => {
     before(function() {
-      if (!ds.get || !ds.put) {
+      if (!ds.get || !ds.put || !ds.toJson) {
         this.skip();
       }
     });
@@ -79,7 +74,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#remove", () => {
+  describe("#3) remove() -> [ put(), get(), toJson() ]", () => {
     before(function() {
       if (!ds.remove || !ds.put) {
         this.skip();
@@ -150,9 +145,6 @@ describe("Trie - Unit Tests", async () => {
       assert.isTrue(typeof t.h !== "undefined");
       assert.isTrue(typeof t.h.e !== "undefined");
       assert.isTrue(typeof t.h.e.c !== "undefined");
-
-      // console.log(JSON.stringify(t.h.e));process.exit();
-
       assert.isTrue(typeof t.h.e.l === "undefined");
     });
 
@@ -206,9 +198,9 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#keys", () => {
+  describe("#4) keys() -> [ put(), remove(), toJson() ]", () => {
     before(function() {
-      if (!ds.keys || !ds.put || !ds.remove) {
+      if (!ds.keys || !ds.put || !ds.remove || !ds.toJson) {
         this.skip();
       }
     });
@@ -278,9 +270,9 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#keysWithPrefix", () => {
+  describe("#4) keysWithPrefix() -> [ put(), remove(), toJson() ]", () => {
     before(function() {
-      if (!ds.keysWithPrefix || !ds.put || !ds.remove) {
+      if (!ds.keysWithPrefix || !ds.put || !ds.remove || !ds.toJson) {
         this.skip();
       }
     });
@@ -353,7 +345,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#contains", () => {
+  describe("#4) contains() -> [ put(), remove() ]", () => {
     before(function() {
       if (!ds.contains || !ds.put || !ds.remove) {
         this.skip();
@@ -410,9 +402,9 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#size", () => {
+  describe("#4) size() -> [ put(), remove() ]", () => {
     before(function() {
-      if (!ds.get || !ds.put || !ds.remove) {
+      if (!ds.size || !ds.put || !ds.remove) {
         this.skip();
       }
     });

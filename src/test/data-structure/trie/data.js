@@ -3,21 +3,25 @@
  */
 
 const { assert, expect } = require("chai");
+const clone = require('clone-deep');
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s); // user data structure
-const bn = require('./../../../data-structure/trie/source.js'); // benchmark
+const dsPath = util.input.s || './../../../data-structure/trie/source.js';
+let ds = require(dsPath);
+
+const bnPath = './../../../data-structure/trie/source.js';
+let bn = require(bnPath); // benchmark
 
 describe("Trie - Data Tests", function() {
   this.timeout(60000);
 
-  it ("trie should handle random inputs", function() {
-    const N = 100;
+  it ("should handle random inputs", function() {
+    const N = 25;
 
     for (let i=0; i<100; i++) {
       let strs = [];
-      ds.reset();
-      bn.reset();
+      reset();
       
       for (let j=0; j<N; j++) {
         const c = Math.floor(Math.random() * 15);
@@ -33,7 +37,7 @@ describe("Trie - Data Tests", function() {
         bn.put(s, c);
       }
 
-      assert.equal(ds.size(), bn.size());
+      testSize(bn, ds);
 
       for (let j=0; j<strs.length; j++) {
         const c = Math.floor(Math.random() * 6);
@@ -41,18 +45,16 @@ describe("Trie - Data Tests", function() {
 
         switch (c) {
           case 0:
-            assert.equal(ds.contains(strs[j]), bn.contains(strs[j]));
+            testContains(bn, ds, strs[j]);
             break;
           case 1:
-            assert.equal(ds.contains(s), bn.contains(s));
+            testContains(bn, ds, s);
             break;
           case 2:
             const pre = s.substring(15);
 
             if (pre.length) {
-              const p1 = ds.keysWithPrefix(pre);
-              const p2 = bn.keysWithPrefix(pre);
-              assert.equal(p1.length, p2.length);
+              testKeysWithPrefix(bn, ds, pre);
             }
             
             break;
@@ -61,7 +63,7 @@ describe("Trie - Data Tests", function() {
             bn.remove(strs[j]);
             break;
           case 4:
-            assert.equal(ds.get(strs[j]), bn.get(strs[j]));
+            testGet(bn, ds, strs[j]);
             break;
           case 5:
             ds.put(s, c);
@@ -69,8 +71,119 @@ describe("Trie - Data Tests", function() {
             break;
         }
 
-        assert.equal(ds.size(), bn.size());
+        testSize(bn, ds);
       }
     }
   });
 });
+
+function reset() {
+  decache(dsPath);
+  ds = require(dsPath);
+
+  decache(bnPath);
+  bn = require(bnPath);
+}
+
+function fail(o) {
+  const p = util.output.write(o);
+  expect('Data Structure', `DEBUG written to: ${p}`).to.equal('Benchmark');
+}
+
+function testSize(bn, ds) {
+  if (ds.size() !== bn.size()) {
+    const o = {
+      error: 'Data structure and benchmark sizes do not match',
+      pre: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      },
+      assert: {
+        fn: 'size',
+        bn: bn.size(),
+        ds: ds.size()
+      },
+      post: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testContains(bn, ds, v) {
+  if (ds.contains(v) !== bn.contains(v)) {
+    const o = {
+      error: 'Data structure and benchmark don\'t return same value for contains',
+      pre: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      },
+      assert: {
+        fn: 'contains',
+        ps: [v],
+        bn: bn.contains(v),
+        ds: ds.contains(v)
+      },
+      post: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testGet(bn, ds, v) {
+  if (ds.get(v) !== bn.get(v)) {
+    const o = {
+      error: 'Data structure and benchmark don\'t return same value for get',
+      pre: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      },
+      assert: {
+        fn: 'get',
+        ps: [v],
+        bn: bn.get(v),
+        ds: ds.get(v)
+      },
+      post: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testKeysWithPrefix(bn, ds, v) {
+  const p1 = ds.keysWithPrefix(v);
+  const p2 = bn.keysWithPrefix(v);
+
+  if (p1.length !== p2.length) {
+    const o = {
+      error: 'Data structure and benchmark don\'t return same value for keysWithPrefix',
+      pre: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      },
+      assert: {
+        fn: 'keysWithPrefix',
+        ps: [v],
+        bn: bn.keysWithPrefix(v),
+        ds: ds.keysWithPrefix(v)
+      },
+      post: {
+        bn: bn.toJson(),
+        ds: ds.toJson()
+      }
+    }
+
+    fail(o);
+  }
+}

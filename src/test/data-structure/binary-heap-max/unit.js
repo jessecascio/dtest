@@ -3,13 +3,16 @@
  */
 
 const assert = require('chai').assert;
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s || './../../../data-structure/binary-heap-max/source.js');
+const dsPath = util.input.s || './../../../data-structure/binary-heap-max/source.js';
+let ds = require(dsPath);
 
-describe("Binary Heap Max - Unit Tests", async () => {
+describe("Binary Max Heap - Unit Tests", async () => {
   beforeEach(() => {
-    ds.reset();
+    decache(dsPath);
+    ds = require(dsPath);
   });
 
   describe("#1) insert() -> [ size(), toArray() ]", () => {

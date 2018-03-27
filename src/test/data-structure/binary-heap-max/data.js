@@ -3,21 +3,24 @@
  */
 
 const { assert, expect } = require('chai');
-const cd = require('clone-deep');
+const clone = require('clone-deep');
+const decache = require('decache');
 const util = require('./../../util.js');
 
-const ds = require(util.input.s); // user data structure
-const bn = require('./../../../data-structure/binary-heap-max/source.js'); // benchmark
+const dsPath = util.input.s || './../../../data-structure/binary-heap-max/source.js';
+let ds = require(dsPath);
+
+const bnPath = './../../../data-structure/binary-heap-max/source.js';
+let bn = require(bnPath); // benchmark
 
 describe("Binary Max Heap - Data Tests", function() {
   this.timeout(60000);
 
-  it ("heap should handle random inputs", function() {
+  it ("should handle random inputs", function() {
     const N = 25;
 
     for (let i=0; i<100; i++) {
-      ds.reset();
-      bn.reset();
+      reset();
 
       for (let j=0; j<N; j++) {
         const c = Math.floor(Math.random() * 2);
@@ -55,6 +58,14 @@ describe("Binary Max Heap - Data Tests", function() {
   });
 });
 
+function reset() {
+  decache(dsPath);
+  ds = require(dsPath);
+
+  decache(bnPath);
+  bn = require(bnPath);
+}
+
 function fail(o) {
   const p = util.output.write(o);
   expect('Data Structure', `DEBUG written to: ${p}`).to.equal('Benchmark');
@@ -63,7 +74,7 @@ function fail(o) {
 function testPeek(bn, ds) {
   if (ds.peek() !== bn.peek()) {
     const o = {
-      fail: 'Data structure and benchmark peeks do not return the same value',
+      error: 'Data structure and benchmark peeks do not return the same value',
       pre: {
         bn: bn.toArray(),
         ds: ds.toArray()
@@ -86,7 +97,7 @@ function testPeek(bn, ds) {
 function testSize(bn, ds) {
   if (ds.size() !== bn.size()) {
     const o = {
-      fail: 'Data structure and benchmark sizes do not match during pre-fill',
+      error: 'Data structure and benchmark sizes do not match',
       pre: {
         bn: bn.toArray(),
         ds: ds.toArray()
@@ -108,10 +119,10 @@ function testSize(bn, ds) {
 
 function testRemove(bn, ds) {
   const o = {
-    fail: 'Data structure and benchmark don\'t remove the same value',
+    error: 'Data structure and benchmark don\'t remove the same value',
     pre: {
-      bn: cd(bn.toArray()),
-      ds: cd(ds.toArray())
+      bn: clone(bn.toArray()),
+      ds: clone(ds.toArray())
     }
   };
 
@@ -122,8 +133,8 @@ function testRemove(bn, ds) {
   };
 
   o.post = {
-    bn: cd(bn.toArray()),
-    ds: cd(ds.toArray())
+    bn: clone(bn.toArray()),
+    ds: clone(ds.toArray())
   };
 
   if (o.assert.bn !== o.assert.ds) {

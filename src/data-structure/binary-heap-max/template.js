@@ -2,8 +2,6 @@
  * Binary Max Heap
  */
 
-let heap = [];
-
 module.exports = {
   /**
    * insert value into heap
@@ -30,17 +28,8 @@ module.exports = {
   size: null,
 
   /**
-   * reset the heap
-   */
-  reset: function() {
-    heap = [];
-  },
-
-  /**
    * array representation of heap
    * @return array<T>
    */
-  toArray: function() {
-    return heap;
-  }
+  toArray: null
 };

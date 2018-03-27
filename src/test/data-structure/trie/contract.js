@@ -10,7 +10,6 @@ module.exports = {
     keysWithPrefix: joi.func().required(),
     keys: joi.func().required(),
     size: joi.func().required(),
-    reset: joi.func().required(),
     toJson: joi.func().required()
   }).unknown()
 };

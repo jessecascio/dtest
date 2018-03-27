@@ -53,10 +53,5 @@ module.exports = {
    * JSON representation
    * @return object
    */
-  toJson: null,
-
-  /**
-   * reset
-   */
-  reset: null
+  toJson: null
 };
