@@ -24,7 +24,7 @@ module.exports = {
 
   // o(logN)
   remove: function() {
-    if (this.isEmpty()) {
+    if (size === 0) {
       return;
     }
 
@@ -73,12 +73,6 @@ module.exports = {
   },
 
   // o(1)
-  reset: function() {
-    heap = [null];
-    size = 0;
-  },
-
-  // o(1)
   toArray: function() {
     return heap;
   },
@@ -86,10 +80,5 @@ module.exports = {
   // o(1)
   size: function() {
     return size;
-  },
-
-  // o(1)
-  isEmpty: function() {
-    return size === 0;
   }
 };

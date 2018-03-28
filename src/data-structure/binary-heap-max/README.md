@@ -18,7 +18,17 @@ The heap operations first make a simple modification to the heap that could viol
 
 There are two cases. When the priority of some node is increased (or a new node is added at the bottom of a heap), we have to travel up the heap to restore the heap order. When the priority of some node is decreased (for example, if we replace the node at the root with a new node that has a smaller key), we have to travel down the heap to restore the heap order.
 
-## Interview Prep
+## Use Cases
+
+Heaps offer a data structure that provides data in partial sorted order by keeping the min/max value accessible in log(N) time.
+
+* Heaps are commonly used in problems for finding the kth largest values, as a full sort is not required since k elements can simply be taken off of the heap
+
+* Heaps can be used to merge lists as an alternative to merging into a single array and sorting
+
+1. https://leetcode.com/problems/top-k-frequent-elements/description
+
+#### Additional Resources
 
 * https://leetcode.com/tag/heap/
 * https://www.hackerrank.com/domains/data-structures/heap
