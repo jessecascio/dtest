@@ -19,7 +19,7 @@ describe("Binary Max Heap - Data Tests", function() {
   it ("should handle random inputs", function() {
     const N = 25;
 
-    for (let i=0; i<100; i++) {
+    for (let i=0; i<500; i++) {
       reset();
 
       for (let j=0; j<N; j++) {

@@ -29,29 +29,30 @@ module.exports = {
     }
 
     const max = heap[1];
+
     this._swap(1, size);
-    heap[size] = null;
+    heap[size] = undefined;
+    size--;
 
     this._sink(1);
 
-    size--;
     return max;
   },
 
   // o(logN)
   _sink: function(i) {
-    while (2*i <= size) {
-      let c = 2*i;
-      if (heap[2*i+1] && heap[2*i] < heap[2*i+1]) {
-        c++;
-      } 
-      
-      if (this._compare(heap[i], heap[c])) {
-        return;
-      }
-  
+    let c = 2 * i;
+
+    if (typeof heap[c] === "undefined") {
+      return;
+    }
+    if (typeof heap[c+1] !== "undefined" && this._compare(heap[c+1], heap[c])) {
+      c++;
+    }
+
+    if (heap[c] > heap[i]) {
       this._swap(i, c);
-      i = c;
+      this._sink(c);
     }
   },
 

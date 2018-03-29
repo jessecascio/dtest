@@ -127,6 +127,6 @@ function runOtherTests() {
     await runDataTests();
     await runOtherTests();
   } catch (e) {
-    console.log("FAIL", e);
+    // console.log("FAIL", e);
   }
  })();
