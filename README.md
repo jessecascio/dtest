@@ -52,11 +52,11 @@ First determine which data structure or algorithm you would like to implement.  
 
 `cp src/data-structure/linked-list/template.js lib/list.js`
 
-Next implement the functions, but there is a suggested implementation order due to test dependencies as outlined in the next section.
+Next implement the functions.  Be advised that there is a suggested implementation order due to test dependencies as outlined in the next section.
 
 ### Testing
 
-First run the test suite against the freshly copies template file:
+First run the test suite against the freshly copied template file:
 
 `npm run dtest -- -s lib/list.js -t test/data-structure/linked-list`
 
