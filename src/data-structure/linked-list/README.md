@@ -19,7 +19,7 @@ In a doubly linked list nodes link to both the next node and the previous node, 
 * Arrays have better cache locality that can make a pretty big difference in performance.
 * Extra is space needed for the additional pointer in a double linked list.
 
-## Interview Prep
+## Use Cases
 
 * https://leetcode.com/tag/linked-list/
 * https://www.hackerrank.com/domains/data-structures/linked-lists
