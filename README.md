@@ -14,21 +14,21 @@ While it is easy to “spoof” the tests by not actually implementing the corre
 
 All of the available data structures and algorithms can be found in the `src/` directory.  Each directory has three files:
 
-1. A README.md - The readme goes over the data structure / algorithm, along with implementation details, pros/cons, alternatives, and use cases.  It is advised that the implementation details are not read until after implementation to aid in the learning process.
+1. `README.md` - The readme goes over the data structure / algorithm, along with implementation details, pros/cons, alternatives, and use cases.  It is advised that the implementation details are not read until after implementation to aid in the learning process.
 
-2. template.js - This file outlines the API for the data structure / algorithm.  When implementing, the functions will need to be implemented so that they can be tested.
+2. `template.js` - This file outlines the API for the data structure / algorithm.  When implementing, the functions will need to be implemented so that they can be tested.
 
-3. source.js - This file contains the implementation which is used to test your implementation against.  It can be useful if you are stuck on a particular implementation as well as to check if your runtime complexities are correct.
+3. `source.js` - This file contains the implementation which is used to test your implementation against.  It can be useful if you are stuck on a particular implementation as well as to check if your runtime complexities are correct.
 
 The `test/` directory is where the pre-defined tests are that are used to test your implementation.  The directory structure mirrors that of the `src/` directory.  Each directory has three files:
 
-1. contract.js - This is a validator to ensure that all of the functions have been implemented prior to running the data validation tests.
-2. unit.js - This contains predefined unit tests for testing the implementation.
-3. data.js - This runs a bunch of random tests comparing your implementation to the benchmark (source.js)
+1. `contract.js` - This is a validator to ensure that all of the functions have been implemented prior to running the data validation tests.
+2. `unit.js` - This contains predefined unit tests for testing the implementation.
+3. `data.js` - This runs a bunch of random tests comparing your implementation to the benchmark (source.js)
 
 There is also a `lib/` directory which can be used to place implementations.  Your implementation can be placed anywhere, but `lib/` offers a centralized location for all of your implementations and is ignored by source control.  There is also a file:
 
-1. .debug - A template of the output from the random data testing when there is a mismatch between your implementation the benchmark
+1. `.debug` - A template of the output from the random data testing when there is a mismatch between your implementation the benchmark
 
 ## Running
 
@@ -36,7 +36,7 @@ There is also a `lib/` directory which can be used to place implementations.  Yo
 
 To run `dtest` you will need to have both the `node` cli as well as `npm`.
 
-(https://github.com/creationix/nvm)[nvm] is a great tool for managing node versions.
+[nvm](https://github.com/creationix/nvm) is a great tool for managing node versions.
 
 Next, clone the repo for access to the `dtest` cli.
 
