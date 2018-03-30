@@ -7,10 +7,10 @@ const clone = require('clone-deep');
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/trie/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/trie/source.js';
 let ds = require(dsPath);
 
-const bnPath = './../../../data-structure/trie/source.js';
+const bnPath = './../../../src/data-structure/trie/source.js';
 let bn = require(bnPath); // benchmark
 
 describe("Trie - Data Tests", function() {

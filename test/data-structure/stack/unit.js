@@ -6,7 +6,7 @@ const assert = require("chai").assert;
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/stack/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/stack/source.js';
 let ds = require(dsPath);
 
 describe("Stack - Unit Tests", async () => {

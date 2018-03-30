@@ -7,10 +7,10 @@ const clone = require('clone-deep');
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/queue/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/queue/source.js';
 let ds = require(dsPath);
 
-const bnPath = './../../../data-structure/queue/source.js';
+const bnPath = './../../../src/data-structure/queue/source.js';
 let bn = require(bnPath); // benchmark
 
 describe("Queue - Data Tests", function() {

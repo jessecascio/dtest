@@ -6,7 +6,7 @@ const assert = require("chai").assert;
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/trie/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/trie/source.js';
 let ds = require(dsPath);
 
 describe("Trie - Unit Tests", async () => {

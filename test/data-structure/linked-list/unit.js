@@ -5,7 +5,7 @@ const assert = require("chai").assert;
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/linked-list/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/linked-list/source.js';
 let ds = require(dsPath);
 
 describe("Linked List - Unit Tests", async () => {

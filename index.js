@@ -4,7 +4,7 @@ const path = require('path');
 const joi = require('joi');
 const chalk = require('chalk');
 
-const util = require('./src/test/util.js');
+const util = require('./test/util.js');
 
 // validate inputs
 if (!util.input.s || !util.input.t) {

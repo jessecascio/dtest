@@ -9,3 +9,6 @@ node_modules
 mock.js
 .vscode
 *.todo
+
+src/**/*.ip/*
+test/**/*.ip/*

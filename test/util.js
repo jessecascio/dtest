@@ -1,4 +1,4 @@
-const path = `${__dirname}/../../lib`;
+const path = `${__dirname}/../lib`;
 const fs = require('fs');
 const o = {};
 
@@ -7,7 +7,7 @@ for (let i=2; i<process.argv.length; i += 2) {
   const b = process.argv[i + 1];
 
   if (a === 's' && b) {
-    o[a] = `${__dirname}/../../${b}`;
+    o[a] = `${__dirname}/../${b}`;
     o.f = b;
   }
   if (a === 't' && b) {

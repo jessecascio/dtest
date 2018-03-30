@@ -7,10 +7,10 @@ const clone = require('clone-deep');
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../data-structure/binary-heap-max/source.js';
+const dsPath = util.input.s || './../../../src/data-structure/binary-heap-max/source.js';
 let ds = require(dsPath);
 
-const bnPath = './../../../data-structure/binary-heap-max/source.js';
+const bnPath = './../../../src/data-structure/binary-heap-max/source.js';
 let bn = require(bnPath); // benchmark
 
 describe("Binary Max Heap - Data Tests", function() {
