@@ -70,7 +70,7 @@ Due to inter dependencies on the function it is recommended (but not required) t
 
 For example:
 
-`#3) size() -> [ addLast(), getLast(), addFirst(),  getFirst()]`
+`#3) size() -> [ addLast(), getLast(), addFirst(),  getFirst() ]`
 
 We see that the `size()` function depends on four other functions, and will not be tested until they have been implemented.  It is also suggested that you implement it third, but ultimately any function can be implemented in any order.
 

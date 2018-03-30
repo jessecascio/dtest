@@ -355,7 +355,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#3) size() -> [ addLast(), getLast(), addFirst(),  getFirst()]", () => {
+  describe("#3) size() -> [ addLast(), getLast(), addFirst(),  getFirst() ]", () => {
     before(function() {
       if (!ds.count || !ds.addLast || !ds.getLast || !ds.addFirst || !ds.getFirst) {
         this.skip();
