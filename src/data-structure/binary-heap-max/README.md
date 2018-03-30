@@ -20,20 +20,26 @@ There are two cases. When the priority of some node is increased (or a new node 
 
 ## Use Cases
 
-Heaps offer a data structure that provides data in partial sorted order by keeping the min/max value accessible in log(n) time.
+Heaps offer a data structure that provides data in partial sorted order by keeping the min/max value accessible in log(n) time.  Heaps can be great utility tools, they don’t need to be the sole data structure, especially in problems that require a min/max from a subset of data.
 
-* Heaps are commonly used in problems for finding the kth largest values, as a full sort is not required since k elements can simply be taken off of the heap
+* Heaps are commonly used in problems for finding the kth largest values, as a full sort is not required since k elements can simply be taken off of the heap.
 
-* Heaps can be used to merge lists as an alternative to merging into a single array and sorting
+* Heaps (or priority queues) are a good tool for sorting data as it comes in.
 
-* When designing the heap functions it’s extremely beneficial to break out the comparator function so that it can be easily overridden
+* For problems where there needs to be a comparison on multiple values, the heap can be used for log(N) comparisons.  This can be useful in problems that may have many paths and you’re trying to min/max the values in the path.
 
-* Heaps are great utility tools, they don’t need to be the sole data structure.  For problems where there needs to be a comparison on multiple values, the heap can be used for log(N) comparisons on many values.  
+* Heaps can be used to find a min/max of a subset of a whole or rolling window.
+
+* When designing the heap functions it’s extremely beneficial to break out the comparator function so that it can be easily overridden.
+
+1. https://leetcode.com/problems/top-k-frequent-elements/description
+2. https://leetcode.com/problems/top-k-frequent-words/description
+3. https://leetcode.com/problems/merge-k-sorted-lists/description
+4. https://leetcode.com/problems/swim-in-rising-water/description
+5. https://leetcode.com/problems/sliding-window-maximum/description
 
 #### Additional Resources
 
 * https://medium.com/basecs/learning-to-love-heaps-cef2b273a238
 * https://brilliant.org/wiki/heaps/
-* https://leetcode.com/tag/heap/
-* https://www.hackerrank.com/domains/data-structures/heap
 * https://www.interviewbit.com/courses/programming/topics/heaps-and-maps/
