@@ -1,17 +1,17 @@
 {
-	"error": "",
-	"pre": {
-		"bn": [],
-		"ds": []
+	"error": "", // error message
+	"pre": {     // data before the assertion
+		"bn": [],  // data from the benchmark
+		"ds": []   // data from your implementation
 	},
 	"assert": {
-		"fn": "",
-		"ps": [],
-		"bn": 0,
-		"ds": 0
+		"fn": "",  // function that was called
+		"ps": [],  // parameters that were passed into the function
+		"bn": 0,   // the value from the benchmark
+		"ds": 0		 // the value from your implementation
 	},
-	"post": {
-		"bn": [],
-		"ds": []
+	"post": {    // data after the assertion
+		"bn": [],  // data from the benchmark
+		"ds": []	 // data from your implementation
 	}
 }

@@ -129,4 +129,6 @@ function runOtherTests() {
   } catch (e) {
     // console.log("FAIL", e);
   }
+
+  console.log(chalk.blue("ALL TESTS HAVE PASSED, CONGRATULATIONS JEFE!!!\n"));
  })();
