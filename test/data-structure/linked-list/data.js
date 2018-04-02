@@ -22,9 +22,9 @@ describe("Linked List - Data Tests", function() {
 
   it ("should handle random inputs", function() {
     for (let i=0; i<300; i++) {
-      for (let j=0; j<25; j++) {
+      for (let j=0; j<30; j++) {
         const n = Math.floor(Math.random() * j);
-        const o = Math.floor(Math.random() * 8);
+        const o = Math.floor(Math.random() * 6);
 
         switch (o) {
           case 1:
@@ -43,9 +43,6 @@ describe("Linked List - Data Tests", function() {
             ds.getLast();
             bn.getLast();
             break;
-          case 5:
-            ds.reverse();
-            bn.reverse();
           default:
             ds.add(Math.floor(ds.size()/2), n);
             bn.add(Math.floor(bn.size()/2), n);

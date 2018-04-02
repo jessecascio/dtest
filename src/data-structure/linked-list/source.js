@@ -181,27 +181,6 @@ module.exports = {
   },
 
   // o(n)
-  reverse: function() {
-    if (this.size() <= 1) {
-      return;
-    }
-
-    let prev = head;
-    let node = head.next;
-    head.next = undefined;
-
-    while (node) {
-      let temp = node.next;
-      node.next = prev;
-
-      prev = node;
-      node = temp;
-    }
-
-    head = prev;
-  },
-
-  // o(n)
   count: function(v) {
     let c = 0;
     let n = head;
@@ -233,5 +212,130 @@ module.exports = {
     }
 
     return a;
+  },
+
+  /**
+   * BONUS POINTS
+   */
+
+  // o(n)
+  reverse: function() {
+    if (this.size() <= 1) {
+      return;
+    }
+
+    let prev = head;
+    let node = head.next;
+    head.next = undefined;
+
+    while (node) {
+      let temp = node.next;
+      node.next = prev;
+
+      prev = node;
+      node = temp;
+    }
+
+    head = prev;
+  },
+
+  // o(n)
+  reversePartial: function(i, j) {
+    if (this.size() <= 1) {
+      return;
+    }
+    if (i < 0 || j > this.size() - 1 || i >= j) {
+      return;
+    }
+
+    let newHead;
+    let prev = head;
+    let node = head.next;
+
+    let k = 0;
+
+    while (k < i) {
+      newHead = prev;
+      prev = node;
+      node = node.next;
+      k++;
+    }
+
+    let newTail = prev;
+
+    while (k < j) {
+      let tmp = node.next;
+      node.next = prev;
+
+      prev = node;
+      node = tmp;
+      k++;
+    }
+    
+    if (newHead) {
+      newHead.next = prev;
+    } else {
+      head = prev;
+    }
+    
+    newTail.next = node;
+  },
+
+  // o(n)
+  middle: function() {
+    if (this.size() === 0) {
+      return;
+    }
+
+    let p1 = head;
+    let p2 = head;
+
+    while (p2 && p2.next) {
+      p1 = p1.next;
+      p2 = p2.next.next;
+    }
+
+    return p1.data;
+  },
+
+  // o(nlogn)
+  // sort: function() { },
+
+  // o(n)
+  isPalidrome: function() {
+    if (this.size() <= 1) {
+      return true;
+    }
+    
+    let i = Math.floor(this.size()/2);
+    this.reversePartial(0, i-1);
+
+    let mp = head; // middle pointer
+    let fp = head; // fast pointer
+
+    while (fp && fp.next) {
+      mp = mp.next;
+      fp = fp.next.next;
+    }
+
+    if (this.size()%2 !== 0) {
+      mp = mp.next;
+    }
+
+    fp = head; // first pointer
+
+    let pali = true;
+    while (fp && mp) {
+      if (fp.data !== mp.data) {
+        pali = false;
+        fp = mp = null;
+      } else {
+        fp = fp.next;
+        mp = mp.next;
+      }
+    }
+
+    this.reversePartial(0, i-1);
+    return pali;
   }
 };

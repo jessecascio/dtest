@@ -71,11 +71,6 @@ module.exports = {
   contains: null,
 
   /**
-   * reverse the list
-   */
-  reverse: null,
-
-  /**
    * get size of list
    * @return int
    */
@@ -85,5 +80,51 @@ module.exports = {
    * get an array representation of list
    * @return Array<T>
    */
-  toArray: null
+  toArray: null,
+
+  /**
+   * BONUS POINTS
+   */
+
+  /**
+   * OPTIONAL: reverse the list
+   */
+  reverse: null,
+
+  /**
+   * OPTIONAL: reverse a subset of the list
+   * @param int - starting index
+   * @param int - ending index
+   */
+  reversePartial: null,
+
+  /**
+   * OPTIONAL:  find the middle value, if even entries return second
+   *    [1,2,3] -> 2 OR [1,2,3,4] -> 3
+   * @return T || undefined
+   */
+  middle: null,
+
+  /**
+   * OPTIONAL: sort the list in ASC order, [1,3,4,5,6]
+   */
+  sort: null,
+
+  /**
+   * OPTIONAL: remove all duplicates from the list
+   */
+  dedupe: null,
+
+  /**
+   * OPTIONAL: rotate elements from end to front
+   *  k=2, [1,2,3,4,5] -> [4,5,1,2,3]
+   */
+  rotate: null,
+
+  /**
+   * OPTIONAL: determine if list is a palidrome
+   *  i.e. reads the same sequence front to back
+   * @return bool
+   */
+  isPalidrome: null
 };

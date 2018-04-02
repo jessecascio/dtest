@@ -82,4 +82,6 @@ HOLDING FOR IMPLEMENTATION:  "add" must be a Function
 
 This is the testing suite holding off on running the random data tests until all of the functions, as defined in the `contract.js` file, are implemented.
 
+There also may be optional tests as outlined with the `OPTIONAL:` prefix.  These tests are not required to be completed prior to running the data tests, but if they are filled out they will be validated against unit tests.  These typically include functionality that are not central to the data structure but are common use cases when working with the data structure.  You can usually build on the functionality of the optional functions i.e. completing two will help with the third, so be sure to evaluate them all to determine the best strategy for implementation.
+
 After you have implemented all the functions and they are passing the unit tests they will be run against the benchmark (source.js) and tested with random data inputs.  If there is a mismatch in data or behaviour between your implementation and the benchmark, a `*.debug` file will be placed into the `lib/` directory, mirroring the same name as your source file.  There is a sample debug file in `lib/.debug` which demonstrates the structure of the debug outputs.

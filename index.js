@@ -131,5 +131,5 @@ function runOtherTests() {
     process.exit();
   }
 
-  console.log(chalk.blue("ALL TESTS HAVE PASSED, CONGRATULATIONS JEFE!!!\n"));
+  console.log(chalk.blue("ALL TESTS HAVE PASSED, CONGRATULATIONS!!!\n"));
  })();

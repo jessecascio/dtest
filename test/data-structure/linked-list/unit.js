@@ -3,6 +3,7 @@
  */
 const assert = require("chai").assert;
 const decache = require('decache');
+const clone = require('clone-deep');
 const util = require('./../../util.js');
 
 const dsPath = util.input.s || './../../../src/data-structure/linked-list/source.js';
@@ -324,42 +325,7 @@ describe("Linked List - Unit Tests", async () => {
       assert.isFalse(ds.contains(5));
     });
   });
-
-  describe("#2) reverse() -> [ addLast(), toArray() ]", () => {
-    before(function() {
-      if (!ds.reverse || !ds.addLast || !ds.toArray) {
-        this.skip();
-      }
-    });
-
-    it ("should handle a single element", () => {
-      ds.addLast(3);
-      ds.reverse();
-
-      assert.equal(JSON.stringify([3]), JSON.stringify(ds.toArray()));
-    });
-
-    it ("should handle two elements", () => {
-      ds.addLast(3);
-      ds.addLast(5);
-      ds.reverse();
-
-      assert.equal(JSON.stringify([5,3]), JSON.stringify(ds.toArray()));
-    });
-
-    it ("should handle many elements", () => {
-      ds.addLast(3);
-      ds.addLast(4);
-      ds.addLast(6);
-      ds.addLast(2);
-      ds.addLast(16);
-
-      ds.reverse();
-
-      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
-    });
-  });
-
+  
   describe("#3) count() -> [ addLast(), toArray() ]", () => {
     before(function() {
       if (!ds.count || !ds.addLast || !ds.toArray) {
@@ -429,6 +395,249 @@ describe("Linked List - Unit Tests", async () => {
       assert.equal(ds.size(), 2);
     });
     
+  });
+
+  describe("OPTIONAL: middle() -> [ addLast() ]", () => {
+    before(function() {
+      if (!ds.middle || !ds.addLast) {
+        this.skip();
+      }
+    });
+
+    it ("should return 'undefined' w/ no elements", () => {
+      assert.isTrue(typeof ds.middle() === "undefined");
+    });
+
+    it ("should grab middle element from single value", () => {
+      ds.addLast(3);
+      assert.equal(ds.middle(), 3);
+    });
+
+    it ("should grab middle element from two values", () => {
+      ds.addLast(3);
+      ds.addLast(5);
+      assert.equal(ds.middle(), 5);
+    });
+
+    it ("should grab middle element from odd values", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+      assert.equal(ds.middle(), 3);
+    });
+
+    it ("should grab middle element from even values", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+      ds.addLast(6);
+      assert.equal(ds.middle(), 4);
+    });
+  });
+  
+  describe("OPTIONAL: reverse() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.reverse || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should handle a single element", () => {
+      ds.addLast(3);
+      ds.reverse();
+
+      assert.equal(JSON.stringify([3]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle two elements", () => {
+      ds.addLast(3);
+      ds.addLast(5);
+      ds.reverse();
+
+      assert.equal(JSON.stringify([5,3]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle many elements", () => {
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(6);
+      ds.addLast(2);
+      ds.addLast(16);
+
+      ds.reverse();
+
+      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should reverse back and forth", () => {
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(6);
+      ds.addLast(2);
+      ds.addLast(16);
+
+      ds.reverse();
+      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
+
+      ds.reverse();
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+
+      ds.reverse();
+      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
+    });
+  });
+
+  describe("OPTIONAL: reversePartial() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.reversePartial || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    beforeEach(function() {
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(6);
+      ds.addLast(2);
+      ds.addLast(16);
+    });
+
+    it ("should handle same indexes", () => {
+      ds.reversePartial(1,1);
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle out of bounds indexes", () => {
+      ds.reversePartial(12,1);
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+
+      ds.reversePartial(-1,1);
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+
+      ds.reversePartial(2,14);
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle the entire list", () => {
+      ds.reversePartial(0,4);
+      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle small subsets of the list", () => {
+      ds.reversePartial(0,1);
+      assert.equal(JSON.stringify([4,3,6,2,16]), JSON.stringify(ds.toArray()));
+
+      ds.reversePartial(2,4);
+      assert.equal(JSON.stringify([4,3,16,2,6]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should reverse the list back", () => {
+      ds.reversePartial(1,4);
+      assert.equal(JSON.stringify([3,16,2,6,4]), JSON.stringify(ds.toArray()));
+
+      ds.reversePartial(1,4);
+      assert.equal(JSON.stringify([3,4,6,2,16]), JSON.stringify(ds.toArray()));
+    });
+  });
+
+  describe("OPTIONAL: sort() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.sort || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+  });
+
+  describe("OPTIONAL: dedupe() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.dedupe || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+  });
+
+  describe("OPTIONAL: rotate() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.rotate || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+  });
+
+  describe("OPTIONAL: isPalidrome() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.isPalidrome || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should detect an two char palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(1);
+      
+      const data = clone(ds.toArray());
+      assert.isTrue(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should detect an two char non palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(4);
+      
+      const data = clone(ds.toArray());
+      assert.isFalse(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should detect an odd palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(2);
+      ds.addLast(1);
+      
+      const data = clone(ds.toArray());
+      assert.isTrue(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should detect an even palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(2);
+      ds.addLast(1);
+      
+      const data = clone(ds.toArray());
+      assert.isTrue(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should detect an odd non palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(4);
+      ds.addLast(2);
+      ds.addLast(2);
+      ds.addLast(1);
+      
+      const data = clone(ds.toArray());
+      assert.isFalse(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should detect an even non palidrome", () => {
+      ds.addLast(1);
+      ds.addLast(4);
+      ds.addLast(2);
+      ds.addLast(1);
+      
+      const data = clone(ds.toArray());
+      assert.isFalse(ds.isPalidrome());
+      assert.equal(JSON.stringify(data), JSON.stringify(ds.toArray()));
+    });
   });
 });
 
