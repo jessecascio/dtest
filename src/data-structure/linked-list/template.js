@@ -71,6 +71,11 @@ module.exports = {
   contains: null,
 
   /**
+   * reverse the list
+   */
+  reverse: null,
+
+  /**
    * get size of list
    * @return int
    */

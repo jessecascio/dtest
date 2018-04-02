@@ -325,6 +325,33 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
+  describe("#2) reverse() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.reverse || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should handle a single element", () => {
+      ds.addLast(3);
+      ds.reverse();
+
+      assert.equal(JSON.stringify([3]), JSON.stringify(ds.toArray()));
+    });
+
+    it ("should handle many elements", () => {
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(6);
+      ds.addLast(2);
+      ds.addLast(16);
+
+      ds.reverse();
+
+      assert.equal(JSON.stringify([16,2,6,4,3]), JSON.stringify(ds.toArray()));
+    });
+  });
+
   describe("#3) count() -> [ addLast(), toArray() ]", () => {
     before(function() {
       if (!ds.count || !ds.addLast || !ds.toArray) {

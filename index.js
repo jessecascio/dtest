@@ -128,6 +128,7 @@ function runOtherTests() {
     await runOtherTests();
   } catch (e) {
     // console.log("FAIL", e);
+    process.exit();
   }
 
   console.log(chalk.blue("ALL TESTS HAVE PASSED, CONGRATULATIONS JEFE!!!\n"));

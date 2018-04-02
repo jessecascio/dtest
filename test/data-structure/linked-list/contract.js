@@ -12,6 +12,7 @@ module.exports = {
     indexOf: joi.func().required(),
     lastIndexOf: joi.func().required(),
     contains: joi.func().required(),
+    reverse: joi.func().required(),
     count: joi.func().required(),
     size: joi.func().required(),
     toArray: joi.func().required()

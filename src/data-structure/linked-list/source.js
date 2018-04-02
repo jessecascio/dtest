@@ -181,6 +181,27 @@ module.exports = {
   },
 
   // o(n)
+  reverse: function() {
+    if (this.size() <= 1) {
+      return;
+    }
+
+    let prev = head;
+    let node = head.next;
+    head.next = undefined;
+
+    while (node) {
+      let temp = node.next;
+      node.next = prev;
+
+      prev = node;
+      node = temp;
+    }
+
+    head = prev;
+  },
+
+  // o(n)
   count: function(v) {
     let c = 0;
     let n = head;
