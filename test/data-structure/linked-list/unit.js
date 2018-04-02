@@ -339,6 +339,14 @@ describe("Linked List - Unit Tests", async () => {
       assert.equal(JSON.stringify([3]), JSON.stringify(ds.toArray()));
     });
 
+    it ("should handle two elements", () => {
+      ds.addLast(3);
+      ds.addLast(5);
+      ds.reverse();
+
+      assert.equal(JSON.stringify([5,3]), JSON.stringify(ds.toArray()));
+    });
+
     it ("should handle many elements", () => {
       ds.addLast(3);
       ds.addLast(4);
