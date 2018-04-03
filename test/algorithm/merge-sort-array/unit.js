@@ -22,11 +22,25 @@ describe("Merge Sort Array - Unit Tests", async () => {
       }
     });
 
+    it ("should handle an empty array", () => {
+      const a = [];
+      const b = ds.sort(a);
+      
+      assert.equal(JSON.stringify(b), JSON.stringify([]));
+    });
+
     it ("should sort an array", () => {
       const a = [13,52,23,45,67];
-      ds.sort(a);
+      const b = ds.sort(a);
       
-      assert.equal(JSON.stringify(a), JSON.stringify([13,23,45,52,67]));
+      assert.equal(JSON.stringify(b), JSON.stringify([13,23,45,52,67]));
+    });
+
+    it ("should handle duplicates", () => {
+      const a = [67,23,13,23,23];
+      const b = ds.sort(a);
+      
+      assert.equal(JSON.stringify(b), JSON.stringify([13,23,23,23,67]));
     });
   });
 });
