@@ -9,7 +9,7 @@ const util = require('./../../util.js');
 const dsPath = util.input.s || './../../../src/data-structure/queue/source.js';
 let ds = require(dsPath);
 
-describe("Queue - Unit Tests", async () => {
+describe.skip("Queue - Unit Tests", async () => {
   beforeEach(() => {
     decache(dsPath);
     ds = require(dsPath);

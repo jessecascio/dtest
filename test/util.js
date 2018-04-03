@@ -15,8 +15,11 @@ for (let i=2; i<process.argv.length; i += 2) {
   }
 }
 
-let f = o.s.split('/').pop();
-f = !f ? 'output.debug' : f.split('.').shift();
+let f; // grab file name
+if (o.s) {
+  f = o.s.split('/').pop();
+  f = !f ? 'output.debug' : f.split('.').shift();
+}
 
 module.exports = {
   input: o,

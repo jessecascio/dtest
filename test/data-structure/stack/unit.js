@@ -9,7 +9,7 @@ const util = require('./../../util.js');
 const dsPath = util.input.s || './../../../src/data-structure/stack/source.js';
 let ds = require(dsPath);
 
-describe("Stack - Unit Tests", async () => {
+describe.skip("Stack - Unit Tests", async () => {
   beforeEach(() => {
     decache(dsPath);
     ds = require(dsPath);;
