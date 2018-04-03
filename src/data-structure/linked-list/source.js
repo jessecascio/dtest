@@ -302,6 +302,39 @@ module.exports = {
   // sort: function() { },
 
   // o(n)
+  purge: function(i) {
+    if (this.size() === 0) {
+      return;
+    }
+
+    let n = head;
+    let p;
+    let h; // new head
+
+    while (n) {
+      if (n.data !== i) {
+        if (!h) {
+          h = n;
+        }
+
+        p = n;
+      } else {
+        if (p) {
+          p.next = n.next;
+        } 
+      }
+
+      n = n.next;
+    }
+
+    if (h) {
+      head = h;
+    } else if (!p) {
+      head = undefined;
+    }
+  },
+
+  // o(n)
   isPalidrome: function() {
     if (this.size() <= 1) {
       return true;

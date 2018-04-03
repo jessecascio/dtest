@@ -568,6 +568,71 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
+  describe("OPTIONAL: purge() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.purge || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should remove all instances of a value", () => {
+      ds.addLast(0);
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(4);
+      ds.addLast(1);
+      ds.addLast(5);
+
+      ds.purge(1);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([0,2,4,5]));
+    });
+
+    it ("should remove all instances from the front of the list", () => {
+      ds.addLast(0);
+      ds.addLast(0);
+      ds.addLast(2);
+      ds.addLast(4);
+      ds.addLast(1);
+      ds.addLast(5);
+
+      ds.purge(0);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([2,4,1,5]));
+    });
+
+    it ("should remove all instances from the end of the list", () => {
+      ds.addLast(5);
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(4);
+      ds.addLast(0);
+      ds.addLast(0);
+
+      ds.purge(0);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([5,1,2,4]));
+    });
+
+    it ("should remove all instances", () => {
+      ds.addLast(0);
+      ds.addLast(0);
+      ds.addLast(0);
+      ds.addLast(0);
+
+      ds.purge(0);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([]));
+    });
+
+    it ("should ignore instances", () => {
+      ds.addLast(0);
+      ds.addLast(0);
+      ds.addLast(0);
+      ds.addLast(0);
+
+      ds.purge(1);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([0,0,0,0]));
+    });
+  });
+
   describe("OPTIONAL: isPalidrome() -> [ addLast(), toArray() ]", () => {
     before(function() {
       if (!ds.isPalidrome || !ds.addLast || !ds.toArray) {

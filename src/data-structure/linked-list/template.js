@@ -122,6 +122,12 @@ module.exports = {
   rotate: null,
 
   /**
+   * OPTIONAL: remove all occurences of a value
+   * @param T - value to purge
+   */
+  purge: null,
+
+  /**
    * OPTIONAL: determine if list is a palidrome
    *  i.e. reads the same sequence front to back
    * @return bool
