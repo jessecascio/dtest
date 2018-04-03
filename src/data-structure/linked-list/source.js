@@ -287,19 +287,74 @@ module.exports = {
       return;
     }
 
-    let p1 = head;
-    let p2 = head;
+    const m = this._mid(head);
+    return m.data;
+  },
+
+  _mid: function(l) {
+    let p1 = l;
+    let p2 = l;
 
     while (p2 && p2.next) {
       p1 = p1.next;
       p2 = p2.next.next;
     }
 
-    return p1.data;
+    return p1;
   },
 
   // o(nlogn)
-  // sort: function() { },
+  sort: function() {
+    if (this.size() === 0) {
+      return;
+    }
+
+    head = this._sort(head);
+  },
+
+  _sort: function(l) {
+    if (!l.next) {
+      return l;
+    }
+
+    const {l1, l2} = this._split(l);
+
+    const s1 = this._sort(l1);
+    const s2 = this._sort(l2);
+
+    return this._merge(s1, s2);
+  },
+
+  // split a list
+  _split: function(l) {
+    let m = this._mid(l);
+
+    let l1 = l;
+    let l2 = m;
+
+    let n = l;
+    
+    while(n && n.next !== l2) {
+      n = n.next;
+    }
+    n.next = undefined;
+
+    return {l1, l2};
+  },
+
+  // merge a list
+  _merge: function(l1, l2) {
+    if(!l1) return l2;
+    if(!l2) return l1;
+
+    if(l1.data < l2.data) {
+      l1.next = this._merge(l1.next, l2);
+      return l1;
+    } else {
+      l2.next = this._merge(l2.next, l1);
+      return l2;
+    }
+  },
 
   // o(n)
   purge: function(i) {

@@ -550,6 +550,75 @@ describe("Linked List - Unit Tests", async () => {
         this.skip();
       }
     });
+
+    it ("should sort w/ a single value", () => {
+      ds.addLast(12);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([12]));
+    });
+
+    it ("should sort w/ two values", () => {
+      ds.addLast(12);
+      ds.addLast(2);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([2,12]));
+    });
+
+    it ("should sort an odd numbered list", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(4);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,4,11,12]));
+    });
+
+    it ("should sort an even numbered list", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(4);
+      ds.addLast(122);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,4,11,12,122]));
+    });
+
+    it ("should sort a list w/ duplicates", () => {
+      ds.addLast(11);
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(4);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,1,2,4,11]));
+    });
+
+    it ("should sort w/ low in front", () => {
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(2);
+      ds.addLast(4);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,4,12]));
+    });
+
+    it ("should sort w/ low in back", () => {
+      ds.addLast(12);
+      ds.addLast(2);
+      ds.addLast(4);
+      ds.addLast(1);
+
+      ds.sort();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,4,12]));
+    });
   });
 
   describe("OPTIONAL: dedupe() -> [ addLast(), toArray() ]", () => {
