@@ -38,10 +38,16 @@ To run `dtest` you will need to have both the `node` cli as well as `npm`.
 
 [nvm](https://github.com/creationix/nvm) is a great tool for managing node versions.
 
-Next, clone the repo for access to the `dtest` cli.
+Next, clone the repo for access to the `dtest` cli:
 
 ```
 git clone git@github.com:jessecascio/dtest.git
+```
+
+And install dependencies:
+
+```
+npm install
 ```
 
 All commands should be ran from inside of the `dtest` directory.
