@@ -219,6 +219,28 @@ module.exports = {
    */
 
   // o(n)
+  middle: function() {
+    if (this.size() === 0) {
+      return;
+    }
+
+    const m = this._mid(head);
+    return m.data;
+  },
+
+  _mid: function(l) {
+    let p1 = l;
+    let p2 = l;
+
+    while (p2 && p2.next) {
+      p1 = p1.next;
+      p2 = p2.next.next;
+    }
+
+    return p1;
+  },
+
+  // o(n)
   reverse: function() {
     if (this.size() <= 1) {
       return;
@@ -281,28 +303,6 @@ module.exports = {
     newTail.next = node;
   },
 
-  // o(n)
-  middle: function() {
-    if (this.size() === 0) {
-      return;
-    }
-
-    const m = this._mid(head);
-    return m.data;
-  },
-
-  _mid: function(l) {
-    let p1 = l;
-    let p2 = l;
-
-    while (p2 && p2.next) {
-      p1 = p1.next;
-      p2 = p2.next.next;
-    }
-
-    return p1;
-  },
-
   // o(nlogn)
   sort: function() {
     if (this.size() === 0) {
@@ -353,6 +353,33 @@ module.exports = {
     } else {
       l2.next = this._merge(l2.next, l1);
       return l2;
+    }
+  },
+
+  // o(n)
+  dedupe: function() {
+    if (this.size() <= 1) {
+      return;
+    }
+
+    const m = {};
+    let n = head;
+    m[n.data] = true;
+
+    let i = 0;
+    n = n.next;
+
+    while (n) {
+      i++;
+
+      if (!m[n.data]) {
+        m[n.data] = true;
+      } else {
+        this.get(i);
+        i--;
+      }
+
+      n = n.next;
     }
   },
 

@@ -627,6 +627,59 @@ describe("Linked List - Unit Tests", async () => {
         this.skip();
       }
     });
+
+    it ("should dedupe the list", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.dedupe();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([11,2,1,12]));
+    });
+
+    it ("should dedupe from the front of the list", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(13);
+
+      ds.dedupe();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,12,13]));
+    });
+
+    it ("should dedupe from the end of the list", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.dedupe();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,12]));
+    });
+
+    it ("should dedupe when all values are the same", () => {
+      ds.addLast(1);
+      ds.addLast(1);
+      ds.addLast(1);
+      ds.addLast(1);
+
+      ds.dedupe();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1]));
+    });
+
+    it ("should ignore when no values are the same", () => {
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(13);
+      ds.addLast(14);
+
+      ds.dedupe();
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,12,13,14]));
+    });
   });
 
   describe("OPTIONAL: rotate() -> [ addLast(), toArray() ]", () => {

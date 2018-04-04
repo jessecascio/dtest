@@ -87,6 +87,13 @@ module.exports = {
    */
 
   /**
+   * OPTIONAL:  find the middle value, if even entries return second
+   *    [1,2,3] -> 2 OR [1,2,3,4] -> 3
+   * @return T || undefined
+   */
+  middle: null,
+
+  /**
    * OPTIONAL: reverse the list
    */
   reverse: null,
@@ -97,13 +104,6 @@ module.exports = {
    * @param int - ending index
    */
   reversePartial: null,
-
-  /**
-   * OPTIONAL:  find the middle value, if even entries return second
-   *    [1,2,3] -> 2 OR [1,2,3,4] -> 3
-   * @return T || undefined
-   */
-  middle: null,
 
   /**
    * OPTIONAL: sort the list in ASC order, [1,3,4,5,6]
@@ -122,6 +122,19 @@ module.exports = {
   rotate: null,
 
   /**
+   * OPTIONAL: swap two nodes
+   * @param int - index 1
+   * @param int - index 2
+   */
+  swap: null,
+
+  /**
+   * OPTIONAL: swap all nodes w/ their adjacent nodes
+   *  ex: [1,2,3,4,5] -> [2,1,4,3,5]
+   */
+  swapAdjacent: null,
+
+  /**
    * OPTIONAL: remove all occurences of a value
    * @param T - value to purge
    */
@@ -129,7 +142,7 @@ module.exports = {
 
   /**
    * OPTIONAL: determine if list is a palidrome
-   *  i.e. reads the same sequence front to back
+   *  i.e. reads the same sequence front to back as back to front
    * @return bool
    */
   isPalidrome: null
