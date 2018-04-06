@@ -384,6 +384,51 @@ module.exports = {
   },
 
   // o(n)
+  rotate: function(k) {
+    if (!k || k >= this.size() || k <= 0) {
+      return;
+    }
+    
+    const s = this.size() - k;
+    let i=1;
+
+    let node = head;
+    while (i < s) {
+      i++;
+      node = node.next;
+    }
+
+    let newHead = node.next;
+    node.next = undefined;
+
+    let half = head;
+    head = newHead;
+
+    node = newHead;
+    while (node.next) {
+      node = node.next;
+    }
+
+    node.next = half;
+  },
+
+  // o(n)
+  swap: function(i,j) {
+    if (j<=i || j > this.size() || j <= 0) {
+      return;
+    }
+    if (i>=j || i < 0) {
+      return;
+    }
+
+    let jd = this.get(j);
+    let id = this.get(i);
+
+    this.add(i, jd);
+    this.add(j, id);
+  },
+
+  // o(n)
   purge: function(i) {
     if (this.size() === 0) {
       return;

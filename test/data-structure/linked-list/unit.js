@@ -688,6 +688,125 @@ describe("Linked List - Unit Tests", async () => {
         this.skip();
       }
     });
+
+    it ("should rotate the list by k", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.rotate(2);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([12,1,11,2,1]));
+    });
+
+    it ("should rotate the list by k=1", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.rotate(1);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,11,2,1,12]));
+    });
+
+    it ("should rotate the list by k=N-1", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.rotate(4);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([2,1,12,1,11]));
+    });
+
+    it ("should ignore rotate the list by k=N", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.rotate(5);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([11,2,1,12,1]));
+    });
+
+    it ("should ignore invalid k", () => {
+      ds.addLast(11);
+      ds.addLast(2);
+      ds.addLast(1);
+      ds.addLast(12);
+      ds.addLast(1);
+
+      ds.rotate(-2);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([11,2,1,12,1]));
+
+      ds.rotate(13);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([11,2,1,12,1]));
+    });
+  });
+
+  describe("OPTIONAL: swap() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.swap || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should swap two keys", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+
+      ds.swap(1,3);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,4,3,2,5]));
+    });
+
+    it ("should swap the first key", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+
+      ds.swap(0,3);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([4,2,3,1,5]));
+    });
+
+    it ("should swap the last key", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+
+      ds.swap(3,4);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,5,4]));
+    });
+
+    it ("should ignore invalid keys", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+      ds.addLast(5);
+
+      ds.swap(-1,2);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
+
+      ds.swap(1,12);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
+
+      ds.swap(2,2);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
+
+      ds.swap(4,2);
+      assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2,3,4,5]));
+    });
   });
 
   describe("OPTIONAL: purge() -> [ addLast(), toArray() ]", () => {

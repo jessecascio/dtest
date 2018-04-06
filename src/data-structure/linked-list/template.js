@@ -129,12 +129,6 @@ module.exports = {
   swap: null,
 
   /**
-   * OPTIONAL: swap all nodes w/ their adjacent nodes
-   *  ex: [1,2,3,4,5] -> [2,1,4,3,5]
-   */
-  swapAdjacent: null,
-
-  /**
    * OPTIONAL: remove all occurences of a value
    * @param T - value to purge
    */
