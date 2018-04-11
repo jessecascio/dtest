@@ -8,15 +8,15 @@ const util = require('./test/util.js');
 
 // validate inputs
 if (!util.input.s || !util.input.t) {
-  console.log("ERROR: Both source (-s) and test (-t) are required");
+  console.log(chalk.red("ERROR: Both source (-s) and test (-t) are required\n"));
   process.exit();
 }
-if (!fs.existsSync(util.input.s)) {
-  console.log(`FAILED to load source: ${util.input.f}`);
+if (!fs.existsSync(util.input.s) || !fs.statSync(util.input.s).isFile()) {
+  console.log(chalk.red(`FAILED to load source: '${util.input.f}' (MUST be a .js file)\n`));
   process.exit();
 }
 if (!fs.existsSync(util.input.t)) {
-  console.log(`FAILED to find test dir: ${util.input.t}`);
+  console.log(chalk.red(`FAILED to find test dir: ${util.input.t}\n`));
   process.exit();
 }
 
@@ -25,11 +25,11 @@ const dir = `${__dirname}/${util.input.t}`;
 
 // verify test files
 if (!fs.existsSync(`${dir}/contract.js`)) {
-  console.log(`FAILED to find contract.js: ${dir}/contract.js`);
+  console.log(chalk.red(`FAILED to find contract.js: ${dir}/contract.js\n`));
   process.exit();
 }
 if (!fs.existsSync(`${dir}/unit.js`)) {
-  console.log(`FAILED to find unit.js: ${dir}/unit.js`);
+  console.log(chalk.red(`FAILED to find unit.js: ${dir}/unit.js\n`));
   process.exit();
 }
 
