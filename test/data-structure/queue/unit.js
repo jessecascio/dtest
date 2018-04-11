@@ -72,7 +72,7 @@ describe ("Queue - Unit Tests", async () => {
 
   describe("#2) peek() -> [ enqueue(), toArray() ]", () => {
     before(function() {
-      if (!ds.peek || !ds.dequeue || !ds.toArray) {
+      if (!ds.peek || !ds.enqueue || !ds.toArray) {
         this.skip();
       }
     });
@@ -83,6 +83,16 @@ describe ("Queue - Unit Tests", async () => {
       ds.enqueue(3);
       ds.enqueue(3);
 
+      assert.equal(ds.peek(), 1);
+    });
+
+    it ("should not remove value after peek", () => {
+      ds.enqueue(1);
+      ds.enqueue(2);
+      ds.enqueue(3);
+      ds.enqueue(3);
+
+      assert.equal(ds.peek(), 1);
       assert.equal(ds.peek(), 1);
     });
   });

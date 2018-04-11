@@ -70,6 +70,33 @@ describe ("Stack - Unit Tests", async () => {
     });
   });
 
+  describe("#2) peek() -> [ push(), toArray() ]", () => {
+    before(function() {
+      if (!ds.peek || !ds.push || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should peek at next value", () => {
+      ds.push(1);
+      ds.push(2);
+      ds.push(3);
+      ds.push(3);
+
+      assert.equal(ds.peek(), 3);
+    });
+
+    it ("should not remove value after peek", () => {
+      ds.push(1);
+      ds.push(2);
+      ds.push(3);
+      ds.push(3);
+
+      assert.equal(ds.peek(), 3);
+      assert.equal(ds.peek(), 3);
+    });
+  });
+
   describe("#3) size() -> [ pop(), push(), toArray() ]", () => {
     before(function() {
       if (!ds.size || !ds.pop || !ds.push || !ds.toArray) {

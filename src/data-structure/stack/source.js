@@ -15,7 +15,7 @@ module.exports = {
 
   // o(1)
   peek: function() {
-    // return list.peekFirst();
+    return list.peekFirst();
   },
 
   // o(1)

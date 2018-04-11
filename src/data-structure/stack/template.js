@@ -16,6 +16,12 @@ module.exports = {
   pop: null,
 
   /**
+   * see next value
+   * @return T
+   */
+  peek: null,
+
+  /**
    * get number of values
    * @return int
    */
