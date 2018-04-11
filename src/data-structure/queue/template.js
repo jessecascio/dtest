@@ -16,6 +16,12 @@ module.exports = {
   dequeue: null,
 
   /**
+   * see next value
+   * @return T
+   */
+  peek: null,
+
+  /**
    * get number of values
    * @return int
    */

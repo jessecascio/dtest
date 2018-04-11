@@ -13,6 +13,11 @@ module.exports = {
     return list.getLast();
   },
 
+  // o(1) (double linked list)
+  peek: function() {
+    return list.peekLast();
+  },
+
   // o(1)
   size: function() {
     return list.size();

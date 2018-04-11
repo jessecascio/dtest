@@ -70,6 +70,23 @@ describe ("Queue - Unit Tests", async () => {
     });
   });
 
+  describe("#2) peek() -> [ enqueue(), toArray() ]", () => {
+    before(function() {
+      if (!ds.peek || !ds.dequeue || !ds.toArray) {
+        this.skip();
+      }
+    });
+
+    it ("should peek at next value", () => {
+      ds.enqueue(1);
+      ds.enqueue(2);
+      ds.enqueue(3);
+      ds.enqueue(3);
+
+      assert.equal(ds.peek(), 1);
+    });
+  });
+
   describe("#3) size() -> [ enqueue(), dequeue(), toArray() ]", () => {
     before(function() {
       if (!ds.size || !ds.enqueue || !ds.dequeue || !ds.toArray) {
