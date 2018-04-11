@@ -174,7 +174,6 @@ describe("Linked List - Unit Tests", async () => {
       assert.equal(ds.getLast(), 1);
       assert.equal(ds.getLast(), undefined);
     });
-
   });
 
   describe("#2) get() -> [ addLast(), toArray() ]", () => {
@@ -229,6 +228,48 @@ describe("Linked List - Unit Tests", async () => {
       assert.equal(JSON.stringify(ds.toArray()), JSON.stringify([1,2]));
     });
 
+  });
+
+  describe("#2) peekFirst() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.peekFirst || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+    
+    it ("should return undefined for no element", () => {
+      assert.equal(ds.peekFirst(), undefined);
+    });
+
+    it ("should peek at the first element", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+
+      assert.equal(ds.peekFirst(), 1);
+    });
+  });
+
+  describe("#2) peekLast() -> [ addLast(), toArray() ]", () => {
+    before(function() {
+      if (!ds.peekLast || !ds.addLast || !ds.toArray) {
+        this.skip();
+      }
+    });
+    
+    it ("should return undefined for no element", () => {
+      assert.equal(ds.peekLast(), undefined);
+    });
+
+    it ("should peek at the first element", () => {
+      ds.addLast(1);
+      ds.addLast(2);
+      ds.addLast(3);
+      ds.addLast(4);
+
+      assert.equal(ds.peekLast(), 4);
+    });
   });
 
   describe("#2) indexOf() -> [ addLast(), toArray() ]", () => {

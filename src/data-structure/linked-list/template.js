@@ -43,6 +43,18 @@ module.exports = {
   getLast: null,
 
   /**
+   * view first element's data
+   * @return T | undefined
+   */
+  peekFirst: null,
+
+  /**
+   * view last element's data
+   * @return T | undefined
+   */
+  peekLast: null,
+
+  /**
    * return index of a value
    * @param T
    * @return int | undefined

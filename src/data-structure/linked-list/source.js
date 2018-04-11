@@ -53,7 +53,7 @@ module.exports = {
     head = n;
   },
 
-  // o(n)
+  // o(n) (o(1) w/ doubly linked list)
   addLast: function(v) {
     node_count++;
 
@@ -115,7 +115,7 @@ module.exports = {
     return n.data;
   },
 
-  // o(n)
+  // o(n) (o(1) w/ doubly linked list)
   getLast: function() {
     if (!head) {
       return;
@@ -135,6 +135,25 @@ module.exports = {
     }
 
     p.next = undefined;
+
+    return n.data;
+  },
+
+  // o(1)
+  peekFirst: function() {
+    return head ? head.data : undefined;
+  },
+
+  // o(n) (o(1) w/ tail)
+  peekLast: function() {
+    if (!head) {
+      return;
+    }
+
+    let n = head;
+    while (n.next) {
+      n = n.next;
+    }
 
     return n.data;
   },
