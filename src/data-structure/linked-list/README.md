@@ -9,7 +9,7 @@ In a doubly linked list nodes link to both the next node and the previous node, 
 ### Considerations
 
 ***PROs***
-* The size of the arrays is fixed whereas linked lists can grow dynamically; therefore, with arrays we must know the upper limit on the number of elements in advance.
+* The size of the arrays is fixed where as linked lists can grow dynamically; therefore, with arrays we must know the upper limit on the number of elements in advance.
 * Inserting a new element in an array of elements is expensive, because room has to be created for the new elements and to create room existing elements have to be shifted.
 * Deleting from an array is expensive since elements need to be shifted down after a deletion.
 
@@ -39,11 +39,12 @@ Linked lists are a fundamental data structure and can typically be used in place
 * https://leetcode.com/problems/insertion-sort-list/description/
 * https://leetcode.com/problems/linked-list-cycle-ii/description/
 
-You should take the time to solve these, along with any other easy or medium questions, and thoroughly know the approach for solving each.  They make for quick and “easy” interview questions.
+You should take the time to solve these, along with any other easy or medium questions, and thoroughly know the approach for solving each.  They make for quick and "easy" interview questions.
 
 #### Additional Resources
 
 * https://medium.com/basecs/whats-a-linked-list-anyway-part-1-d8b7e6508b9d
+* https://medium.com/basecs/whats-a-linked-list-anyway-part-2-131d96f71996
 * https://brilliant.org/wiki/linked-lists/
 * https://www.interviewbit.com/courses/programming/topics/linked-lists/
 * https://leetcode.com/tag/linked-list/

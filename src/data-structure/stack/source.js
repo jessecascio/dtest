@@ -14,13 +14,18 @@ module.exports = {
   },
 
   // o(1)
+  peek: function() {
+    // return list.peekFirst();
+  },
+
+  // o(1)
   size: function() {
     return list.size();
   },
 
   // o(n)
   toArray: function() {
-    // stack in reverse order for constant operations
+    // stack is stored in reverse order for constant operations
     return Array.reverse(list.toArray());
   }
 };
