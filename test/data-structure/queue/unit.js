@@ -35,7 +35,7 @@ describe ("Queue - Unit Tests", async () => {
     });
   });
 
-  describe("#2) dequeue() -> [ enqueue(), toArray() ]", () => {
+  describe("#2) dequeue() -> [ enqueue() ]", () => {
     before(function() {
       if (!ds.enqueue || !ds.dequeue || !ds.toArray) {
         this.skip();
@@ -70,7 +70,7 @@ describe ("Queue - Unit Tests", async () => {
     });
   });
 
-  describe("#2) peek() -> [ enqueue(), toArray() ]", () => {
+  describe("#2) peek() -> [ enqueue() ]", () => {
     before(function() {
       if (!ds.peek || !ds.enqueue || !ds.toArray) {
         this.skip();
@@ -97,7 +97,7 @@ describe ("Queue - Unit Tests", async () => {
     });
   });
 
-  describe("#3) size() -> [ enqueue(), dequeue(), toArray() ]", () => {
+  describe("#3) size() -> [ enqueue(), dequeue() ]", () => {
     before(function() {
       if (!ds.size || !ds.enqueue || !ds.dequeue || !ds.toArray) {
         this.skip();

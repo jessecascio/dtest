@@ -111,7 +111,7 @@ describe("Binary Max Heap - Unit Tests", async () => {
     });
   });
 
-  describe("#2) remove() -> [ insert(), size(), toArray() ]", () => {
+  describe("#2) remove() -> [ insert(), size() ]", () => {
     before(function() {
       if (!ds.remove || !ds.insert || !ds.size || !ds.toArray) {
         this.skip();
@@ -197,7 +197,7 @@ describe("Binary Max Heap - Unit Tests", async () => {
 
   describe("#3) peek() -> [ insert(), remove() ]", () => {
     before(function() {
-      if (!ds.peek || !ds.insert || !ds.remove) {
+      if (!ds.peek || !ds.insert || !ds.remove || !ds.toArray) {
         this.skip();
       }
     });

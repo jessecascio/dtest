@@ -35,7 +35,7 @@ describe ("Stack - Unit Tests", async () => {
     });
   });
 
-  describe("#2) pop() -> [ push(), toArray() ]", () => {
+  describe("#2) pop() -> [ push() ]", () => {
     before(function() {
       if (!ds.pop || !ds.push || !ds.toArray) {
         this.skip();
@@ -70,7 +70,7 @@ describe ("Stack - Unit Tests", async () => {
     });
   });
 
-  describe("#2) peek() -> [ push(), toArray() ]", () => {
+  describe("#2) peek() -> [ push() ]", () => {
     before(function() {
       if (!ds.peek || !ds.push || !ds.toArray) {
         this.skip();
@@ -97,7 +97,7 @@ describe ("Stack - Unit Tests", async () => {
     });
   });
 
-  describe("#3) size() -> [ pop(), push(), toArray() ]", () => {
+  describe("#3) size() -> [ pop(), push() ]", () => {
     before(function() {
       if (!ds.size || !ds.pop || !ds.push || !ds.toArray) {
         this.skip();

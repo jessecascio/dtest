@@ -69,7 +69,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) add() -> [ addLast(), toArray() ]", () => {
+  describe("#2) add() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.add || !ds.toArray || !ds.addLast) {
         this.skip();
@@ -113,7 +113,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) getFirst() -> [ addLast(), toArray() ]", () => {    
+  describe("#2) getFirst() -> [ addLast() ]", () => {    
     before(function() {
       if (!ds.getFirst || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -145,7 +145,7 @@ describe("Linked List - Unit Tests", async () => {
 
   });
 
-  describe("#2) getLast() -> [ addLast(), toArray() ]", () => {
+  describe("#2) getLast() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.getLast || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -176,7 +176,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) get() -> [ addLast(), toArray() ]", () => {
+  describe("#2) get() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.get || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -230,7 +230,7 @@ describe("Linked List - Unit Tests", async () => {
 
   });
 
-  describe("#2) peekFirst() -> [ addLast(), toArray() ]", () => {
+  describe("#2) peekFirst() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.peekFirst || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -251,7 +251,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) peekLast() -> [ addLast(), toArray() ]", () => {
+  describe("#2) peekLast() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.peekLast || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -272,7 +272,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) indexOf() -> [ addLast(), toArray() ]", () => {
+  describe("#2) indexOf() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.indexOf || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -303,7 +303,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) lastIndexOf() -> [ addLast(), toArray() ]", () => {
+  describe("#2) lastIndexOf() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.lastIndexOf || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -336,7 +336,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("#2) contains() -> [ addLast(), toArray() ]", () => {
+  describe("#2) contains() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.contains || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -367,7 +367,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
   
-  describe("#3) count() -> [ addLast(), toArray() ]", () => {
+  describe("#3) count() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.count || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -480,7 +480,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
   
-  describe("OPTIONAL: reverse() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: reverse() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.reverse || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -532,7 +532,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: reversePartial() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: reversePartial() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.reversePartial || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -585,7 +585,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: sort() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: sort() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.sort || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -662,7 +662,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: dedupe() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: dedupe() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.dedupe || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -723,7 +723,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: rotate() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: rotate() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.rotate || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -789,7 +789,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: swap() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: swap() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.swap || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -850,7 +850,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: purge() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: purge() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.purge || !ds.addLast || !ds.toArray) {
         this.skip();
@@ -915,7 +915,7 @@ describe("Linked List - Unit Tests", async () => {
     });
   });
 
-  describe("OPTIONAL: isPalidrome() -> [ addLast(), toArray() ]", () => {
+  describe("OPTIONAL: isPalidrome() -> [ addLast() ]", () => {
     before(function() {
       if (!ds.isPalidrome || !ds.addLast || !ds.toArray) {
         this.skip();

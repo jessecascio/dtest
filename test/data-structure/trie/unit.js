@@ -49,7 +49,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#2) get() -> [ put(), toJson() ]", () => {
+  describe("#2) get() -> [ put() ]", () => {
     before(function() {
       if (!ds.get || !ds.put || !ds.toJson) {
         this.skip();
@@ -74,7 +74,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#3) remove() -> [ put(), get(), toJson() ]", () => {
+  describe("#3) remove() -> [ put(), get() ]", () => {
     before(function() {
       if (!ds.remove || !ds.put) {
         this.skip();
@@ -198,7 +198,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#4) keys() -> [ put(), remove(), toJson() ]", () => {
+  describe("#4) keys() -> [ put(), remove() ]", () => {
     before(function() {
       if (!ds.keys || !ds.put || !ds.remove || !ds.toJson) {
         this.skip();
@@ -270,7 +270,7 @@ describe("Trie - Unit Tests", async () => {
     });
   });
 
-  describe("#4) keysWithPrefix() -> [ put(), remove(), toJson() ]", () => {
+  describe("#4) keysWithPrefix() -> [ put(), remove() ]", () => {
     before(function() {
       if (!ds.keysWithPrefix || !ds.put || !ds.remove || !ds.toJson) {
         this.skip();
