@@ -127,8 +127,8 @@ function runOtherTests() {
     await runDataTests();
     await runOtherTests();
   } catch (e) {
+    // ignore unit test fails
     if (isNaN(parseInt(e))) {
-      // ignore unit test fails
       console.log(chalk.magenta("RUNTIME ERROR:"), e.message, '\n');
     }
     process.exit();
