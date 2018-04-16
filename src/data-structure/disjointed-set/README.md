@@ -21,6 +21,8 @@ A better implementation uses a set (forest) of trees.  To start, each element is
 
 ## Use Cases
 
+#### Additional Resources
+
 * https://brilliant.org/wiki/disjoint-set-data-structure/
 * https://www.topcoder.com/community/data-science/data-science-tutorials/disjoint-set-data-structures/
 * https://leetcode.com/tag/union-find/
