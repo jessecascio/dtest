@@ -42,5 +42,6 @@ Heaps offer a data structure that provides data in partial sorted order by keepi
 
 * https://medium.com/basecs/learning-to-love-heaps-cef2b273a238
 * https://brilliant.org/wiki/heaps/
+* https://leetcode.com/tag/heap/
+* https://www.hackerrank.com/domains/data-structures/heap
 * https://www.interviewbit.com/courses/programming/topics/heaps-and-maps/
-* https://www.geeksforgeeks.org/binary-heap/

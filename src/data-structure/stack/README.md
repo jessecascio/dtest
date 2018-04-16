@@ -35,6 +35,6 @@ Stacks process data following the LIFO (last-in-first-out) policy.  In languages
 
 * https://medium.com/basecs/stacks-and-overflows-dbcf7854dc67
 * https://brilliant.org/wiki/stacks/
-* https://www.interviewbit.com/courses/programming/topics/stacks-and-queues/
 * https://leetcode.com/tag/stack/
 * https://www.hackerrank.com/domains/data-structures/stacks
+* https://www.interviewbit.com/courses/programming/topics/stacks-and-queues/

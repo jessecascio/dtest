@@ -19,6 +19,9 @@ A better implementation uses a set (forest) of trees.  To start, each element is
 2. Rank Check
   * By attaching a rank to each node, which identifies number of children nodes, we can always attach the smaller tree to the larger tree.  This lowers the number of iterations that needs to be done on the find command. 
 
-## Interview Prep
+## Use Cases
 
+* https://brilliant.org/wiki/disjoint-set-data-structure/
+* https://www.topcoder.com/community/data-science/data-science-tutorials/disjoint-set-data-structures/
+* https://leetcode.com/tag/union-find/
 * https://www.hackerrank.com/domains/data-structures/disjoint-set

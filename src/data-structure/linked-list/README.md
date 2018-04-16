@@ -46,6 +46,6 @@ You should take the time to solve these, along with any other easy or medium que
 * https://medium.com/basecs/whats-a-linked-list-anyway-part-1-d8b7e6508b9d
 * https://medium.com/basecs/whats-a-linked-list-anyway-part-2-131d96f71996
 * https://brilliant.org/wiki/linked-lists/
-* https://www.interviewbit.com/courses/programming/topics/linked-lists/
 * https://leetcode.com/tag/linked-list/
 * https://www.hackerrank.com/domains/data-structures/linked-lists
+* https://www.interviewbit.com/courses/programming/topics/linked-lists/
