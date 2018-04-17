@@ -21,6 +21,18 @@ A better implementation uses a set (forest) of trees.  To start, each element is
 
 ## Use Cases
 
+The disjointed set data structure is commonly used in union find questions. 
+
+* A disjointed set can be used to find the number of overlapping groups, i.e. given distinct groups, some with edges, merge overlapping groups
+
+1. https://leetcode.com/problems/friend-circles/description/
+2. https://leetcode.com/problems/number-of-islands/description/
+3. https://leetcode.com/problems/accounts-merge/description/
+
+* A disjointed set can be used to find connections in an undirected graph; however, a disjointed set will not be able to determine what that actual path is.
+
+1. https://leetcode.com/problems/redundant-connection/description/
+
 #### Additional Resources
 
 * https://brilliant.org/wiki/disjoint-set-data-structure/
