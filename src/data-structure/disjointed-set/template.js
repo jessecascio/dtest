@@ -28,5 +28,15 @@ module.exports = {
    * determine number of sets
    * @return int
    */
-  size: null
+  size: null,
+
+  /**
+   * BONUS POINTS
+   */
+
+   /**
+    * Return an array of all of the sets
+    * @return array - [[1,2,3], [4], [5,6]]
+    */
+   sets: null
 };

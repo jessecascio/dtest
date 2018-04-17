@@ -157,4 +157,77 @@ describe("Disjointed Set - Unit Tests", async () => {
       assert.isTrue(ds.connected(8,9));
     });
   });
+
+  describe("OPTIONAL: sets() -> [ union() ]", () => {
+    before(function() {
+      if (!ds.sets || !ds.init || !ds.union) {
+        this.skip();
+      }
+    });
+
+    beforeEach(() => {
+      ds.init(10);
+    });
+
+    it ("should return all sets w/ no connections", () => {
+      const sets = ds.sets();
+      assert.equal(sets.length, 10);
+    });
+
+    it ("should return a connection in new set", () => {
+      ds.union(4, 3);
+
+      const sets = ds.sets();
+      assert.equal(sets.length, 9);
+    });
+
+    it ("should return a single set w/ all connected", () => {
+      ds.union(0, 1);
+      ds.union(1, 2);
+      ds.union(2, 3);
+      ds.union(3, 4);
+      ds.union(4, 5);
+      ds.union(5, 6);
+      ds.union(6, 7);
+      ds.union(7, 8);
+      ds.union(8, 9);
+
+      const sets = ds.sets();
+      assert.equal(sets.length, 1);
+    });
+
+    it ("should correctly group set", () => {
+      ds.union(0, 1);
+      ds.union(1, 2);
+      ds.union(2, 3);
+      ds.union(3, 4);
+      ds.union(4, 5);
+      
+      ds.union(6, 7);
+      ds.union(7, 8);
+      ds.union(8, 9);
+
+      const sets = ds.sets();
+      assert.equal(sets.length, 2);
+
+      assert.isTrue(sets[0].length === 6 || sets[1].length === 6);
+      assert.isTrue(sets[0].length === 4 || sets[1].length === 4);
+      
+      if (sets[0].length === 6) {
+        assert.isTrue(sets[0].indexOf(0) !== -1);
+        assert.isTrue(sets[0].indexOf(1) !== -1);
+        assert.isTrue(sets[0].indexOf(2) !== -1);
+        assert.isTrue(sets[0].indexOf(3) !== -1);
+        assert.isTrue(sets[0].indexOf(4) !== -1);
+        assert.isTrue(sets[0].indexOf(5) !== -1);
+        assert.isTrue(sets[0].indexOf(6) === -1);
+      } else {
+        assert.isTrue(sets[0].indexOf(5) === -1);
+        assert.isTrue(sets[0].indexOf(6) !== -1);
+        assert.isTrue(sets[0].indexOf(7) !== -1);
+        assert.isTrue(sets[0].indexOf(8) !== -1);
+        assert.isTrue(sets[0].indexOf(9) !== -1);
+      }
+    });
+  });
 });
