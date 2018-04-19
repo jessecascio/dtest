@@ -99,4 +99,18 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.isFalse(ds.connected(1, 101));
     });
   });
+
+  describe ("OPTIONAL: separation() -> [ addVertice(), addEdge() ] ", () => {
+    before(function() {
+      if (!ds.separation || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+
+    it ("should get separation between two vertices", () => {
+      assert.equal(ds.separation(1, 6), 3);
+      assert.equal(ds.separation(1, 9), 3);
+      assert.equal(ds.separation(1, 1), 0);
+    });
+  });
 });

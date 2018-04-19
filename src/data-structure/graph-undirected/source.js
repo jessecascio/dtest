@@ -126,6 +126,11 @@ module.exports = {
     return s.reverse();
   },
 
+  // o(1)
+  toString: function() {
+    return JSON.stringify(graph);
+  },
+
   /**
    * BONUS POINTS
    */
@@ -250,10 +255,5 @@ module.exports = {
   // o(1)
   size: function() {
     return this.getVertices().length;
-  },
-
-  // o(1)
-  toString: function() {
-    return JSON.stringify(graph);
   }
 };

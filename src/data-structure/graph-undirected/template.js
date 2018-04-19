@@ -58,6 +58,8 @@ module.exports = {
 
   /**
    * OPTIONAL: get degrees of separation (distance between two vertices)
+   * @param T
+   * @param T
    * @return int
    */
   separation: null,
@@ -90,11 +92,5 @@ module.exports = {
    * OPTIONAL: get vertice with the max degree
    * @return T
    */
-  maxDegree: null,
-
-  /**
-   * OPTIONAL: number of vertices
-   * @return int
-   */
-  size: null
+  maxDegree: null
 };
