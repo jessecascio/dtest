@@ -99,7 +99,7 @@ module.exports = {
    */
 
   /**
-   * OPTIONAL:  find the middle value, if even entries return second
+   * OPTIONAL: find the middle value, if even entries return second
    *    [1,2,3] -> 2 OR [1,2,3,4] -> 3
    * @return T || undefined
    */
@@ -130,6 +130,7 @@ module.exports = {
   /**
    * OPTIONAL: rotate elements from end to front
    *  k=2, [1,2,3,4,5] -> [4,5,1,2,3]
+   * @param int
    */
   rotate: null,
 
