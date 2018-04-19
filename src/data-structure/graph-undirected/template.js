@@ -41,56 +41,60 @@ module.exports = {
   searchBreadth: null,
   
   /**
-   * get number of components (isolated graphs)
+   * string representation of graph
+   * @return string
+   */
+  toString: null,
+
+  /**
+   * BONUS POINTS
+   */
+
+  /**
+   * OPTIONAL: get number of components (isolated graphs)
    * @return int
    */
   components: null,
 
   /**
-   * get degrees of separation (distance between two vertices)
+   * OPTIONAL: get degrees of separation (distance between two vertices)
    * @return int
    */
   separation: null,
 
   /**
-   * determine if there are any cycles (true for none)
+   * OPTIONAL: determine if there are any cycles (true for none)
    * @return bool
    */
   acylic: null,
 
   /** 
-   * get all the vertices of graph
+   * OPTIONAL: get all the vertices of graph
    * @return Array<T>
    */
   getVertices: null,
 
   /** 
-   * total edges count
+   * OPTIONAL: total edges count
    * @return int
    */
   getEdgeCount: null,
 
   /**
-   * get the degrees (edges to vertice) count
+   * OPTIONAL: get the degrees (edges to vertice) count
    * @return int
    */
   getDegreeCount: null,
 
   /**
-   * get vertice with the max degree
+   * OPTIONAL: get vertice with the max degree
    * @return T
    */
   maxDegree: null,
 
   /**
-   * number of vertices
+   * OPTIONAL: number of vertices
    * @return int
    */
-  size: null,
-
-  /**
-   * string representation of graph
-   * @return string
-   */
-  toString: null
+  size: null
 };
