@@ -58,6 +58,10 @@ describe ("Undirected Graph - Data Tests", function() {
             testConnected(v,w);
         }
 
+        /**
+         * OPTIONAL tests
+        */
+
         if (ds.separation) {
           testSeparation(v,w);
         }

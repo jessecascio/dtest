@@ -70,27 +70,10 @@ module.exports = {
    */
   acylic: null,
 
-  /** 
-   * OPTIONAL: get all the vertices of graph
-   * @return Array<T>
-   */
-  getVertices: null,
-
-  /** 
-   * OPTIONAL: total edges count
+  /**
+   * OPTIONAL: get the degree count to a vertice (edge count)
+   * @param T
    * @return int
    */
-  getEdgeCount: null,
-
-  /**
-   * OPTIONAL: get the degrees (edges to vertice) count
-   * @return int
-   */
-  getDegreeCount: null,
-
-  /**
-   * OPTIONAL: get vertice with the max degree
-   * @return T
-   */
-  maxDegree: null
+  getDegreeCount: null
 };

@@ -212,7 +212,6 @@ module.exports = {
 
   // o(v) || o(logE)
   getEdgeCount: function() {
-    // @todo FIX YO
     let e = new Set();
 
     for (let v in graph) {
@@ -250,10 +249,5 @@ module.exports = {
   // o(1)
   _unique: function(v, w) {
     return v != w && this.contains(v) && this.contains(w);
-  },
-
-  // o(1)
-  size: function() {
-    return this.getVertices().length;
   }
 };
