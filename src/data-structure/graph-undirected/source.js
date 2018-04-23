@@ -173,13 +173,13 @@ module.exports = {
     const ks = Object.keys(graph);
     const seen = {};
 
-    let acylic = true;
+    let acylic = false;
 
     for (let i=0; i<ks.length; i++) {
       if (!seen[ks[i]]) {
         acylic = this._acylic(ks[i], ks[i], seen);
 
-        if (!acylic) {
+        if (acylic) {
           return acylic;
         }
       }
@@ -193,16 +193,16 @@ module.exports = {
     s[v] = true;
     for (let e of graph[v]) {
       if (!s[e]) {
-        if (this._acylic(e, v, s) === false) {
-          return false;
+        if (this._acylic(e, v, s) === true) {
+          return true;
         }
       } else if (e != w) {
         // if been to vertice but didnt come from it
-        return false;
+        return true;
       }
     }
 
-    return true;
+    return false;
   },
 
   // o(1)

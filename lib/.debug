@@ -1,6 +1,6 @@
 {
-	"error": "",       // error message
-	"pre": {           // data before the assertion
+	"error": "", // error message
+	"pre": {     // data before the assertion
 		"bn": [],  // data from the benchmark
 		"ds": []   // data from your implementation
 	},
@@ -10,7 +10,7 @@
 		"bn": 0,   // the value from the benchmark
 		"ds": 0	   // the value from your implementation
 	},
-	"post": {          // data after the assertion
+	"post": {    // data after the assertion
 		"bn": [],  // data from the benchmark
 		"ds": []   // data from your implementation
 	}

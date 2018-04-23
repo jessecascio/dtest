@@ -57,6 +57,13 @@ describe ("Undirected Graph - Data Tests", function() {
           default:
             testConnected(v,w);
         }
+
+        if (ds.separation) {
+          testSeparation(v,w);
+        }
+        if (ds.acylic) {
+          testAcylic(v,w);
+        }
       }
     }
   });
@@ -73,6 +80,46 @@ function reset() {
 
   decache(bnPath);
   bn = require(bnPath);
+}
+
+function testSeparation(v,w) {
+  if (ds.separation(v,w) !== bn.separation(v,w)) {
+    const o = {
+      error: 'Data structure and benchmark separation do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'separation',
+        ps: [v,w],
+        bn: bn.separation(v,w),
+        ds: ds.separation(v,w)
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testAcylic(v,w) {
+  if (ds.acylic(v,w) !== bn.acylic(v,w)) {
+    const o = {
+      error: 'Data structure and benchmark acylic do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'acylic',
+        ps: [v,w],
+        bn: bn.acylic(v,w),
+        ds: ds.acylic(v,w)
+      }
+    }
+
+    fail(o);
+  }
 }
 
 function testConnected(v,w) {

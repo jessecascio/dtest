@@ -113,4 +113,71 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.equal(ds.separation(1, 1), 0);
     });
   });
+
+  describe ("OPTIONAL: acylic() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.acylic || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+
+    beforeEach(() => {
+      decache(dsPath);
+      ds = require(dsPath);
+    });
+  
+    it ("should determine if acylic", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+  
+      ds.addEdge(1, 2);
+      ds.addEdge(2, 3);
+      ds.addEdge(3, 4);
+      ds.addEdge(1, 5);
+      ds.addEdge(5, 3);
+
+      assert.isTrue(ds.acylic());
+    });
+
+    it ("should determine if not acylic", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+  
+      ds.addEdge(1, 2);
+      ds.addEdge(2, 3);
+      ds.addEdge(3, 4);
+      ds.addEdge(1, 5);
+      
+      assert.isFalse(ds.acylic());
+    });
+
+    it ("should determine if acylic w/ multiple components", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+      
+      ds.addVertice(51);
+      ds.addVertice(52);
+      ds.addVertice(53);
+
+      ds.addEdge(1, 2);
+      ds.addEdge(2, 3);
+      ds.addEdge(3, 4);
+      ds.addEdge(1, 5);
+      
+      ds.addEdge(51, 52);
+      ds.addEdge(52, 53);
+      ds.addEdge(53, 51);
+      
+      assert.isTrue(ds.acylic());
+    });
+  });
 });
