@@ -180,4 +180,16 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.isTrue(ds.acylic());
     });
   });
+
+  describe ("OPTIONAL: components() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.components || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+  
+    it ("should determine correct number of components", () => {
+      assert.equal(ds.components(), 2);
+    });
+  });
 });

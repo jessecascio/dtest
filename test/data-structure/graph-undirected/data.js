@@ -61,12 +61,14 @@ describe ("Undirected Graph - Data Tests", function() {
         /**
          * OPTIONAL tests
         */
-
         if (ds.separation) {
           testSeparation(v,w);
         }
         if (ds.acylic) {
           testAcylic(v,w);
+        }
+        if (ds.components) {
+          testComponents(v,w);
         }
       }
     }
@@ -84,6 +86,25 @@ function reset() {
 
   decache(bnPath);
   bn = require(bnPath);
+}
+
+function testComponents(v,w) {
+  if (ds.components() !== bn.components()) {
+    const o = {
+      error: 'Data structure and benchmark components do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'components',
+        bn: bn.components(),
+        ds: ds.components()
+      }
+    }
+
+    fail(o);
+  }
 }
 
 function testSeparation(v,w) {
