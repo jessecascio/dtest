@@ -7,28 +7,30 @@ module.exports = {
    * add vertice
    * @param T
    */
-  addVertice: function(v) {
-
-  },
+  addVertice: null,
 
   /**
    * add edge
    * @param T
    * @param T
    */
-  addEdge: function(v, w) {
-
-  },
+  addEdge: null,
 
   /**
-   * determine if two vertices are connected
+   * determine if two vertices are adjacent (an edge between them)
    * @param T
    * @param T
    * @return bool
    */
-  connected: function(v, w) {
+  adjacent: null,
 
-  },
+  /**
+   * determine if two vertices are connected (on the same path)
+   * @param T
+   * @param T
+   * @return bool
+   */
+  connected: null,
 
   /**
    * perform a depth search, returning vertices in path
@@ -36,9 +38,7 @@ module.exports = {
    * @param T
    * @return Array<T>
    */
-  searchDepth: function(v, w) {
-
-  },
+  searchDepth: null,
 
   /**
    * perform a breadth search, returning vertices in path
@@ -46,86 +46,76 @@ module.exports = {
    * @param T
    * @return Array<T>
    */
-  searchBreadth: function(v, w) {
+  searchBreadth: null,
 
-  },
-  
   /**
-   * get number of components (isolated graphs)
+   * string representation of graph
+   * @return string
+   */
+  toString: null,
+
+  /**
+   * BONUS POINTS
+   */
+
+  /**
+   * OPTIONAL: get number of components (isolated graphs)
    * @return int
    */
-  components: function() {
-    
-  },
+  components: null,
 
   /**
-   * get degrees of separation (distance between two vertices)
+   * OPTIONAL: get degrees of separation (distance between two vertices)
+   * @param T
+   * @param T
    * @return int
    */
-  separation: function(v, w) {
-
-  },
+  separation: null,
 
   /**
-   * determine if there are any cycles (true for none)
+   * OPTIONAL: determine if there are any cycles (true for none)
    * @return bool
    */
-  acylic: function() {
-    
-  },
+  acylic: null,
 
   /**
-   * length of the shortest cycle
+   * OPTIONAL: length of the shortest cycle
    * @return int
    */
-  girth: function() {
-
-  },
-
-  /** 
-   * get all the vertices of graph
-   * @return Array<T>
-   */
-  getVertices: function() {
-
-  },
-
-  /** 
-   * total edges count
-   * @return int
-   */
-  getEdgeCount: function() {
-
-  },
+  girth: null,
 
   /**
-   * get the degrees (edges to vertice) count
+   * OPTIONAL: get the degree count to a vertice (edge count)
    * @return int
    */
-  getDegreeCount: function(v) {
-
-  },
+  getDegreeCount: null,
 
   /**
-   * get vertice with the max degree
+   * OPTIONAL: get the vertice with the max degree
    * @return T
    */
-  maxDegree: function() {
-
-  },
+  maxDegree: null,
 
   /**
-   * number of vertices
-   * @return int
+   * OPTIONAL: reverse all of the edges
    */
-  size: function() {
-
-  },
+  reverse: null,
 
   /**
-   * reset
+   * OPTIONAL: return the graph as a sorted array
+   * @return Array<T>
    */
-  clear: function() {
+  sort: null,
 
-  }
+  /**
+   * OPTIONAL: return the graph in pre order
+   * @return Array<T>
+   */
+  orderPre: null,
+
+  /**
+   * OPTIONAL: return the graph in post order
+   * @return Array<T>
+   */
+  orderPost: null
 };

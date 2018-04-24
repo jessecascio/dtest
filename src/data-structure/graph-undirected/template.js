@@ -83,5 +83,11 @@ module.exports = {
    * @param T
    * @return int
    */
-  getDegreeCount: null
+  getDegreeCount: null,
+
+  /**
+   * OPTIONAL: get the vertice with the max degree
+   * @return T
+   */
+  maxDegree: null
 };
