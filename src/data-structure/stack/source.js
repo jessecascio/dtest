@@ -27,5 +27,10 @@ module.exports = {
   toArray: function() {
     // stack is stored in reverse order for constant operations
     return Array.reverse(list.toArray());
+  },
+
+  // o(1)
+  reset: function() {
+    list.reset();
   }
 };

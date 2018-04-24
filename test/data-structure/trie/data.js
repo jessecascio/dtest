@@ -81,8 +81,7 @@ function reset() {
   decache(dsPath);
   ds = require(dsPath);
 
-  decache(bnPath);
-  bn = require(bnPath);
+  bn.reset();
 }
 
 function fail(o) {

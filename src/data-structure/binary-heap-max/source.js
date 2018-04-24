@@ -81,5 +81,11 @@ module.exports = {
   // o(1)
   size: function() {
     return size;
+  },
+
+  // o(1)
+  reset: function() {
+    heap = [null];
+    size = 0;
   }
 };
