@@ -8,15 +8,15 @@ const util = require('./test/util.js');
 
 // validate inputs
 if (!util.input.s || !util.input.t) {
-  console.log(chalk.red("ERROR: Both source (-s) and test (-t) are required\n"));
+  console.log(chalk.magenta("RUNTIME ERROR:"), 'Both source (-s) and test (-t) are required', '\n');
   process.exit();
 }
 if (!fs.existsSync(util.input.s) || !fs.statSync(util.input.s).isFile()) {
-  console.log(chalk.red(`FAILED to load source: '${util.input.f}' (MUST be a .js file)\n`));
+  console.log(chalk.magenta("RUNTIME ERROR:"), `FAILED to load source (${util.input.f}), MUST be a .js file`, '\n');
   process.exit();
 }
 if (!fs.existsSync(util.input.t)) {
-  console.log(chalk.red(`FAILED to find test dir: ${util.input.t}\n`));
+  console.log(chalk.magenta("RUNTIME ERROR:"), `FAILED to find test dir (${util.input.t})`, '\n');
   process.exit();
 }
 
