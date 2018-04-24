@@ -127,7 +127,7 @@ module.exports = {
   toString: function() {
     return JSON.stringify(graph);
   },
-  
+
   /**
    * BONUS POINTS
    */
