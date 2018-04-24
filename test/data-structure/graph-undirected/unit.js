@@ -223,4 +223,16 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.equal(ds.getDegreeCount(7), 1);
     });
   });
+
+  describe ("OPTIONAL: maxDegree() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.maxDegree || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+  
+    it ("should determine max degree count", () => {
+      assert.equal(ds.maxDegree(), 3);
+    });
+  });
 });

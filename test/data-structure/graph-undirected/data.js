@@ -48,7 +48,6 @@ describe ("Undirected Graph - Data Tests", function() {
         const w = Math.floor(Math.random() * (2 * N));
 
         testAdjacent(v,w);
-        testDegreeCount(v);
 
         switch (c) {
           case 0:
@@ -72,6 +71,13 @@ describe ("Undirected Graph - Data Tests", function() {
         }
         if (ds.components) {
           testComponents(v,w);
+        }
+        if (ds.getDegreeCount) {
+          testDegreeCount(v);
+          testDegreeCount(w);
+        }
+        if (ds.maxDegree) {
+          testMaxDegreeCount();
         }
       }
     }
@@ -103,6 +109,25 @@ function testDegreeCount(v) {
         ps: [v],
         bn: bn.getDegreeCount(v),
         ds: ds.getDegreeCount(v)
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testMaxDegreeCount() {
+  if (ds.maxDegree() !== bn.maxDegree()) {
+    const o = {
+      error: 'Data structure and benchmark maxDegree do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'maxDegree',
+        bn: bn.maxDegree(),
+        ds: ds.maxDegree()
       }
     }
 
