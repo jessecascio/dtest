@@ -209,4 +209,18 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.equal(ds.components(), 2);
     });
   });
+
+  describe ("OPTIONAL: getDegreeCount() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.getDegreeCount || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+  
+    it ("should determine correct degree count", () => {
+      assert.equal(ds.getDegreeCount(1), 2);
+      assert.equal(ds.getDegreeCount(5), 3);
+      assert.equal(ds.getDegreeCount(7), 1);
+    });
+  });
 });

@@ -219,22 +219,6 @@ module.exports = {
   },
 
   // o(1)
-  getVertices: function() {
-    return Object.keys(graph);
-  },
-
-  // o(v) || o(logE)
-  getEdgeCount: function() {
-    let e = new Set();
-
-    for (let v in graph) {
-      e = new Set([...e, ...graph[v]]);
-    }
-
-    return e.size;
-  },
-
-  // o(1)
   getDegreeCount: function(v) {
     if (!this.contains(v)) {
       return 0;

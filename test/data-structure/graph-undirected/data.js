@@ -25,8 +25,8 @@ describe ("Undirected Graph - Data Tests", function() {
       for (let j=0; j<N; j++) {
         const c = Math.floor(Math.random() * 3);
         
-        const v = Math.floor(Math.random() * N);
-        const w = Math.floor(Math.random() * N);
+        const v = Math.floor(Math.random() * (2 * N));
+        const w = Math.floor(Math.random() * (2 * N));
 
         ds.addVertice(v);
         ds.addVertice(w);
@@ -41,13 +41,14 @@ describe ("Undirected Graph - Data Tests", function() {
         }
       }
 
-      for (let j=0; j<N; j++) {
+      for (let j=0; j<(N*4); j++) {
         const c = Math.floor(Math.random() * 4);
 
-        const v = Math.floor(Math.random() * N);
-        const w = Math.floor(Math.random() * N);
+        const v = Math.floor(Math.random() * (2 * N));
+        const w = Math.floor(Math.random() * (2 * N));
 
         testAdjacent(v,w);
+        testDegreeCount(v);
 
         switch (c) {
           case 0:
@@ -87,6 +88,26 @@ function reset() {
   ds = require(dsPath);
 
   bn.reset();
+}
+
+function testDegreeCount(v) {
+  if (ds.getDegreeCount(v) !== bn.getDegreeCount(v)) {
+    const o = {
+      error: 'Data structure and benchmark getDegreeCount do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'getDegreeCount',
+        ps: [v],
+        bn: bn.getDegreeCount(v),
+        ds: ds.getDegreeCount(v)
+      }
+    }
+
+    fail(o);
+  }
 }
 
 function testAdjacent(v,w) {
