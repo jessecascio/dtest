@@ -1,7 +1,7 @@
 'use strict';
 
 const q = require(`${process.cwd()}/src/data-structure/queue/source`);
-const graph = {};
+let graph = {};
 
 module.exports = {
   // o(1)
@@ -21,6 +21,15 @@ module.exports = {
 
     graph[v].add(w);
     graph[w].add(v);
+  },
+
+  // o(1)
+  adjacent: function(v, w) {
+    if (!graph[v] || !graph[w] || v === w) {
+      return false;
+    }
+
+    return graph[v].has(w);
   },
 
   // o(n)
@@ -127,6 +136,12 @@ module.exports = {
   // o(1)
   toString: function() {
     return JSON.stringify(graph);
+  },
+
+  // o(1)
+  reset: function() {
+    graph = {};
+    q.reset();
   },
 
   /**

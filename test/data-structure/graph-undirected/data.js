@@ -47,6 +47,8 @@ describe ("Undirected Graph - Data Tests", function() {
         const v = Math.floor(Math.random() * N);
         const w = Math.floor(Math.random() * N);
 
+        testAdjacent(v,w);
+
         switch (c) {
           case 0:
             testSearchDepth(v,w);
@@ -84,8 +86,27 @@ function reset() {
   decache(dsPath);
   ds = require(dsPath);
 
-  decache(bnPath);
-  bn = require(bnPath);
+  bn.reset();
+}
+
+function testAdjacent(v,w) {
+  if (ds.adjacent(v,w) !== bn.adjacent(v,w)) {
+    const o = {
+      error: 'Data structure and benchmark adjacent do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'adjacent',
+        ps: [v,w],
+        bn: bn.adjacent(v,w),
+        ds: ds.adjacent(v,w)
+      }
+    }
+
+    fail(o);
+  }
 }
 
 function testComponents(v,w) {

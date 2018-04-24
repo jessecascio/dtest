@@ -83,6 +83,23 @@ describe("Undirected Graph - Unit Tests", async () => {
     });
   });
 
+  describe ("#1) adjacent() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.adjacent || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+
+    it ("should determine connection of two vertices", () => {
+      assert.isTrue(ds.adjacent(1, 2));
+      assert.isTrue(ds.adjacent(1, 3));
+      assert.isTrue(ds.adjacent(2, 4));
+
+      assert.isFalse(ds.adjacent(2, 3));
+      assert.isFalse(ds.adjacent(1, 101));
+    });
+  });
+
   describe ("#1) connected() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
       if (!ds.connected || !ds.addVertice || !ds.addEdge) {

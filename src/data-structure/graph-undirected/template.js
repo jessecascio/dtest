@@ -17,7 +17,15 @@ module.exports = {
   addEdge: null,
 
   /**
-   * determine if two vertices are connected
+   * determine if two vertices are adjacent (an edge between them)
+   * @param T
+   * @param T
+   * @return bool
+   */
+  adjacent:null,
+
+  /**
+   * determine if two vertices are connected (on the same path)
    * @param T
    * @param T
    * @return bool
