@@ -233,6 +233,12 @@ module.exports = {
     return a;
   },
 
+  // o(1)
+  reset: function() {
+    head = undefined;
+    node_count = 0;
+  },
+
   /**
    * BONUS POINTS
    */

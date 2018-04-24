@@ -1,6 +1,6 @@
 'use strict';
 
-const dc = require('decache');
+const q = require(`${process.cwd()}/src/data-structure/queue/source`);
 const graph = {};
 
 module.exports = {
@@ -84,9 +84,7 @@ module.exports = {
 
   // o(n)
   _bfs: function(v, w) {
-    dc(`${process.cwd()}/src/data-structure/queue/source`);
-    const q = require(`${process.cwd()}/src/data-structure/queue/source`);
-
+    q.reset();
     q.enqueue(v);
 
     const s = {};

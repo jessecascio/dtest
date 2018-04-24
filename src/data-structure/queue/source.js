@@ -26,5 +26,10 @@ module.exports = {
   // o(n)
   toArray: function() {
     return list.toArray();
+  },
+
+  // o(1)
+  reset: function() {
+    list.reset();
   }
 };

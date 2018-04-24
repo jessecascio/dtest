@@ -17,9 +17,9 @@ describe ("Undirected Graph - Data Tests", function() {
   this.timeout(60000);
 
   it ("graph should handle random inputs", function() {
-    const N = 25;
+    const N = 30;
 
-    for (let i=0; i<100; i++) {
+    for (let i=0; i<200; i++) {
       reset();
 
       for (let j=0; j<N; j++) {
