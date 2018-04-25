@@ -59,18 +59,17 @@ module.exports = {
    */
 
   /**
-   * OPTIONAL: get number of components (isolated graphs)
-   * @return int
+   * OPTIONAL: reverse all of the edges
    */
-  components: null,
+  reverse: null,
 
   /**
-   * OPTIONAL: get degrees of separation (distance between two vertices)
-   * @param T
-   * @param T
-   * @return int
+   * OPTIONAL: sort vertices in topological order
+   *  i.e. put the vertices in order so directed edges point from a 
+   *    vertex earlier in the order to a vertex later in the order
+   * @return Array<T>
    */
-  separation: null,
+  sort: null,
 
   /**
    * OPTIONAL: determine if there are any cycles (true for none)
@@ -92,31 +91,11 @@ module.exports = {
   getDegreeCount: null,
 
   /**
-   * OPTIONAL: get the vertice with the max degree
-   * @return T
+   * OPTIONAL: determine if two vertices are strongly connected
+   *  i.e. v is connected to w AND w is connected to v
+   * @param T
+   * @param T
+   * @return bool
    */
-  maxDegree: null,
-
-  /**
-   * OPTIONAL: reverse all of the edges
-   */
-  reverse: null,
-
-  /**
-   * OPTIONAL: return the graph as a sorted array
-   * @return Array<T>
-   */
-  sort: null,
-
-  /**
-   * OPTIONAL: return the graph in pre order
-   * @return Array<T>
-   */
-  orderPre: null,
-
-  /**
-   * OPTIONAL: return the graph in post order
-   * @return Array<T>
-   */
-  orderPost: null
+  connectedStrong: null
 };

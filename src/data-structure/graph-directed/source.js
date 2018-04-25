@@ -22,7 +22,16 @@ module.exports = {
     graph[v].add(w);
   },
 
-  // o(n)
+  // o(1)
+  adjacent: function(v, w) {
+    if (!graph[v] || !graph[w] || v === w) {
+      return false;
+    }
+
+    return graph[v].has(w);
+  },
+
+  // o(n) - dont use dfs/bfs, see p.592
   connected: function(v, w) {
     if (!this._contains(v) || !this._contains(w)) {
       return false;
@@ -153,43 +162,7 @@ module.exports = {
     graph = r;
   },
 
-  sweep: function(v) {
-    const es = this._dfs(v, null, {}, {});
-    
-    const s = [];
-
-    for (let e in graph) {
-      if (e != v && typeof es[e] === "undefined") {
-        s.push(parseInt(e));
-      }
-    }
-
-    return s;
-  },
-
-  order: function(type) {
-    if (["pre", "post"].indexOf(type) === -1) {
-      return [];
-    }
-    if (this.acylic().length) {
-      return [];
-    }
-
-    const pre = [];
-    const post = [];
-    const seen = {};
-
-    q.reset();
-
-    for (let v in graph) {
-      if (!seen[v]) {
-        this._order(parseInt(v), seen, pre, post, q);
-      }
-    }
-
-    return type == "pre" ? pre : post;
-  },
-  
+  // o(n)
   sort: function() {
     if (this.acylic().length) {
       return [];
@@ -200,7 +173,7 @@ module.exports = {
 
     for (let v in graph) {
       if (!seen[v]) {
-        this._order(parseInt(v), seen, [], [], q);
+        this._sort(parseInt(v), seen, [], [], q);
       }
     }
 
@@ -208,13 +181,13 @@ module.exports = {
   },
 
   // o(n)
-  _order: function(v, seen, pre, post, q) {
+  _sort: function(v, seen, pre, post, q) {
     seen[v] = true;
     pre.push(v); 
 
     for (let e of graph[v]) {
       if (!seen[e]) {
-        this._order(e, seen, pre, post, q);
+        this._sort(e, seen, pre, post, q);
       }
     }
 
@@ -274,6 +247,16 @@ module.exports = {
   // o(n)
   girth: function() {
   
+  },
+
+  // o(n)
+  getDegreeCount: function(v) {
+
+  },
+
+  // o(n) - use Kosaraju’s algo, p.584
+  connectedStrong: function(v,w) {
+
   },
 
   // o(1)
