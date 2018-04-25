@@ -132,6 +132,16 @@ module.exports = {
     return Array.reverse(s);
   },
 
+  // o(n)
+  preOrder: function() {
+
+  },
+
+  // o(n)
+  postOrder: function() {
+
+  },
+
   // o(1)
   toString: function() {
     return JSON.stringify(graph);

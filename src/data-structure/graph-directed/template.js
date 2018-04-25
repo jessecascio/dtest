@@ -49,6 +49,20 @@ module.exports = {
   searchBreadth: null,
 
   /**
+   * return vertices in pre order
+   *  i.e.  pre order will order vertices as they are reached in a depth first search
+   * @return Array<T>
+   */
+  preOrder: null,
+
+  /**
+   * return vertices in post order
+   *  i.e.  post order will order vertices as they are reached in a breadth first search
+   * @return Array<T>
+   */
+  postOrder: null,
+
+  /**
    * string representation of graph
    * @return string
    */
