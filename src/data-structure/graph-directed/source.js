@@ -259,7 +259,16 @@ module.exports = {
 
   // o(n)
   getDegreeCount: function(v) {
-    // @todo
+    if (!graph[v]) {
+      return 0;
+    }
+
+    let c = graph[v].size;
+    this.reverse();
+    c += graph[v].size;
+    this.reverse();
+
+    return c;
   },
 
   // o(n) - use Kosaraju’s algo, p.584

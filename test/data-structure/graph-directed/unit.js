@@ -232,7 +232,7 @@ describe("Directed Graph - Unit Tests", async () => {
     });
   });
 
-  describe.skip ("OPTIONAL: getDegreeCount() -> [ addVertice(), addEdge() ]", () => {
+  describe ("OPTIONAL: getDegreeCount() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
       if (!ds.getDegreeCount || !ds.addVertice || !ds.addEdge) {
         this.skip();
