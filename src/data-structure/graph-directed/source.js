@@ -28,10 +28,10 @@ module.exports = {
       return false;
     }
 
-    return graph[v].has(w);
+    return graph[v].has(w) || graph[w].has(v);
   },
 
-  // o(n) - dont use dfs/bfs, see p.592
+  // o(n)
   connected: function(v, w) {
     if (!this._contains(v) || !this._contains(w)) {
       return false;
@@ -130,16 +130,6 @@ module.exports = {
 
     s.push(v);
     return Array.reverse(s);
-  },
-
-  // o(n)
-  preOrder: function() {
-
-  },
-
-  // o(n)
-  postOrder: function() {
-
   },
 
   // o(1)
@@ -256,17 +246,17 @@ module.exports = {
 
   // o(n)
   girth: function() {
-  
+    // @todo
   },
 
   // o(n)
   getDegreeCount: function(v) {
-
+    // @todo
   },
 
   // o(n) - use Kosaraju’s algo, p.584
   connectedStrong: function(v,w) {
-
+    // @todo
   },
 
   // o(1)

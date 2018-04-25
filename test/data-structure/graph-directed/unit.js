@@ -79,17 +79,18 @@ describe("Directed Graph - Unit Tests", async () => {
     });
   });
 
-  describe.skip ("#1) adjacent() -> [ addVertice(), addEdge() ]", () => {
+  describe ("#1) adjacent() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
       if (!ds.adjacent || !ds.addVertice || !ds.addEdge) {
         this.skip();
       }
     });
 
-    it ("should determine connection of two vertices", () => {
+    it ("should determine adjacency of two vertices", () => {
       assert.isTrue(ds.adjacent(1, 2));
       assert.isTrue(ds.adjacent(1, 3));
       assert.isTrue(ds.adjacent(2, 4));
+      assert.isTrue(ds.adjacent(6, 4));
 
       assert.isFalse(ds.adjacent(2, 3));
       assert.isFalse(ds.adjacent(3, 2));
@@ -158,18 +159,6 @@ describe("Directed Graph - Unit Tests", async () => {
       ds.addEdge(5, 1);
 
       assert.isFalse(ds.acylic());
-    });
-  });
-
-  describe ("OPTIONAL: components() -> [ addVertice(), addEdge() ]", () => {
-    before(function() {
-      if (!ds.components || !ds.addVertice || !ds.addEdge) {
-        this.skip();
-      }
-    });
-  
-    it ("should determine correct number of components", () => {
-      assert.equal(ds.components(), 2);
     });
   });
 

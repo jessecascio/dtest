@@ -9,8 +9,6 @@ module.exports = {
     connected: joi.func().required(),
     searchDepth: joi.func().required(),
     searchBreadth: joi.func().required(),
-    preOrder: joi.func().required(),
-    postOrder: joi.func().required(),
     toString: joi.func().required()
   }).unknown()
 };

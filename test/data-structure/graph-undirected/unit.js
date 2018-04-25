@@ -90,7 +90,7 @@ describe("Undirected Graph - Unit Tests", async () => {
       }
     });
 
-    it ("should determine connection of two vertices", () => {
+    it ("should determine adjacency of two vertices", () => {
       assert.isTrue(ds.adjacent(1, 2));
       assert.isTrue(ds.adjacent(1, 3));
       assert.isTrue(ds.adjacent(2, 4));
@@ -114,6 +114,18 @@ describe("Undirected Graph - Unit Tests", async () => {
       assert.isTrue(ds.connected(4, 7));
 
       assert.isFalse(ds.connected(1, 101));
+    });
+  });
+
+  describe ("OPTIONAL: components() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.components || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+  
+    it ("should determine correct number of components", () => {
+      assert.equal(ds.components(), 2);
     });
   });
 
@@ -195,18 +207,6 @@ describe("Undirected Graph - Unit Tests", async () => {
       ds.addEdge(53, 51);
       
       assert.isTrue(ds.acylic());
-    });
-  });
-
-  describe ("OPTIONAL: components() -> [ addVertice(), addEdge() ]", () => {
-    before(function() {
-      if (!ds.components || !ds.addVertice || !ds.addEdge) {
-        this.skip();
-      }
-    });
-  
-    it ("should determine correct number of components", () => {
-      assert.equal(ds.components(), 2);
     });
   });
 
