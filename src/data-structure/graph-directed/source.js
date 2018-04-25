@@ -129,12 +129,20 @@ module.exports = {
     }
 
     s.push(v);
-    return Array.reverse(s);
+    return s.reverse();
   },
 
   // o(1)
   toString: function() {
     return JSON.stringify(graph);
+  },
+
+  // o(v)
+  fromString: function(s) {
+    g = JSON.parse(s);
+    for (let k in g) {
+      g[k] = new Set(g[k]);
+    }
   },
 
   /**
