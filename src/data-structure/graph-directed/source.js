@@ -100,7 +100,7 @@ module.exports = {
 
     const es = {};
 
-    while (!q.isEmpty()) {
+    while (q.size() > 0) {
       const i = q.dequeue();
 
       for (let e of graph[i]) {
@@ -219,12 +219,12 @@ module.exports = {
       if (!seen[ks[i]]) {
         this._acylic(ks[i], seen, callStack, edges, q);
       }
-      if (!q.isEmpty()) {
-        return q.toArray();
+      if (q.size() > 0) {
+        return false;
       }
     }
 
-    return q.toArray();
+    return q.size() > 0 ? false : true;
   },
 
   // o(n)
@@ -233,7 +233,7 @@ module.exports = {
     sn[v] = true;
 
     for (let e of graph[v]) {
-      if (!q.isEmpty()) {
+      if (q.size() > 0) {
         return;
       }
       if (!sn[e]) {
