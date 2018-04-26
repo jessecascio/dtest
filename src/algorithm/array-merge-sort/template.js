@@ -1,5 +1,5 @@
 /**
- * Merge Sort - Array
+ * Array - Merge Sort
  */
 
 module.exports = {
