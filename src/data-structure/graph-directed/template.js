@@ -64,12 +64,24 @@ module.exports = {
   reverse: null,
 
   /**
+   * OPTIONAL: sort vertices into pre order
+   * @return Array<T>
+   */
+  preOrder: null,
+
+  /**
+   * OPTIONAL: sort vertices into post order
+   * @return Array<T>
+   */
+  postOrder: null,
+
+  /**
    * OPTIONAL: sort vertices in topological order
    *  i.e. put the vertices in order so directed edges point from a 
    *    vertex earlier in the order to a vertex later in the order
    * @return Array<T>
    */
-  sort: null,
+  topoSort: null,
 
   /**
    * OPTIONAL: determine if there are any cycles (true for none)

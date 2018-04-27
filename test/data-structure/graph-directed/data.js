@@ -52,12 +52,21 @@ describe ("Directed Graph - Data Tests", function() {
         switch (c) {
           case 0:
             testSearchDepth(v,w);
+            if (ds.preOrder) {
+              testPreOrder(v);
+            }
             break;
           case 1:
             testSearchBreadth(v,w);
+            if (ds.postOrder) {
+              testPostOrder(v);
+            }
             break;
           default:
             testConnected(v,w);
+            if (ds.topoOrder) {
+              testTopoOrder(v);
+            }
         }
 
         /**
@@ -84,6 +93,69 @@ function reset() {
   ds = require(dsPath);
 
   bn.reset();
+}
+
+function testPreOrder(v) {
+  const a = ds.preOrder();
+  const b = bn.preOrder();
+  if (JSON.stringify(a) !== JSON.stringify(b)) {
+    const o = {
+      error: 'Data structure and benchmark preOrder do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'preOrder',
+        bn: a,
+        ds: b
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testPostOrder(v) {
+  const a = ds.postOrder();
+  const b = bn.postOrder();
+  if (JSON.stringify(a) !== JSON.stringify(b)) {
+    const o = {
+      error: 'Data structure and benchmark postOrder do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'postOrder',
+        bn: a,
+        ds: b
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testTopoSort(v) {
+  const a = ds.topoSort();
+  const b = bn.topoSort();
+  if (JSON.stringify(a) !== JSON.stringify(b)) {
+    const o = {
+      error: 'Data structure and benchmark topoSort do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'topoSort',
+        bn: a,
+        ds: b
+      }
+    }
+
+    fail(o);
+  }
 }
 
 function testDegreeCount(v) {

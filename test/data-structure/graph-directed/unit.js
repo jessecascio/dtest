@@ -145,17 +145,43 @@ describe("Directed Graph - Unit Tests", async () => {
     });
   });
 
-  describe ("OPTIONAL: sort() -> [ addVertice(), addEdge() ]", () => {
+  describe ("OPTIONAL: preOrder() -> [ addVertice(), addEdge(), searchDepth() ]", () => {
     before(function() {
-      if (!ds.sort || !ds.addVertice || !ds.addEdge) {
+      if (!ds.preOrder || !ds.addVertice || !ds.addEdge || !ds.searchDepth) {
         this.skip();
       }
     });
   
-    it ("should sort the graph", () => {
+    it ("should preorder the graph", () => {
+      assert.equal(JSON.stringify(ds.preOrder()), JSON.stringify([1,2,4,6,5,7,3,8,9,101,102,103]));
+    });
+  });
+
+  describe ("OPTIONAL: postOrder() -> [ addVertice(), addEdge(), searchDepth() ]", () => {
+    before(function() {
+      if (!ds.postOrder || !ds.addVertice || !ds.addEdge || !ds.searchDepth) {
+        this.skip();
+      }
+    });
+  
+    it ("should postorder the graph", () => {
+      assert.equal(JSON.stringify(ds.postOrder()), JSON.stringify([6,7,5,4,2,9,8,3,1,102,103,101]));
+    });
+  });
+
+  describe ("OPTIONAL: topoSort() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.topoSort || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+    
+    beforeEach(function() {
       decache(dsPath);
       ds = require(dsPath);
+    });
 
+    it ("should topo sort the graph", () => {
       ds.addVertice(1);
       ds.addVertice(2);
       ds.addVertice(3);
@@ -176,13 +202,28 @@ describe("Directed Graph - Unit Tests", async () => {
       ds.addEdge(3, 8);
       ds.addEdge(8, 9);
 
-      const a = ds.sort();
+      const a = ds.topoSort();
       assert.equal(a.length, 9);
       assert.isTrue(a.indexOf(1) < a.indexOf(2) && a.indexOf(1) < a.indexOf(3));
       assert.isTrue(a.indexOf(3) < a.indexOf(8) && a.indexOf(8) < a.indexOf(9));
       assert.isTrue(a.indexOf(3) < a.indexOf(8) && a.indexOf(8) < a.indexOf(9));
       assert.isTrue(a.indexOf(2) < a.indexOf(4) && a.indexOf(4) < a.indexOf(5) && a.indexOf(4) < a.indexOf(6));
       assert.isTrue(a.indexOf(5) < a.indexOf(7));
+    });
+
+    it ("should return empty array for acylic graph", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+
+      ds.addEdge(1, 2);
+      ds.addEdge(2, 3);
+      ds.addEdge(3, 4);
+      ds.addEdge(4, 1);
+
+      const a = ds.topoSort();
+      assert.equal(a.length, 0);
     });
   });
   

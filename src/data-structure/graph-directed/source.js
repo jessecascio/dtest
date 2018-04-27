@@ -171,8 +171,46 @@ module.exports = {
   },
 
   // o(n)
-  sort: function() {
-    if (this.acylic().length) {
+  preOrder: function() {
+    if (!this.acylic()) {
+      return [];
+    }
+
+    const seen = {};
+    const pre = [];
+    q.reset();
+
+    for (let v in graph) {
+      if (!seen[v]) {
+        this._sort(parseInt(v), seen, pre, [], q);
+      }
+    }
+
+    return pre;
+  },
+
+  // o(n)
+  postOrder: function() {
+    if (!this.acylic()) {
+      return [];
+    }
+
+    const seen = {};
+    const post = [];
+    q.reset();
+
+    for (let v in graph) {
+      if (!seen[v]) {
+        this._sort(parseInt(v), seen, [], post, q);
+      }
+    }
+
+    return post;
+  },
+
+  // o(n)
+  topoSort: function() {
+    if (!this.acylic()) {
       return [];
     }
 
