@@ -11,9 +11,9 @@ module.exports = {
     q.reset();
 
     const seen = {};
-    for (let v of g) {
+    for (let v in g) {
       if (!seen[v]) {
-        this._sort(g, v, seen, q);
+        this._sort(g, parseInt(v), seen, q);
       }
     }
 
@@ -54,7 +54,7 @@ module.exports = {
     callStack[v] = true;
     seen[v] = true;
 
-    for (let e of graph[v]) {
+    for (let e of g[v]) {
       if (!seen[e]) {
         pathTo[e] = v;
         let cycle = this._hasCycle(g, e, seen, callStack, pathTo);

@@ -134,7 +134,13 @@ module.exports = {
 
   // o(1)
   toString: function() {
-    return JSON.stringify(graph);
+    const g = {};
+
+    for (let v in graph) {
+      g[v] = [...graph[v]]
+    }
+    
+    return JSON.stringify(g);
   },
 
   // o(v)
