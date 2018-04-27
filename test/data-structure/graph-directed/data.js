@@ -13,7 +13,7 @@ let ds = require(dsPath);
 const bnPath = './../../../src/data-structure/graph-directed/source.js';
 let bn = require(bnPath); // benchmark
 
-describe.skip ("Directed Graph - Data Tests", function() {
+describe ("Directed Graph - Data Tests", function() {
   this.timeout(60000);
 
   it ("graph should handle random inputs", function() {
@@ -63,21 +63,11 @@ describe.skip ("Directed Graph - Data Tests", function() {
         /**
          * OPTIONAL tests
         */
-        if (ds.separation) {
-          testSeparation(v,w);
-        }
         if (ds.acylic) {
           testAcylic(v,w);
         }
-        if (ds.components) {
-          testComponents(v,w);
-        }
         if (ds.getDegreeCount) {
           testDegreeCount(v);
-          testDegreeCount(w);
-        }
-        if (ds.maxDegree) {
-          testMaxDegreeCount();
         }
       }
     }
@@ -116,25 +106,6 @@ function testDegreeCount(v) {
   }
 }
 
-function testMaxDegreeCount() {
-  if (ds.maxDegree() !== bn.maxDegree()) {
-    const o = {
-      error: 'Data structure and benchmark maxDegree do not return the same value',
-      pre: {
-        bn: bn.toString(),
-        ds: ds.toString()
-      },
-      assert: {
-        fn: 'maxDegree',
-        bn: bn.maxDegree(),
-        ds: ds.maxDegree()
-      }
-    }
-
-    fail(o);
-  }
-}
-
 function testAdjacent(v,w) {
   if (ds.adjacent(v,w) !== bn.adjacent(v,w)) {
     const o = {
@@ -148,45 +119,6 @@ function testAdjacent(v,w) {
         ps: [v,w],
         bn: bn.adjacent(v,w),
         ds: ds.adjacent(v,w)
-      }
-    }
-
-    fail(o);
-  }
-}
-
-function testComponents(v,w) {
-  if (ds.components() !== bn.components()) {
-    const o = {
-      error: 'Data structure and benchmark components do not return the same value',
-      pre: {
-        bn: bn.toString(),
-        ds: ds.toString()
-      },
-      assert: {
-        fn: 'components',
-        bn: bn.components(),
-        ds: ds.components()
-      }
-    }
-
-    fail(o);
-  }
-}
-
-function testSeparation(v,w) {
-  if (ds.separation(v,w) !== bn.separation(v,w)) {
-    const o = {
-      error: 'Data structure and benchmark separation do not return the same value',
-      pre: {
-        bn: bn.toString(),
-        ds: ds.toString()
-      },
-      assert: {
-        fn: 'separation',
-        ps: [v,w],
-        bn: bn.separation(v,w),
-        ds: ds.separation(v,w)
       }
     }
 
