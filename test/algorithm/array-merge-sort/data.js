@@ -7,10 +7,10 @@ const clone = require('clone-deep');
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../src/algorithm/merge-sort-array/source.js';
+const dsPath = util.input.s || './../../../src/algorithm/array-merge-sort/source.js';
 let ds = require(dsPath);
 
-describe("Merge Sort Array - Data Tests", function() {
+describe("Array Merge Sort - Data Tests", function() {
   this.timeout(60000);
 
   it ("should handle random inputs", function() {

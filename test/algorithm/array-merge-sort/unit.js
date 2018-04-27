@@ -6,10 +6,10 @@ const assert = require('chai').assert;
 const decache = require('decache');
 const util = require('./../../util.js');
 
-const dsPath = util.input.s || './../../../src/algorithm/merge-sort-array/source.js';
+const dsPath = util.input.s || './../../../src/algorithm/array-merge-sort/source.js';
 let ds = require(dsPath);
 
-describe("Merge Sort Array - Unit Tests", async () => {
+describe("Array Merge Sort - Unit Tests", async () => {
   beforeEach(() => {
     decache(dsPath);
     ds = require(dsPath);
