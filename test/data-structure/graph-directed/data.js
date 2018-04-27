@@ -75,9 +75,6 @@ describe ("Directed Graph - Data Tests", function() {
         if (ds.acylic) {
           testAcylic(v,w);
         }
-        if (ds.getDegreeCount) {
-          testDegreeCount(v);
-        }
       }
     }
   });
@@ -151,26 +148,6 @@ function testTopoSort(v) {
         fn: 'topoSort',
         bn: a,
         ds: b
-      }
-    }
-
-    fail(o);
-  }
-}
-
-function testDegreeCount(v) {
-  if (ds.getDegreeCount(v) !== bn.getDegreeCount(v)) {
-    const o = {
-      error: 'Data structure and benchmark getDegreeCount do not return the same value',
-      pre: {
-        bn: bn.toString(),
-        ds: ds.toString()
-      },
-      assert: {
-        fn: 'getDegreeCount',
-        ps: [v],
-        bn: bn.getDegreeCount(v),
-        ds: ds.getDegreeCount(v)
       }
     }
 

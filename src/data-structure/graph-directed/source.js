@@ -291,21 +291,7 @@ module.exports = {
   },
 
   // o(n)
-  getDegreeCount: function(v) {
-    if (!graph[v]) {
-      return 0;
-    }
-
-    let c = graph[v].size;
-    this.reverse();
-    c += graph[v].size;
-    this.reverse();
-
-    return c;
-  },
-
-  // o(n) - use Kosaraju’s algo, p.584
-  connectedStrong: function(v,w) {
+  strongComponents: function(v,w) {
     // @todo
   },
 

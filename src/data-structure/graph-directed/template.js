@@ -90,18 +90,9 @@ module.exports = {
   acylic: null,
 
   /**
-   * OPTIONAL: get the degree count to a vertice (edge count)
-   * @param T
+   * OPTIONAL: determine the number of strong components
+   *  i.e. how many groups of strongly connected vertices exist
    * @return int
    */
-  getDegreeCount: null,
-
-  /**
-   * OPTIONAL: determine if two vertices are strongly connected
-   *  i.e. v is connected to w AND w is connected to v
-   * @param T
-   * @param T
-   * @return bool
-   */
-  connectedStrong: null
+  strongComponents: null
 };
