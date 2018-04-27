@@ -222,7 +222,7 @@ module.exports = {
       }
     }
 
-    return q.size() > 0 ? false : true;
+    return !(q.size() > 0);
   },
 
   // o(n)

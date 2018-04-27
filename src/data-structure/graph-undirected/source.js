@@ -193,12 +193,12 @@ module.exports = {
         acylic = this._acylic(ks[i], ks[i], seen);
 
         if (acylic) {
-          return acylic;
+          return true;
         }
       }
     }
 
-    return acylic;
+    return false;
   },
 
   // o(n)
