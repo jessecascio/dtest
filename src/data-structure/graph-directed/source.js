@@ -253,11 +253,6 @@ module.exports = {
   },
 
   // o(n)
-  girth: function() {
-    // @todo
-  },
-
-  // o(n)
   getDegreeCount: function(v) {
     if (!graph[v]) {
       return 0;

@@ -78,12 +78,6 @@ module.exports = {
   acylic: null,
 
   /**
-   * OPTIONAL: length of the shortest cycle
-   * @return int
-   */
-  girth: null,
-
-  /**
    * OPTIONAL: get the degree count to a vertice (edge count)
    * @param T
    * @return int
