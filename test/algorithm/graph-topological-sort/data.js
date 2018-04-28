@@ -67,7 +67,7 @@ function testSort() {
   const a = ds.sort(clone(g));
   const b = ds.sort(clone(g));
 
-  if (JSON.stringify(a) === JSON.stringify(b)) {
+  if (JSON.stringify(a) !== JSON.stringify(b)) {
     const o = {
       error: 'Data structure and benchmark data do not match',
       pre: {
