@@ -290,13 +290,13 @@ module.exports = {
 
   // o(n)
   strongComponents: function(v,w) {
-    this.reverse();
-    
     const sn = {};
     const id = {};
     let components = 0;
     
-    const d = this.postOrder();
+    const d = this.postOrder().reverse();
+    this.reverse();
+    
     for (let i=0; i<d.length; i++) {
       if (!sn[d[i]]) {
         components++;
@@ -305,7 +305,6 @@ module.exports = {
     }
 
     this.reverse();
-
     return components;
   },
 
