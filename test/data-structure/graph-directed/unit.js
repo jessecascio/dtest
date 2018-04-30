@@ -227,6 +227,71 @@ describe("Directed Graph - Unit Tests", async () => {
     });
   });
   
+  describe ("OPTIONAL: strongComponents() -> [ addVertice(), addEdge() ]", () => {
+    before(function() {
+      if (!ds.strongComponents || !ds.addVertice || !ds.addEdge) {
+        this.skip();
+      }
+    });
+    
+    beforeEach(function() {
+      decache(dsPath);
+      ds = require(dsPath);
+    });
+
+    it ("should count each vertice as a strong component", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+
+      ds.addEdge(1, 2);
+      ds.addEdge(1, 3);
+      ds.addEdge(2, 4);
+      ds.addEdge(3, 5);
+      ds.addEdge(4, 5);
+
+      assert.equal(ds.strongComponents(), 5);
+    });
+
+    it ("should find a single strong component", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+
+      ds.addEdge(1, 2);
+      ds.addEdge(1, 3);
+      ds.addEdge(2, 4);
+      ds.addEdge(3, 5);
+      ds.addEdge(4, 5);
+      ds.addEdge(5, 4);
+
+      assert.equal(ds.strongComponents(), 4);
+    });
+
+    it ("should find multiple strong components", () => {
+      ds.addVertice(1);
+      ds.addVertice(2);
+      ds.addVertice(3);
+      ds.addVertice(4);
+      ds.addVertice(5);
+
+      ds.addEdge(1, 2);
+      ds.addEdge(1, 3);
+      ds.addEdge(2, 4);
+      ds.addEdge(3, 5);
+      ds.addEdge(4, 5);
+      ds.addEdge(5, 4);
+      ds.addEdge(2, 3);
+      ds.addEdge(3, 1);
+
+      assert.equal(ds.strongComponents(), 2);
+    });
+  });
+
   describe ("OPTIONAL: acylic() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
       if (!ds.acylic || !ds.addVertice || !ds.addEdge) {

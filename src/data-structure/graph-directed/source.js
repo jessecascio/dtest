@@ -178,10 +178,6 @@ module.exports = {
 
   // o(n)
   preOrder: function() {
-    if (!this.acylic()) {
-      return [];
-    }
-
     const seen = {};
     const pre = [];
     q.reset();
@@ -197,10 +193,6 @@ module.exports = {
 
   // o(n)
   postOrder: function() {
-    if (!this.acylic()) {
-      return [];
-    }
-
     const seen = {};
     const post = [];
     q.reset();
@@ -298,7 +290,34 @@ module.exports = {
 
   // o(n)
   strongComponents: function(v,w) {
-    // @todo
+    this.reverse();
+    
+    const sn = {};
+    const id = {};
+    let components = 0;
+    
+    const d = this.postOrder();
+    for (let i=0; i<d.length; i++) {
+      if (!sn[d[i]]) {
+        components++;
+        this._strongComponents(d[i], sn, id, components);
+      }
+    }
+
+    this.reverse();
+
+    return components;
+  },
+
+  _strongComponents: function(i, sn, id, components) {
+    sn[i] = true;
+    id[i] = components;
+
+    for (let j of graph[i]) {
+      if (!sn[j]) {
+        this._strongComponents(j, sn, id, components);
+      }
+    }
   },
 
   // o(1)

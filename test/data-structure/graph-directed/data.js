@@ -42,7 +42,7 @@ describe ("Directed Graph - Data Tests", function() {
       }
 
       for (let j=0; j<(N*4); j++) {
-        const c = Math.floor(Math.random() * 4);
+        const c = Math.floor(Math.random() * 5);
 
         const v = Math.floor(Math.random() * (2 * N));
         const w = Math.floor(Math.random() * (2 * N));
@@ -62,6 +62,11 @@ describe ("Directed Graph - Data Tests", function() {
               testPostOrder(v);
             }
             break;
+          case 2:
+            if (ds.strongComponents) {
+              testStrongComponents();
+            }
+            break;
           default:
             testConnected(v,w);
             if (ds.topoOrder) {
@@ -75,6 +80,7 @@ describe ("Directed Graph - Data Tests", function() {
         if (ds.acylic) {
           testAcylic(v,w);
         }
+        
       }
     }
   });
@@ -254,6 +260,25 @@ function testSearchBreadth(v,w) {
         ps: [v,w],
         bn: bn.searchBreadth(v,w),
         ds: ds.searchBreadth(v,w)
+      }
+    }
+
+    fail(o);
+  }
+}
+
+function testStrongComponents() {
+  if (ds.strongComponents() !== bn.strongComponents()) {
+    const o = {
+      error: 'Data structure and benchmark strongComponents do not return the same value',
+      pre: {
+        bn: bn.toString(),
+        ds: ds.toString()
+      },
+      assert: {
+        fn: 'strongComponents',
+        bn: bn.strongComponents(),
+        ds: ds.strongComponents()
       }
     }
 
