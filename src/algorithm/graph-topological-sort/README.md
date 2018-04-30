@@ -1,6 +1,6 @@
 ## Overview
 
-**NOTE:** There are typically several different correct orderings for topo sort, so the random data tests for this algorithm may not always pass even for a correct implementation.
+**NOTE:** *There are typically several different correct orderings for topo sort, so the random data tests for this algorithm may not always pass even for a correct implementation.*
 
 Topological sorting for a directed acyclic graph is a linear ordering of vertices such that for every directed edge u -> v, vertex u comes before v in the ordering.  In general, topological sorting will not provide a solution for directed graphs with cycles due to the occurence of uncompletable dependencies which leads to deadlocks in precedence ordering.
 
