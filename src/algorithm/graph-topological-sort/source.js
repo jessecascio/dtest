@@ -68,5 +68,5 @@ module.exports = {
 
     callStack[v] = false; 
     return false;
-  },
+  }
 };

@@ -10,7 +10,7 @@ const util = require('./../../util.js');
 const dsPath = util.input.s || './../../../src/algorithm/graph-topological-sort/source.js';
 let ds = require(dsPath);
 
-const bnPath = './../../../src/data-structure/graph-directed/source.js';
+const bnPath = './../../../src/algorithm/graph-topological-sort/source.js';
 let bn = require(bnPath); // benchmark
 
 const gPath = './../../../src/data-structure/graph-directed/source.js';
@@ -53,6 +53,9 @@ function reset() {
   decache(dsPath);
   ds = require(dsPath);
 
+  decache(bnPath);
+  bn = require(bnPath);
+
   graph.reset();
 }
 
@@ -65,7 +68,7 @@ function testSort() {
   let g = JSON.parse(graph.toString());
 
   const a = ds.sort(clone(g));
-  const b = ds.sort(clone(g));
+  const b = bn.sort(clone(g));
 
   if (JSON.stringify(a) !== JSON.stringify(b)) {
     const o = {
@@ -75,8 +78,8 @@ function testSort() {
       },
       assert: {
         fn: 'sort',
-        bn: a,
-        ds: b
+        bn: b,
+        ds: a
       }
     }
 
