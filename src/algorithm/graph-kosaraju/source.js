@@ -1,7 +1,5 @@
 'use strict';
 
-const q = require(`${process.cwd()}/src/data-structure/queue/source`);
-
 module.exports = {
   // o (v+e)
   components: function(g) {
