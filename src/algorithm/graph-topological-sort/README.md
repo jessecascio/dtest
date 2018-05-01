@@ -8,7 +8,7 @@ Topological sorting can be used with applications such as dependency orchestrati
 
 ## Implementation
 
-Implementing a topo sort is simply reversing the post order.  Post order is pushing a vertice onto a stack after all of it’s edges have been explored.  Alternatively, instead of revering the post order stack, you could store the vertices in a queue and simply return an array representation of the queue.
+Implementing a topological sort on an acylic directed graph is simply reversing the post order.  Post order is created by pushing a vertice onto a stack after all of its edges have been explored.  Alternatively, instead of revering the post order stack, you could store the vertices in a queue and simply return an array representation of the queue.
 
 #### Additional Resources
 
