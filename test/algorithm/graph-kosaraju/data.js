@@ -78,8 +78,8 @@ function testKosaraju() {
       },
       assert: {
         fn: 'components',
-        bn: a,
-        ds: b
+        bn: b,
+        ds: a
       }
     }
 
