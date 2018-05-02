@@ -50,7 +50,7 @@ module.exports = {
       c++;
     }
 
-    if (heap[c] > heap[i]) {
+    if (this._compare(heap[c], heap[i])) {
       this._swap(i, c);
       this._sink(c);
     }
