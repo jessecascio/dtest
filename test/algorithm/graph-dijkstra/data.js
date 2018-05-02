@@ -54,10 +54,10 @@ function testAlgorithm(g,v,w) {
 }
 
 function graph() {
-  // const c = Math.floor(Math.random() * 6);
   const N = 25;
   const g = {};
   const wts = [];
+  
   for (let i=1; i<=N; i++) {
     g[i] = [];
 
