@@ -28,7 +28,7 @@ module.exports = {
   pathTo: function(g,s,t) {
     this._setGraph(g);
     if (!graph[s] || !graph[t]) {
-      return -1;
+      return [];
     }
     if (!paths[s]) {
       this._buildPaths(s);

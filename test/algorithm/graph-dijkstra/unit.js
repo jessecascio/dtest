@@ -60,4 +60,54 @@ describe("Graph Dijkstra - Unit Tests", async () => {
       assert.equal(ds.distTo(graph,'e','a'), 9);
     });
   });
+
+  describe("pathTo()", () => {
+    before(function() {
+      if (!ds.pathTo) {
+        this.skip();
+      }
+    });
+
+    let graph;
+    before(function() {
+      decache(dsPath);
+      ds = require(dsPath);
+
+      graph = {
+        'a': [['b',7],['c',3]],
+        'b': [['a',7],['c',1],['d',2],['e',6]],
+        'c': [['a',3],['b',1],['d',2]],
+        'd': [['b',2],['c',2],['e',4]],
+        'e': [['b',6],['d',4]]
+      };
+    });
+
+    it ("should return path for same source and destination", () => {
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','a')), JSON.stringify(['a']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'e','e')), JSON.stringify(['e']));
+    });
+
+    it ("should return an empty array for non existant paths", () => {
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','f')), JSON.stringify([]));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'f','e')), JSON.stringify([]));
+    });
+
+    it ("should find the shortest path to all vertices from same source", () => {
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','b')), JSON.stringify(['a','c','b']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','c')), JSON.stringify(['a','c']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','d')), JSON.stringify(['a','c','d']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'a','e')), JSON.stringify(['a','c','d','e']));
+    });
+
+    it ("should find the shortest path from various sources", () => {
+      assert.equal(JSON.stringify(ds.pathTo(graph,'b','a')), JSON.stringify(['b','c','a']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'b','d')), JSON.stringify(['b','d']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'b','e')), JSON.stringify(['b','e']));
+
+      assert.equal(JSON.stringify(ds.pathTo(graph,'c','e')), JSON.stringify(['c','d','e']));
+
+      assert.equal(JSON.stringify(ds.pathTo(graph,'e','c')), JSON.stringify(['e','d','c']));
+      assert.equal(JSON.stringify(ds.pathTo(graph,'e','a')), JSON.stringify(['e','d','c','a']));
+    });
+  });
 });
