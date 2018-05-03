@@ -9,6 +9,16 @@ let graph;
 
 module.exports = {
   size: function(g) {
+    const o = this._prim(g);
+    return o.size;
+  },
+
+  pathTo: function(g) {
+    const o = this._prim(g);
+    return o.path;
+  },
+
+  _prim: function(g) {
     graph = g;
 
     const sn = {};
@@ -27,28 +37,7 @@ module.exports = {
       size += this._pathTo(path, pq, sn);
     }
 
-    return size;
-  },
-
-  pathTo: function(g) {
-    graph = g;
-
-    const sn = {};
-    const path = [];
-
-    let k;
-    for (k in graph) {
-      sn[k] = false;
-    }
-
-    pq.reset();
-    pq.insert({v:k,w:0});
-
-    while (pq.size()) {
-      this._pathTo(path, pq, sn);
-    }
-
-    return path;
+    return { size, path };
   },
 
   _pathTo: function(path, pq, sn) {
