@@ -2,7 +2,7 @@
 
 Dijkstra's algorithm can be used to determine the shortest path from one node in a graph to every other node within the same graph data structure, provided that the nodes are reachable from the starting node.  The algorithm can be run until every vertice has been visited, thereafter providing constant time lookups for shortest paths.
 
-**NOTE:** Dijkstra's algorithm is not designed to work with negative weighting.
+***NOTE:** Dijkstra's algorithm is not designed to work with negative weighting.*
 
 ## Implementation
 
