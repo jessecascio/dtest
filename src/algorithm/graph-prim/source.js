@@ -13,7 +13,7 @@ module.exports = {
     return o.size;
   },
 
-  pathTo: function(g) {
+  mst: function(g) {
     const o = this._prim(g);
     return o.path;
   },

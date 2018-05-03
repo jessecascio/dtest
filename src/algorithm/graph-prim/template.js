@@ -15,5 +15,5 @@ module.exports = {
    * @param Object (graph representation) - { a:[['a',2],['c',3]], b:[['a',3]], c:[[]]}
    * @return Array<T>
    */
-  pathTo: null
+  mst: null
 };
