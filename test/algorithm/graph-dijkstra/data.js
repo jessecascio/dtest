@@ -25,15 +25,15 @@ describe ("Graph Dijkstra - Data Tests", function() {
         const v = Math.floor(Math.random() * 25) + 2;
         const w = Math.floor(Math.random() * 25) + 1;
 
-        testAlgorithm(g,v,w);
+        testDistTo(g,v,w);
       }
     }
   });
 });
 
-function testAlgorithm(g,v,w) {    
-  const a = ds.pathTo(clone(g),v,w);
-  const b = bn.pathTo(clone(g),v,w);
+function testDistTo(g,v,w) {    
+  const a = ds.distTo(clone(g),v,w);
+  const b = bn.distTo(clone(g),v,w);
 
   if (a !== b) {
     const o = {
@@ -42,7 +42,7 @@ function testAlgorithm(g,v,w) {
         bn: g
       },
       assert: {
-        fn: 'pathTo',
+        fn: 'distTo',
         ps: [v,w],
         bn: b,
         ds: a

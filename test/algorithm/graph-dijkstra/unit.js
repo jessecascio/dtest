@@ -11,9 +11,9 @@ let ds = require(dsPath);
 
 describe("Graph Dijkstra - Unit Tests", async () => {
 
-  describe("pathTo()", () => {
+  describe("distTo()", () => {
     before(function() {
-      if (!ds.pathTo) {
+      if (!ds.distTo) {
         this.skip();
       }
     });
@@ -33,31 +33,31 @@ describe("Graph Dijkstra - Unit Tests", async () => {
     });
 
     it ("should return 0 for same source and destination", () => {
-      assert.equal(ds.pathTo(graph,'a','a'), 0);
-      assert.equal(ds.pathTo(graph,'e','e'), 0);
+      assert.equal(ds.distTo(graph,'a','a'), 0);
+      assert.equal(ds.distTo(graph,'e','e'), 0);
     });
 
     it ("should return -1 for non existant paths", () => {
-      assert.equal(ds.pathTo(graph,'a','f'), -1);
-      assert.equal(ds.pathTo(graph,'f','e'), -1);
+      assert.equal(ds.distTo(graph,'a','f'), -1);
+      assert.equal(ds.distTo(graph,'f','e'), -1);
     });
 
     it ("should find the shortest path to all vertices from same source", () => {
-      assert.equal(ds.pathTo(graph,'a','b'), 4);
-      assert.equal(ds.pathTo(graph,'a','c'), 3);
-      assert.equal(ds.pathTo(graph,'a','d'), 5);
-      assert.equal(ds.pathTo(graph,'a','e'), 9);
+      assert.equal(ds.distTo(graph,'a','b'), 4);
+      assert.equal(ds.distTo(graph,'a','c'), 3);
+      assert.equal(ds.distTo(graph,'a','d'), 5);
+      assert.equal(ds.distTo(graph,'a','e'), 9);
     });
 
     it ("should find the shortest path from various sources", () => {
-      assert.equal(ds.pathTo(graph,'b','a'), 4);
-      assert.equal(ds.pathTo(graph,'b','d'), 2);
-      assert.equal(ds.pathTo(graph,'b','e'), 6);
+      assert.equal(ds.distTo(graph,'b','a'), 4);
+      assert.equal(ds.distTo(graph,'b','d'), 2);
+      assert.equal(ds.distTo(graph,'b','e'), 6);
 
-      assert.equal(ds.pathTo(graph,'c','e'), 6);
+      assert.equal(ds.distTo(graph,'c','e'), 6);
       
-      assert.equal(ds.pathTo(graph,'e','c'), 6);
-      assert.equal(ds.pathTo(graph,'e','a'), 9);
+      assert.equal(ds.distTo(graph,'e','c'), 6);
+      assert.equal(ds.distTo(graph,'e','a'), 9);
     });
   });
 });
