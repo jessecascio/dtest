@@ -72,9 +72,10 @@ module.exports = {
 
       if (!paths[s][v]) {
         paths[s][v] = {};
-        paths[s][v].w = w + paths[s][p.v].w;
-        paths[s][v].p = p.v;
-      } else if (paths[s][v].w > w + paths[s][p.v].w) {
+        paths[s][v].w = -1;
+      }
+
+      if (paths[s][v].w === -1 || paths[s][v].w > w + paths[s][p.v].w) {
         paths[s][v].w = w + paths[s][p.v].w;
         paths[s][v].p = p.v;
       }
