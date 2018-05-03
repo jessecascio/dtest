@@ -6,7 +6,8 @@ q._compare = function(i,j) {
   return i.w < j.w;
 };
 
-let paths, lock, graph;
+let paths = {};
+let lock, graph;
 
 module.exports = {
   // o(e logv)
@@ -41,23 +42,27 @@ module.exports = {
   
   _pathTo: function(s, q, sn) {
     const p = q.remove();
+    if (sn[p.v]) {
+      return;
+    }
+
     sn[p.v] = true;
 
     for (let e of graph[p.v]) {
       const v = e[0];
       const w = e[1];
 
-      if (sn[v]) {
-        continue;
-      }
-
       if (!paths[s][v]) {
         paths[s][v] = {};
         paths[s][v].w = w + paths[s][p.v].w;
-        paths[s][v].p = p;
+        paths[s][v].p = p.v;
       } else if (paths[s][v].w > w + paths[s][p.v].w) {
         paths[s][v].w = w + paths[s][p.v].w;
-        paths[s][v].p = p;
+        paths[s][v].p = p.v;
+      }
+
+      if (sn[v]) {
+        continue;
       }
 
       q.insert({v,w:paths[s][v].w});
