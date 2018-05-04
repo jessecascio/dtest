@@ -21,4 +21,5 @@ An eager, more efficient, approach would be to invalidate all vertices in the pr
 #### Additional Resources
 
 * https://brilliant.org/wiki/spanning-trees/
+* https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/
 * https://www.geeksforgeeks.org/greedy-algorithms-set-5-prims-minimum-spanning-tree-mst-2/
