@@ -48,7 +48,7 @@ module.exports = {
     }
 
     sn[n.v] = true;
-    path.push(n.v);
+    path.push(n.v.toString());
 
     for (let e of graph[n.v]) {
       if (!sn[e[0]]) {

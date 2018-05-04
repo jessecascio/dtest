@@ -13,7 +13,7 @@ let ds = require(dsPath);
 const bnPath = './../../../src/algorithm/graph-prim/source.js';
 let bn = require(bnPath); // benchmark
 
-const N = 25;
+const N = 20;
 
 describe ("Graph Prim - Data Tests", function() {
   this.timeout(60000);
@@ -72,27 +72,36 @@ function testMst(g) {
 
 function graph() {
   const g = {};
+  const paths = {};
   const wts = [];
   
   for (let i=1; i<=N; i++) {
-    g[i] = [];
+    if (!g[i]) {
+      g[i] = [];
+    }
+    if (!paths[i]) {
+      paths[i] = [];
+    }
+    
+    for (let j=i+1; j<=N; j++) {
+      if (!g[j]) {
+        g[j] = [];
+      }
+      if (!paths[j]) {
+        paths[j] = [];
+      }
 
-    const r = Math.floor(Math.random() * 10) + 1;
-    const dp = [];
-
-    for (let k=0; k<r; k++) {
-      let w = Math.floor(Math.random() * 500);
+      let w = Math.floor(Math.random() * (N * 10)) + 1;
       while (wts.indexOf(w) !== -1) {
-        w = Math.floor(Math.random() * 500); 
+        w = Math.floor(Math.random() * (N * 10)) + 1; 
       }
 
-      const j = Math.floor(Math.random() * N) + 1;
-      if (dp.indexOf(j) === -1) {
-        g[i].push([j,w])
-        dp.push(j);
+      if (paths[j].indexOf(i) === -1) {
+        g[i].push([j,w]);
+        g[j].push([i,w]);
+        paths[i].push(j);
+        wts.push(w);
       }
-      
-      wts.push(w);
     }
   }
 
