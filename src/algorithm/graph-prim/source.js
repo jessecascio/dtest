@@ -34,28 +34,24 @@ module.exports = {
 
     let size = 0;
     while (pq.size()) {
-      size += this._pathTo(path, pq, sn);
+      const n = pq.remove();
+
+      if (sn[n.v]) {
+        continue;
+      }
+
+      sn[n.v] = true;
+      path.push(n.v.toString());
+
+      for (let e of graph[n.v]) {
+        if (!sn[e[0]]) {
+          pq.insert({v:e[0], w:e[1]});
+        }
+      }
+
+      size += n.w;
     }
 
     return { size, path };
-  },
-
-  _pathTo: function(path, pq, sn) {
-    const n = pq.remove();
-
-    if (sn[n.v]) {
-      return 0;
-    }
-
-    sn[n.v] = true;
-    path.push(n.v.toString());
-
-    for (let e of graph[n.v]) {
-      if (!sn[e[0]]) {
-        pq.insert({v:e[0], w:e[1]});
-      }
-    }
-
-    return n.w;
   }
 };
