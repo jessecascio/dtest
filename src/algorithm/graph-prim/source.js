@@ -8,11 +8,13 @@ pq._compare = function(i,j) {
 let graph;
 
 module.exports = {
+  // o(elog(e))
   size: function(g) {
     const o = this._prim(g);
     return o.size;
   },
 
+  // o(elog(e))
   mst: function(g) {
     const o = this._prim(g);
     return o.path;

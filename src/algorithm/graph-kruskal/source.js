@@ -7,11 +7,13 @@ pq._compare = function(i,j) {
 };
 
 module.exports = {
+  // o(elog(e))
   size: function(g) {
     const o = this._kruskal(g);
     return o.size;
   },
 
+  // o(elog(e))
   mst: function(g) {
     const o = this._kruskal(g);
     return o.mst;
