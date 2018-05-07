@@ -54,37 +54,32 @@ module.exports = {
 
     const seen = {};
     while (pq.size()) {
-      this._pathTo(s, pq, seen);
-    }
-  },
-
-  _pathTo: function(s, pq, sn) {
-    const p = pq.remove();
-    if (sn[p.v]) {
-      return;
-    }
-
-    sn[p.v] = true;
-
-    for (let e of graph[p.v]) {
-      const v = e[0];
-      const w = e[1];
-
-      if (!paths[s][v]) {
-        paths[s][v] = {};
-        paths[s][v].w = -1;
-      }
-
-      if (paths[s][v].w === -1 || paths[s][v].w > w + paths[s][p.v].w) {
-        paths[s][v].w = w + paths[s][p.v].w;
-        paths[s][v].p = p.v;
-      }
-
-      if (sn[v]) {
+      const p = pq.remove();
+      if (seen[p.v]) {
         continue;
       }
 
-      pq.insert({v,w:paths[s][v].w});
+      seen[p.v] = true;
+
+      for (let e of graph[p.v]) {
+        const v = e[0];
+        const w = e[1];
+
+        if (!paths[s][v]) {
+          paths[s][v] = {};
+          paths[s][v].w = -1;
+        }
+        if (paths[s][v].w === -1 || paths[s][v].w > w + paths[s][p.v].w) {
+          paths[s][v].w = w + paths[s][p.v].w;
+          paths[s][v].p = p.v;
+        }
+
+        if (seen[v]) {
+          continue;
+        }
+
+        pq.insert({v,w:paths[s][v].w});
+      }
     }
   },
 
