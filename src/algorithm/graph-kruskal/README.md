@@ -1,8 +1,8 @@
 ## Overview
 
-A spanning tree of a graph is a connected subgraph with no cycles that connects all vertices.  A minimum spanning tree of a weighted graph, is a spanning tree whose weight is no larger than the weight of any other spanning tree.  
+A spanning tree of a graph is a connected subgraph with no cycles that connects all vertices.  A minimum spanning tree (MST) of a weighted graph, is a spanning tree whose weight is no larger than the weight of any other spanning tree.  
 
-Kruskal’s algorithm is a greedy algorithm for determining the minimum spanning true of an undirected graph.  Opposed to adding vertice’s too the MST, like Prim’s algorithm does, Kruskal’s algorithm analysis all of the available edges and edges the next lowest edge to the MST.    
+Kruskal’s algorithm is a greedy algorithm for determining the minimum spanning true of an undirected graph.  Opposed to adding vertice’s too the MST, like Prim’s algorithm does, Kruskal’s algorithm analysis all of the available edges and adds the next lowest edge to the MST.    
 
 ## Implementation
 
