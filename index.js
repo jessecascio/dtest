@@ -129,7 +129,7 @@ function runOtherTests() {
   } catch (e) {
     // ignore unit test fails
     if (isNaN(parseInt(e))) {
-      console.log(chalk.magenta("RUNTIME ERROR:"), e.message, '\n');
+      console.log(chalk.magenta("RUNTIME ERROR:"), e.stack, '\n');
     }
     process.exit();
   }
