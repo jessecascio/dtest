@@ -1,6 +1,6 @@
 ## Overview
 
-A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component of a directed graph is a component where every vertex is strongly connected to one another.another task can start.  Determining strongly connected components in a directed graph can be beneficial for grouping vertices and determining relationships between the groups of vertices.  Also, by determining strongly connected components one can make a graph acylic by treating the grouped vertices as a single vertice in a graph.
+A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component of a directed graph is a component where every vertex is strongly connected to one another.  Determining strongly connected components in a directed graph can be beneficial for grouping vertices and determining relationships between the groups of vertices.  Also, by determining strongly connected components one can make a graph acylic by treating the grouped vertices as a single vertice in a graph.
 
 By using Kosaraju’s algorithm we can determine how many (or actual paths) of all of the strongly connected components in a graph in O(e+v) time and O(v) space.
 
