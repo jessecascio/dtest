@@ -236,7 +236,7 @@ function testConnected(v,w) {
 
 function testSearchDepth(v,w) {
   const dsl = ds.searchDepth(v,w).length;
-  const bsl = ds.searchDepth(v,w).length;
+  const bsl = bn.searchDepth(v,w).length;
 
   if ((dsl === 0 && bsl > 0) || (dsl > 0 && bsl === 0)) {
     const o = {
@@ -259,7 +259,7 @@ function testSearchDepth(v,w) {
 
 function testSearchBreadth(v,w) {
   const dsl = ds.searchBreadth(v,w).length;
-  const bsl = ds.searchBreadth(v,w).length;
+  const bsl = bn.searchBreadth(v,w).length;
 
   if ((dsl === 0 && bsl > 0) || (dsl > 0 && bsl === 0)) {
     const o = {
