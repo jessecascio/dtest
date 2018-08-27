@@ -2,7 +2,7 @@
 
 A spanning tree of a graph is a connected subgraph with no cycles that connects all vertices.  A minimum spanning tree of a weighted graph, is a spanning tree whose weight is no larger than the weight of any other spanning tree.  
 
-Prim’s algorithm is a greedy algorithm for determining the minimum spanning true of an undirected graph.  From a given vertice, determine all of the smallest edges so that we are always processing the next smallest edge as possible.    
+Prim’s algorithm is a greedy algorithm for determining the minimum spanning tree of an undirected graph.  From a given vertice, determine all of the smallest edges so that we are always processing the next smallest edge as possible.    
 
 ## Implementation
 
