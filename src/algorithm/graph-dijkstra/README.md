@@ -1,8 +1,8 @@
 ## Overview
 
-Dijkstra's algorithm can be used to determine the shortest path from one node in a graph to every other node within the same graph data structure, provided that the nodes are reachable from the starting node.  The algorithm can be run until every vertice has been visited, thereafter providing constant time lookups for shortest paths.
+Dijkstra's algorithm can be used to determine the shortest path from one node in a graph to every other node within the same graph data structure, provided that the nodes are reachable from the starting node.  The algorithm can be run until every vertice has been visited, thereafter providing constant time lookups for shortest paths.  For a directed acyclic graph, simply doing a topological sort and adding up the weights is a more efficient approach than Dijkstra's algorithm.
 
-***NOTE:** Dijkstra's algorithm is not designed to work with negative weighting.*
+***NOTE:** Dijkstra's algorithm is not designed to work with negative weighting.*  See the Bellman-Ford algorithm for finding shortest path in a graph with negative weighting.
 
 ## Implementation
 
