@@ -171,7 +171,7 @@ describe("Directed Graph - Unit Tests", async () => {
 
   describe ("OPTIONAL: topoSort() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
-      if (!ds.topoSort || !ds.addVertice || !ds.addEdge) {
+      if (!ds.topoSort || !ds.addVertice || !ds.addEdge || !ds.acyclic) {
         this.skip();
       }
     });
@@ -211,7 +211,7 @@ describe("Directed Graph - Unit Tests", async () => {
       assert.isTrue(a.indexOf(5) < a.indexOf(7));
     });
 
-    it ("should return empty array for acylic graph", () => {
+    it ("should return empty array for acyclic graph", () => {
       ds.addVertice(1);
       ds.addVertice(2);
       ds.addVertice(3);
@@ -292,9 +292,9 @@ describe("Directed Graph - Unit Tests", async () => {
     });
   });
 
-  describe ("OPTIONAL: acylic() -> [ addVertice(), addEdge() ]", () => {
+  describe ("OPTIONAL: acyclic() -> [ addVertice(), addEdge() ]", () => {
     before(function() {
-      if (!ds.acylic || !ds.addVertice || !ds.addEdge) {
+      if (!ds.acyclic || !ds.addVertice || !ds.addEdge) {
         this.skip();
       }
     });
@@ -304,7 +304,7 @@ describe("Directed Graph - Unit Tests", async () => {
       ds = require(dsPath);
     });
   
-    it ("should determine if acylic", () => {
+    it ("should determine if acyclic", () => {
       ds.addVertice(1);
       ds.addVertice(2);
       ds.addVertice(3);
@@ -317,10 +317,10 @@ describe("Directed Graph - Unit Tests", async () => {
       ds.addEdge(1, 5);
       ds.addEdge(5, 3);
 
-      assert.isTrue(ds.acylic());
+      assert.isTrue(ds.acyclic());
     });
 
-    it ("should determine if not acylic", () => {
+    it ("should determine if not acyclic", () => {
       ds.addVertice(1);
       ds.addVertice(2);
       ds.addVertice(3);
@@ -334,7 +334,7 @@ describe("Directed Graph - Unit Tests", async () => {
       ds.addEdge(1, 5);
       ds.addEdge(5, 1);
 
-      assert.isFalse(ds.acylic());
+      assert.isFalse(ds.acyclic());
     });
   });
 });

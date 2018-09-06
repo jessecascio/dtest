@@ -208,7 +208,7 @@ module.exports = {
 
   // o(n)
   topoSort: function() {
-    if (!this.acylic()) {
+    if (!this.acyclic()) {
       return [];
     }
 
@@ -240,7 +240,7 @@ module.exports = {
   },
 
   // o(n)
-  acylic: function() {
+  acyclic: function() {
     const ks = Object.keys(graph);
 
     let seen = {};
@@ -251,7 +251,7 @@ module.exports = {
 
     for (let i=0; i<ks.length; i++) {
       if (!seen[ks[i]]) {
-        this._acylic(ks[i], seen, callStack, edges, q);
+        this._acyclic(ks[i], seen, callStack, edges, q);
       }
       if (q.size() > 0) {
         return false;
@@ -262,7 +262,7 @@ module.exports = {
   },
 
   // o(n)
-  _acylic: function(v, sn, st, es, q) {
+  _acyclic: function(v, sn, st, es, q) {
     st[v] = true;
     sn[v] = true;
 
@@ -272,7 +272,7 @@ module.exports = {
       }
       if (!sn[e]) {
         es[e] = v;
-        this._acylic(e, sn, st, es, q);
+        this._acyclic(e, sn, st, es, q);
       } else if (st[e]) {
 
         for (let i=v; i!=e; i=es[i]) {
@@ -284,7 +284,7 @@ module.exports = {
       }
     }
 
-    // current stack path is acylic
+    // current stack path is acyclic
     st[v] = false; 
   },
 

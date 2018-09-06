@@ -69,7 +69,7 @@ describe ("Directed Graph - Data Tests", function() {
             break;
           default:
             testConnected(v,w);
-            if (ds.topoOrder) {
+            if (ds.topoOrder && ds.acyclic) {
               testTopoOrder(v);
             }
         }
@@ -77,8 +77,8 @@ describe ("Directed Graph - Data Tests", function() {
         /**
          * OPTIONAL tests
         */
-        if (ds.acylic) {
-          testAcylic(v,w);
+        if (ds.acyclic) {
+          testAcyclic(v,w);
         }
         
       }
@@ -181,19 +181,19 @@ function testAdjacent(v,w) {
   }
 }
 
-function testAcylic(v,w) {
-  if (ds.acylic(v,w) !== bn.acylic(v,w)) {
+function testAcyclic(v,w) {
+  if (ds.acyclic(v,w) !== bn.acyclic(v,w)) {
     const o = {
-      error: 'Data structure and benchmark acylic do not return the same value',
+      error: 'Data structure and benchmark acyclic do not return the same value',
       pre: {
         bn: bn.toString(),
         ds: ds.toString()
       },
       assert: {
-        fn: 'acylic',
+        fn: 'acyclic',
         ps: [v,w],
-        bn: bn.acylic(v,w),
-        ds: ds.acylic(v,w)
+        bn: bn.acyclic(v,w),
+        ds: ds.acyclic(v,w)
       }
     }
 
