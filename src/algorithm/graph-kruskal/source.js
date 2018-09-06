@@ -8,9 +8,9 @@ pq._compare = function(i,j) {
 
 module.exports = {
   // o(elog(e))
-  size: function(g) {
+  weight: function(g) {
     const o = this._kruskal(g);
-    return o.size;
+    return o.weight;
   },
 
   // o(elog(e))
@@ -39,7 +39,7 @@ module.exports = {
 
     set.init(i);
 
-    let size = 0;
+    let weight = 0;
     const mst = new Set();
 
     while (pq.size()) {
@@ -49,12 +49,12 @@ module.exports = {
       }
 
       set.union(m[n.v], m[n.e]);
-      size += n.w;
+      weight += n.w;
 
       mst.add(n.v.toString());
       mst.add(n.e.toString());
     }
 
-    return { size, mst: [...mst] };
+    return { weight, mst: [...mst] };
   }
 };

@@ -15,6 +15,8 @@ The steps to implement are:
 
 By using a disjointed set we can check if a given edge forms a cycle.  Simply map the vertices to ints, as the disjointed sets works off of an int array.
 
+Use Prim's algorithm (O(ElogV)) when you have a graph with lots of edges (dense graph) otherwise use Kruskal’s algorithm (O(ElogE)) (sparse graph).
+
 #### Additional Resources
 
 * https://brilliant.org/wiki/spanning-trees/

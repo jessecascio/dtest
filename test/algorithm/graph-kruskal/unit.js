@@ -44,14 +44,14 @@ describe("Graph Kruskal - Unit Tests", async () => {
     });
   });
 
-  describe("size()", () => {
+  describe("weight()", () => {
     before(function() {
-      if (!ds.size) {
+      if (!ds.weight) {
         this.skip();
       }
     });
 
-    it ("should return correct minimum spanning tree size", () => {
+    it ("should return correct minimum spanning tree weight", () => {
       const graph = {
         'a': [['b',7],['c',3]],
         'b': [['a',7],['c',1],['d',2],['e',6]],
@@ -59,10 +59,10 @@ describe("Graph Kruskal - Unit Tests", async () => {
         'd': [['b',2],['c',2],['e',4]],
         'e': [['b',6],['d',4]]
       };
-      assert.equal(ds.size(graph), 10);
+      assert.equal(ds.weight(graph), 10);
     });
 
-    it ("should return correct size w/ multiple edge nodes", () => {
+    it ("should return correct weight w/ multiple edge nodes", () => {
       const graph = {
         'a': [['b',7],['c',3]],
         'b': [['a',7],['c',1],['d',2],['e',6]],
@@ -73,7 +73,7 @@ describe("Graph Kruskal - Unit Tests", async () => {
         'g': [['f',1]]
       };
 
-      assert.equal(ds.size(graph), 13);
+      assert.equal(ds.weight(graph), 13);
     });
   });
 });

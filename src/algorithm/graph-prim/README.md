@@ -18,6 +18,8 @@ A lazy approach just puts all of the edges that haven’t been visited yet into 
 
 An eager, more efficient, approach would be to invalidate all vertices in the priority queue that have already been visited. 
 
+Use Prim's algorithm (O(ElogV)) when you have a graph with lots of edges (dense graph) otherwise use Kruskal’s algorithm (O(ElogE)) (sparse graph).
+
 #### Additional Resources
 
 * https://brilliant.org/wiki/spanning-trees/

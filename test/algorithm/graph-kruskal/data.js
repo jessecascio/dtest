@@ -22,24 +22,24 @@ describe ("Graph Kruskal - Data Tests", function() {
     for (let i=0; i<500; i++) {
       reset();
       const g = graph();
-      testSize(g);
+      testWeight(g);
       testMst(g);
     }
   });
 });
 
-function testSize(g) {    
-  const a = ds.size(clone(g));
-  const b = bn.size(clone(g));
+function testWeight(g) {    
+  const a = ds.weight(clone(g));
+  const b = bn.weight(clone(g));
 
   if (a !== b) {
     const o = {
-      error: 'Data structure and benchmark sizes do not match',
+      error: 'Data structure and benchmark weights do not match',
       pre: {
         bn: g
       },
       assert: {
-        fn: 'size',
+        fn: 'weight',
         bn: b,
         ds: a
       }
