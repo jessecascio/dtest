@@ -9,9 +9,9 @@ let graph;
 
 module.exports = {
   // o(elog(e))
-  size: function(g) {
+  weight: function(g) {
     const o = this._prim(g);
-    return o.size;
+    return o.weight;
   },
 
   // o(elog(e))
@@ -34,7 +34,7 @@ module.exports = {
     pq.reset();
     pq.insert({v:k,w:0});
 
-    let size = 0;
+    let weight = 0;
     while (pq.size()) {
       const n = pq.remove();
 
@@ -51,9 +51,9 @@ module.exports = {
         }
       }
 
-      size += n.w;
+      weight += n.w;
     }
 
-    return { size, path };
+    return { weight, path };
   }
 };

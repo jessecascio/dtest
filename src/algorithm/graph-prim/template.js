@@ -4,15 +4,15 @@
 
 module.exports = {
   /**
-   * Return the size of the minimum spanning tree
-   * @param Object (graph representation) - { a:[['a',2],['c',3]], b:[['a',3]], c:[[]]}
+   * Return the weight of the minimum spanning tree
+   * @param Object (graph representation) - { a:[['b',2],['c',3]], b:[['a',3]], c:[[]]}
    * @return int
    */
-  size: null,
+  weight: null,
 
   /**
    * Return the path of the minimum spanning tree
-   * @param Object (graph representation) - { a:[['a',2],['c',3]], b:[['a',3]], c:[[]]}
+   * @param Object (graph representation) - { a:[['b',2],['c',3]], b:[['a',3]], c:[[]]}
    * @return Array<T>
    */
   mst: null
