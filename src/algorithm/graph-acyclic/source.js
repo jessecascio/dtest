@@ -1,41 +1,54 @@
 'use strict';
 
+const q = require(`${process.cwd()}/src/data-structure/queue/source`);
+
 module.exports = {
+  // o(n)
   acyclic: function(g) {
-    const seen = {};
-    const pathTo = {};
-    const callStack = {};
+    const ks = Object.keys(g);
+
+    let seen = {};
+    let edges = {};
+    let callStack = {};
     
-    let cycle = false;
-    for (let i in g) {
-      if (!seen[i]) {
-        cycle = this._acyclic(g, i, seen, callStack, pathTo);
+    q.reset();
+
+    for (let i=0; i<ks.length; i++) {
+      if (!seen[ks[i]]) {
+        this._acyclic(g, ks[i], seen, callStack, edges, q);
       }
-      if (cycle) {
-        return true;
+      if (q.size() > 0) {
+        return false;
       }
     }
 
-    return false;
+    return !(q.size() > 0);
   },
 
-  _acyclic: function(g, v, seen, callStack, pathTo) {
-    callStack[v] = true;
-    seen[v] = true;
+  // o(n)
+  _acyclic: function(g, v, sn, st, es, q) {
+    st[v] = true;
+    sn[v] = true;
 
     for (let e of g[v]) {
-      if (!seen[e]) {
-        pathTo[e] = v;
-        let cycle = this._acyclic(g, e, seen, callStack, pathTo);
-        if (cycle) {
-          return true;
+      if (q.size() > 0) {
+        return;
+      }
+      if (!sn[e]) {
+        es[e] = v;
+        this._acyclic(g, e, sn, st, es, q);
+      } else if (st[e]) {
+
+        for (let i=v; i!=e; i=es[i]) {
+          q.enqueue(i);
         }
-      } else if (callStack[e]) {
-        return true;
+
+        q.enqueue(e);
+        q.enqueue(v);
       }
     }
 
-    callStack[v] = false; 
-    return false;
-  }
+    // current stack path is acylic
+    st[v] = false; 
+  },
 };
