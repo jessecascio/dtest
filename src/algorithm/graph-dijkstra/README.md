@@ -11,7 +11,7 @@ When requesting distance from one vertice, source, to another vertice, target, D
 The idea behind Dijkstra's algorithm is to greedily choose the next lowest path using a priority queue.  The steps are:
 
 1. Pull a vertice off of the priority queue based on the lowest current weight
-2. If vertice has already been visited then do nothing
+2. If vertice has already been visited, check if new weight is smaller
 3. Iterate all of the vertices edges, updating the edge's pathTo (from source) to be the current vertice weight plus the current vertices parent weight.
 4. If edge has not been visited, place into the priority queue along with its current weight
 
