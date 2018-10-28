@@ -164,7 +164,7 @@ module.exports = {
     let n = head;
 
     while (n) {
-      if (n.data === v) {
+      if (this._equal(n.data, v)) {
         return i;
       }
 
@@ -173,6 +173,11 @@ module.exports = {
     }
 
     return undefined;
+  },
+
+  // o(1)
+  _equal: function(i, j) {
+    return i === j
   },
 
   // o(n)
