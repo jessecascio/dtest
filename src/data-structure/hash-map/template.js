@@ -15,5 +15,11 @@ module.exports = {
    * @param string (key)
    * @return T (value)
    */
-  get: null
+  get: null,
+
+  /**
+   * return map keys
+   * @return Array<string>
+   */
+  keys: null
 };
