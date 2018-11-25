@@ -1,10 +1,11 @@
 'use strict';
 
 const q = require(`${process.cwd()}/src/data-structure/queue/source`);
+const algo = require(`${process.cwd()}/src/algorithm/graph-acyclic/source`);
 
 module.exports = {
   sort: function(g) {
-    if (this.hasCycle(g)) {
+    if (!algo.acyclic(g)) {
       return [];
     }
 
@@ -30,43 +31,5 @@ module.exports = {
     }
 
     q.enqueue(v);
-  },
-
-  hasCycle: function(g) {
-    const seen = {};
-    const pathTo = {};
-    const callStack = {};
-    
-    let cycle = false;
-    for (let i in g) {
-      if (!seen[i]) {
-        cycle = this._hasCycle(g, i, seen, callStack, pathTo);
-      }
-      if (cycle) {
-        return true;
-      }
-    }
-
-    return false;
-  },
-
-  _hasCycle: function(g, v, seen, callStack, pathTo) {
-    callStack[v] = true;
-    seen[v] = true;
-
-    for (let e of g[v]) {
-      if (!seen[e]) {
-        pathTo[e] = v;
-        let cycle = this._hasCycle(g, e, seen, callStack, pathTo);
-        if (cycle) {
-          return true;
-        }
-      } else if (callStack[e]) {
-        return true;
-      }
-    }
-
-    callStack[v] = false; 
-    return false;
   }
 };
