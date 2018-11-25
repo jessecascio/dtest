@@ -168,7 +168,7 @@ describe("Undirected Graph - Unit Tests", async () => {
       ds.addEdge(1, 5);
       ds.addEdge(5, 3);
 
-      assert.isTrue(ds.acylic());
+      assert.isFalse(ds.acylic());
     });
 
     it ("should determine if not acylic", () => {
@@ -183,7 +183,7 @@ describe("Undirected Graph - Unit Tests", async () => {
       ds.addEdge(3, 4);
       ds.addEdge(1, 5);
       
-      assert.isFalse(ds.acylic());
+      assert.isTrue(ds.acylic());
     });
 
     it ("should determine if acylic w/ multiple components", () => {
@@ -206,7 +206,7 @@ describe("Undirected Graph - Unit Tests", async () => {
       ds.addEdge(52, 53);
       ds.addEdge(53, 51);
       
-      assert.isTrue(ds.acylic());
+      assert.isFalse(ds.acylic());
     });
   });
 
