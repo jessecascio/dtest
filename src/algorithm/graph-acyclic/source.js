@@ -3,52 +3,39 @@
 const q = require(`${process.cwd()}/src/data-structure/queue/source`);
 
 module.exports = {
-  // o(n)
-  acyclic: function(g) {
-    const ks = Object.keys(g);
+    // o(n)
+    acyclic: function(g) {
+        const vs = Object.keys(g).map(Number)
+        if (!vs.length)
+            return true
 
-    let seen = {};
-    let edges = {};
-    let callStack = {};
+        const done = new Set()
     
-    q.reset();
+        for (const v of vs) {
+            if (done.has(v))
+                continue
 
-    for (let i=0; i<ks.length; i++) {
-      if (!seen[ks[i]]) {
-        this._acyclic(g, ks[i], seen, callStack, edges, q);
-      }
-      if (q.size() > 0) {
-        return false;
-      }
-    }
-
-    return !(q.size() > 0);
-  },
-
-  // o(n)
-  _acyclic: function(g, v, sn, st, es, q) {
-    st[v] = true;
-    sn[v] = true;
-
-    for (let e of g[v]) {
-      if (q.size() > 0) {
-        return;
-      }
-      if (!sn[e]) {
-        es[e] = v;
-        this._acyclic(g, e, sn, st, es, q);
-      } else if (st[e]) {
-
-        for (let i=v; i!=e; i=es[i]) {
-          q.enqueue(i);
+            if (this._cycle(g, v, done))
+                return false
         }
 
-        q.enqueue(e);
-        q.enqueue(v);
-      }
-    }
-
-    // current stack path is acylic
-    st[v] = false; 
+    return true
   },
+
+    _cycle: function(g, v, done, current=(new Set())) {
+        if (done.has(v))
+            return false
+        
+        if (current.has(v))
+            return true
+        current.add(v)
+
+        for (const e of g[v]) {
+            if (this._cycle(g, e, done, current))
+                return true
+        }
+
+        current.delete(v)
+        done.add(v)
+    }
 };
